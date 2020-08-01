@@ -6,9 +6,8 @@ import java.util.ConcurrentModificationException;
 
 /**
  * This class implements the array interface using a resizable generic array,
- * also supports null elements to be insert, search, and delete in the array
+ * supports null elements to be insert, search, and delete in the array
  * 
- * @param <E> the type of the elements in the array
  * @author Jason Tran
  */
 @SuppressWarnings("unchecked")
@@ -25,6 +24,7 @@ public class ArrayImpl<E> implements Array<E> {
 
     /**
      * Constructor: Creates a new empty ArrayImpl with a specified capacity
+     * 
      * @param length the length of the array
      * @throws IllegalArgumentException if the size is negative
      */
@@ -37,6 +37,7 @@ public class ArrayImpl<E> implements Array<E> {
 
     /**
      * This method returns the actual underlying array
+     * 
      * @return arr 
      * Runtime: O(1)
      */
@@ -85,12 +86,48 @@ public class ArrayImpl<E> implements Array<E> {
             }
         } else {
             for (int i = 0; i < size; i++) {
-                if (arr[i].equals(o)) {
+                if (o.equals(arr[i])) {
                     return i;
                 }
             }
         }
         return -1;
+    }
+    
+    /**
+     * Returns the index of o at the last occurrence in
+     * the array, otherwise return -1 if o is not in the array
+     * 
+     * @param o an element to search the last occurring index
+     * @return the index of the last occurring o or -1 if not present
+     */
+    public int lastIndexOf(Object o) {
+        if (o == null) {
+            for (int i = size - 1; i >= 0; i--) {
+                if (arr[i] == null) {
+                    return i;
+                }
+            }
+        } else {
+            for (int i = size - 1; i >= 0; i--) {
+                if (o.equals(arr[i])) {
+                    return i;
+                }
+            }
+        }
+        return -1;
+    }
+    
+    /**
+     * A helper function to check if index is in range,
+     * if not, throws an IllegalArgumentException
+     * 
+     * @throws IllegalArgumentException if index is out of bounds
+     */
+    private void checkIndex(int index) {
+        if (index < 0 || index >= size) {
+            throw new IllegalArgumentException("ERROR: Illegal index to get element: " + index);
+        }
     }
 
     /**
@@ -99,10 +136,7 @@ public class ArrayImpl<E> implements Array<E> {
      */
     @Override
     public E get(int index) {
-        // check of index is within the appropriate range
-        if (index < 0 || index >= size) {
-            throw new IllegalArgumentException("ERROR: Illegal Index to get element: " + index);
-        }
+        checkIndex(index); // check if index is within the appropriate range
         return arr[index];
     }
 
@@ -112,10 +146,7 @@ public class ArrayImpl<E> implements Array<E> {
      */
     @Override
     public void set(int index, E e) {
-        // check of index is within the appropriate range
-        if (index < 0 || index >= size) {
-            throw new IllegalArgumentException("ERROR: Illegal Index to set: " + index);
-        }
+        checkIndex(index); // check if index is within the appropriate range
         arr[index] = e;
     }
 
@@ -143,22 +174,23 @@ public class ArrayImpl<E> implements Array<E> {
     @Override
     public E remove(int index) {
         if (isEmpty()) {
-            throw new NoSuchElementException("ERROR: can not remove from an empty array");
-        } else if (index < 0 || index >= size) {
-            throw new IllegalArgumentException("ERROR: Illegal Index to remove: " + index);
-        } else {
-            E prev = arr[index];
-            // shift the elements towards the left
-            for (int i = index; i < size; i++) {
-                arr[i] = arr[i + 1];
-            }
-            size--;
-            // resize the array by half is size less than a fourth of capacity
-            if (size < arr.length / 4) {
-                resize(arr.length / 2);
-            }
-            return prev;
+            throw new NoSuchElementException("ERROR: Cannot remove from an empty array");
+        } 
+        checkIndex(index); // check if index is in bounds to remove
+
+        E prev = arr[index];
+        // shift the elements towards the left
+        for (int i = index; i < size - 1; i++) {
+            arr[i] = arr[i + 1];
         }
+        size--;
+        
+        // resize the array by half is size less than a fourth of capacity
+        if (size < arr.length / 4) {
+            resize(arr.length / 2);
+        }
+        
+        return prev;
     }
 
     /**
@@ -168,7 +200,7 @@ public class ArrayImpl<E> implements Array<E> {
     @Override
     public boolean remove(Object o) {
         if (isEmpty()) {
-            throw new NoSuchElementException("ERROR: can not remove from an empty array");
+            throw new NoSuchElementException("ERROR: Cannot remove from an empty array");
         }
         if (o == null) {
             for (int i = 0; i < size; i++) {
@@ -179,7 +211,7 @@ public class ArrayImpl<E> implements Array<E> {
             }
         } else {
             for (int i = 0; i < size; i++) {
-                if (arr[i].equals(o)) {
+                if (o.equals(arr[i])) {
                     remove(i);
                     return true;
                 }
@@ -190,6 +222,7 @@ public class ArrayImpl<E> implements Array<E> {
 
     /**
      * This is a helper method that resizes the underlying generic dynamic array
+     * 
      * @param length the length of the array 
      * Runtime: O(n)
      */
@@ -234,32 +267,27 @@ public class ArrayImpl<E> implements Array<E> {
             final private int expectedSize = size; // check for concurrent modification
 
             /**
-             * {@inheritDoc} Checks for concurrent modification
-             * 
-             * @throws ConcurrentModificationException
+             * {@inheritDoc}      
              */
             @Override
             public boolean hasNext() {
-                if (expectedSize != size) {
-                    throw new ConcurrentModificationException("ERROR: Cannot modifiy the iterator");
-                }
                 return count < expectedSize;
             }
 
             /**
-             * {@inheritDoc} Checks for concurrent modification
+             * {@inheritDoc}
              * 
-             * @throws ConcurrentModificationException
+             * @throws ConcurrentModificationException if size does not equal expectedSize
              */
             @Override
             public E next() {
                 if (expectedSize != size) {
                     throw new ConcurrentModificationException("ERROR: Cannot modifiy the iterator");
                 }
-                if (hasNext()) {
-                    return arr[count++];
-                } else {
+                if (!hasNext()) {
                     throw new NoSuchElementException("ERROR: No more elements to iterate");
+                } else {
+                    return arr[count++];
                 }
             }
 

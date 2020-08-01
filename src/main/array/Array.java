@@ -4,13 +4,12 @@ import java.util.Iterator;
 
 /**
  * A Dynamic Array (resizable) Interface that supports generics
- * 
+ *
  * @author Jason Tran
- * @param <E> the type of the elements in the array
  */
 public interface Array<E> extends Iterable<E> {
     /**
-     * Returns the size of array (number of elements in Array)
+     * Returns the number of elements in array
      * 
      * @return the number of elements in the array
      */
@@ -24,7 +23,7 @@ public interface Array<E> extends Iterable<E> {
     public boolean isEmpty();
 
     /**
-     * Tells whether o is in Array or not
+     * Tells whether o is present in the array or not
      * 
      * @param o an element to be found in the array
      * @return true if the array contains o otherwise false
@@ -32,8 +31,8 @@ public interface Array<E> extends Iterable<E> {
     public boolean contains(Object o);
 
     /**
-     * This method returns the index of element o If there are duplicates return the
-     * first index of o
+     * Returns the index of element o, if there are duplicates return 
+     * the first index of o
      * 
      * @param o an element to search the index for
      * @return the index of o or -1 if o is not in Array
@@ -41,16 +40,16 @@ public interface Array<E> extends Iterable<E> {
     public int indexOf(Object o);
 
     /**
-     * This method gets the specfic element at index array[index]
+     * Gets the specific element at the index
      * 
      * @param index the index in the array
-     * @return array[index], the element at that index
+     * @return the element at the specified index
      * @throws IllegalArgumentException if index is out of bounds
      */
     public E get(int index);
 
     /**
-     * This method changes the element at the specified index
+     * Changes the element at the specified index to e
      * 
      * @param index the index in the array
      * @param e     the element to be changed
@@ -59,14 +58,14 @@ public interface Array<E> extends Iterable<E> {
     public void set(int index, E e);
 
     /**
-     * This method appends the element e at the end of this array
+     * Appends the element e at the end of this array
      * 
      * @param e the element to be added into the array
      */
     public void add(E e);
 
     /**
-     * This method removes the element at the specified index, shifts any subsequent
+     * Removes the element at the specified index, shifts any subsequent
      * elements to the left
      * 
      * @param index the index in the array
@@ -77,8 +76,8 @@ public interface Array<E> extends Iterable<E> {
     public E remove(int index);
 
     /**
-     * This method deletes the element o from the array, removes the first
-     * occurancee of e in the array
+     * Deletes the element o from the array, removes the first
+     * occurrence of e in the array
      * 
      * @param o an element to be remove
      * @return true if removal of o is successful otherwise false
@@ -87,7 +86,7 @@ public interface Array<E> extends Iterable<E> {
     public boolean remove(Object o);
 
     /**
-     * This method deletes all the elements in the array, the array will be empty
+     * Deletes all the elements in the array, the array will be empty
      * after this call returns
      */
     public void clear();
@@ -110,7 +109,7 @@ public interface Array<E> extends Iterable<E> {
     public Iterator<E> iterator();
 
     /**
-     * This method returns a string representation of the whole array in the format
+     * Returns a string representation of the whole array in the format
      * [a_1, a_2, ...., a_n]
      * 
      * @return the string format of the array
