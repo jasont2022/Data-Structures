@@ -5,7 +5,6 @@ import java.util.Iterator;
 /**
  * A List Interface that supports generics
  * 
- * @param <E> the type of the elements in the array
  * @author Jason Tran
  */
 public interface List<E> extends Iterable<E> {
