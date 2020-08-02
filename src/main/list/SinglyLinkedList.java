@@ -104,7 +104,7 @@ public class SinglyLinkedList<E> implements List<E> {
     public E get(int index) {
         // check if the index is valid
         if (index < 0 || index >= size) {
-            throw new IllegalArgumentException("ERROR: Illegal Index: " + index);
+            throw new IllegalArgumentException("ERROR: Illegal index: " + index);
         }
         Node<E> curr = head; // traveling node
         for (int i = 0; i < index; i++, curr = curr.next) {
@@ -119,7 +119,7 @@ public class SinglyLinkedList<E> implements List<E> {
     public E set(int index, E element) {
         // check if the index is valid
         if (index < 0 || index >= size) {
-            throw new IllegalArgumentException("ERROR: Illegal Index: " + index);
+            throw new IllegalArgumentException("ERROR: Illegal index: " + index);
         }
         Node<E> curr = head; // traveling node
         for (int i = 0; i < index; i++, curr = curr.next) {
@@ -285,9 +285,15 @@ public class SinglyLinkedList<E> implements List<E> {
         } else {
             Node<E> curr1 = head; // traveling node 1
             Node<E> curr2 = head.next; // traveling node 2
-            for (int i = 0; i < index - 1; i++, curr1 = curr1.next, curr2 = curr2.next) {
+            for (int i = 0; i < index - 1; i++) {
+                curr1 = curr1.next;
+                curr2 = curr2.next;
             }
             E prev = curr2.value;
+            // do not forget to update the tail if removing from tail
+            if (index == size - 1) {
+                tail = curr1;
+            }
             curr1.next = curr2.next;
             curr2.next = null;
             size--;
@@ -415,9 +421,6 @@ public class SinglyLinkedList<E> implements List<E> {
              */
             @Override
             public boolean hasNext() {
-                if (expectedSize != size) {
-                    throw new ConcurrentModificationException("ERROR: Cannot modifiy the iterator");
-                }
                 return curr != null;
             }
 
@@ -431,12 +434,12 @@ public class SinglyLinkedList<E> implements List<E> {
                 if (expectedSize != size) {
                     throw new ConcurrentModificationException("ERROR: Cannot modifiy the iterator");
                 }
-                if (hasNext()) {
+                if (!hasNext()) {
+                    throw new NoSuchElementException("ERROR: No more elements to iterate");
+                } else {
                     E next = curr.value;
                     curr = curr.next;
                     return next;
-                } else {
-                    throw new NoSuchElementException("ERROR: No more elements to iterate");
                 }
             }
 
@@ -462,7 +465,7 @@ public class SinglyLinkedList<E> implements List<E> {
             StringBuilder list = new StringBuilder(size);
             for (Node<E> curr = head; curr != tail; curr = curr.next) {
                 list.append("[" + curr.value + "]->");
-            }
+            }  
             return list.append("[" + tail.value + "]").toString();
         }
     }
