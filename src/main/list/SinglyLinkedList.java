@@ -5,13 +5,14 @@ import java.util.NoSuchElementException;
 import java.util.ConcurrentModificationException;
 
 /**
- * This class implements the List interface, Singly Linked List
+ * This class implements the List interface using a singly linked
+ * list, supports null values to be inserted, deleted, and search
  * 
  * @author Jason Tran
  */
 public class SinglyLinkedList<E> implements List<E> {
-    private int size = 0; // the number of elements in the list
-    private Node<E> head, tail = null; // the head and tail pointer of the list
+    private int size; // the number of elements in the list
+    private Node<E> head, tail; // the head and tail pointer of the list
 
     /**
      * Private Inner Class to represent a Node<E> in a singly linked list
@@ -88,7 +89,7 @@ public class SinglyLinkedList<E> implements List<E> {
             }
         } else {
             for (Node<E> curr = head; curr != null; curr = curr.next, index++) {
-                if (curr.value.equals(o)) {
+                if (o.equals(curr.value)) {
                     return index;
                 }
             }
@@ -312,7 +313,7 @@ public class SinglyLinkedList<E> implements List<E> {
             }
         } else {
             for (Node<E> curr = head; curr != null; curr = curr.next, index++) {
-                if (curr.value.equals(o)) {
+                if (o.equals(curr.value)) {
                     remove(index);
                     return true;
                 }
