@@ -23,6 +23,10 @@ A side project for myself to somewhat mimic the Java Collections Library. I will
 * [Queue]
 * [Tree]
 * [Heap]
+* [Set]
+* [Map]
+* [Priority Queue]
+* [Graph]
 
 ## Contribute
 
