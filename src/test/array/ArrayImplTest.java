@@ -8,6 +8,7 @@ import static org.junit.Assert.*;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.ConcurrentModificationException;
 
 /**
  * Testing the ArrayImpl class
@@ -300,7 +301,8 @@ public class ArrayImplTest {
         assertEquals("a", ((Object[]) array.getArray())[0]);
         assertNull(((Object[]) array.getArray())[1]);
         assertEquals("bar", ((Object[]) array.getArray())[2]);
-        assertEquals("bar", ((Object[]) array.getArray())[3]);
+        //assertEquals("bar", ((Object[]) array.getArray())[3]);
+        assertNull(((Object[]) array.getArray())[3]);
         assertEquals(3, array.size());
         assertEquals("[a, null, bar]", array.toString());
     }
@@ -323,7 +325,8 @@ public class ArrayImplTest {
         assertEquals("baz", ((Object[]) array.getArray())[3]);
         assertEquals("jay", ((Object[]) array.getArray())[4]);
         assertEquals("blue", ((Object[]) array.getArray())[5]);
-        assertEquals("blue", ((Object[]) array.getArray())[6]);
+        //assertEquals("blue", ((Object[]) array.getArray())[6]);
+        assertNull(((Object[]) array.getArray())[6]);
         assertNull(((Object[]) array.getArray())[7]);
         assertEquals(6, array.size());
         assertEquals("[a, null, bar, baz, jay, blue]", array.toString());
@@ -391,7 +394,8 @@ public class ArrayImplTest {
         assertEquals("a", ((Object[]) array.getArray())[0]);
         assertEquals("foo", ((Object[]) array.getArray())[1]);
         assertEquals("bar", ((Object[]) array.getArray())[2]);
-        assertEquals("bar", ((Object[]) array.getArray())[3]);
+        //assertEquals("bar", ((Object[]) array.getArray())[3]);
+        assertNull(((Object[]) array.getArray())[3]);
         assertEquals(3, array.size());
         assertEquals("[a, foo, bar]", array.toString());
     }
@@ -408,7 +412,8 @@ public class ArrayImplTest {
         assertEquals("a", ((Object[]) array.getArray())[0]);
         assertNull(((Object[]) array.getArray())[1]);
         assertEquals("bar", ((Object[]) array.getArray())[2]);
-        assertEquals("bar", ((Object[]) array.getArray())[3]);
+        // assertEquals("bar", ((Object[]) array.getArray())[3]);
+        assertNull(((Object[]) array.getArray())[3]);
         assertEquals(3, array.size());
         assertEquals("[a, null, bar]", array.toString());
     }
@@ -446,8 +451,26 @@ public class ArrayImplTest {
         assertFalse(array.contains(2));
         assertEquals("[]", array.toString());
     }
+    
+    @Test
+    public void testToArray() {
+        Object[] expectedSingleton = {1};
+        assertArrayEquals(expectedSingleton, singleton.toArray());
+        assertEquals(1, singleton.size());
+        assertEquals("[1]", singleton.toString());
+        
+        Object[] expectedThreeElements = {5, 1, 3};
+        assertArrayEquals(expectedThreeElements, threeElements.toArray());
+        assertEquals(3, threeElements.size());
+        assertEquals("[5, 1, 3]", threeElements.toString());
+        
+        Object[] expectedHasNullElements = {1, 3, null, 3, null};
+        assertArrayEquals(expectedHasNullElements, hasNullElements.toArray());
+        assertEquals(5, hasNullElements.size());
+        assertEquals("[1, 3, null, 3, null]", hasNullElements.toString());
+    }
 
-    @Test(expected = NoSuchElementException.class)
+    @Test (expected = NoSuchElementException.class)
     public void testIteratorEmptyArrayCallNext() {
         Iterator<Integer> arrayIter = empty.iterator();
         arrayIter.next();
@@ -469,7 +492,7 @@ public class ArrayImplTest {
         assertFalse(arrayIter.hasNext());
     }
 
-    @Test(expected = NoSuchElementException.class)
+    @Test (expected = NoSuchElementException.class)
     public void testIteratorCallNextTooManyTimes() {
         Iterator<Integer> arrayIter = hasNullElements.iterator();
         arrayIter.next();
@@ -478,6 +501,24 @@ public class ArrayImplTest {
         arrayIter.next();
         arrayIter.next();
         arrayIter.next();
+    }
+    
+    @Test (expected = ConcurrentModificationException.class)
+    public void testIteratorConcurrentModificationException() {
+        ArrayImpl<Integer> array = new ArrayImpl<>();
+        array.add(null);
+        array.add(5);
+        array.add(2);
+        Iterator<Integer> arrayIter = array.iterator();
+        arrayIter.next();
+        array.add(14);
+        arrayIter.next();
+    }
+    
+    @Test (expected = UnsupportedOperationException.class)
+    public void testIteratorRemove() {
+        Iterator<Integer> arrayIter = hasNullElements.iterator();
+        arrayIter.remove();
     }
 
     @Test

@@ -5,7 +5,7 @@ import java.util.NoSuchElementException;
 import java.util.ConcurrentModificationException;
 
 /**
- * This class implements the List and Queue interface, doubly Linkedlist
+ * This class implements the List, Queue, and Stack interface, doubly linked list
  * 
  * @author Jason Tran
  */

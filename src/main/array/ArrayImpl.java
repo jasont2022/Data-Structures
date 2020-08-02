@@ -9,6 +9,7 @@ import java.util.ConcurrentModificationException;
  * supports null elements to be insert, search, and delete in the array
  * 
  * @author Jason Tran
+ * @see Array
  */
 @SuppressWarnings("unchecked")
 public class ArrayImpl<E> implements Array<E> {
@@ -177,19 +178,18 @@ public class ArrayImpl<E> implements Array<E> {
             throw new NoSuchElementException("ERROR: Cannot remove from an empty array");
         } 
         checkIndex(index); // check if index is in bounds to remove
-
         E prev = arr[index];
         // shift the elements towards the left
         for (int i = index; i < size - 1; i++) {
             arr[i] = arr[i + 1];
         }
+        arr[size - 1] = null;
         size--;
         
         // resize the array by half is size less than a fourth of capacity
         if (size < arr.length / 4) {
             resize(arr.length / 2);
         }
-        
         return prev;
     }
 

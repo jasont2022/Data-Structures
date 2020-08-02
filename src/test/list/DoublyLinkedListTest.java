@@ -2,8 +2,8 @@ package test.list;
 
 import org.junit.Test;
 
-import main.list.DoublyLinkedList;
 import main.list.List;
+import main.list.DoublyLinkedList;
 
 import static org.junit.Assert.*;
 import java.util.Iterator;
