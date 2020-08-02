@@ -1,11 +1,12 @@
 package test.list;
 
-import org.junit.Test;
-
 import main.list.List;
 import main.list.DoublyLinkedList;
 
+import org.junit.Before;
+import org.junit.Test;
 import static org.junit.Assert.*;
+
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 import java.util.ConcurrentModificationException;
