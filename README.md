@@ -17,8 +17,8 @@ A side project for myself to somewhat mimic the Java Collections Library. I will
 ## Getting Started
 
 ## Data Structures Links
-* [Array](#https://github.com/jasont2022/Data-Structures/tree/master/src/main/array)
-* [List](#https://github.com/jasont2022/Data-Structures/tree/master/src/main/list)
+* [Array](https://github.com/jasont2022/Data-Structures/tree/master/src/main/array)
+* [List](https://github.com/jasont2022/Data-Structures/tree/master/src/main/list)
 * [Stack]
 * [Queue]
 * [Tree]
