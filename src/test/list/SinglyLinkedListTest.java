@@ -672,6 +672,12 @@ public class SinglyLinkedListTest {
         list.add(9);
         listIter.next();
     }
+    
+    @Test (expected = UnsupportedOperationException.class)
+    public void testIteratorRemove() {
+        Iterator<Integer> listIter = hasNullElements.iterator();
+        listIter.remove();
+    }
 
     @Test
     public void testIterator() {

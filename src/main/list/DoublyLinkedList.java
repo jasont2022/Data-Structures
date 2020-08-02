@@ -37,7 +37,8 @@ public class DoublyLinkedList<E> implements List<E> {
     /**
      * This method returns the head of this list
      * 
-     * @return the head of this list Runtime: O(1)
+     * @return the head of this list 
+     * Runtime: O(1)
      */
     public Node<E> getHead() {
         return head;
@@ -46,14 +47,16 @@ public class DoublyLinkedList<E> implements List<E> {
     /**
      * This method returns the tail of this list
      * 
-     * @return the tail of this list Runtime: O(1)
+     * @return the tail of this list 
+     * Runtime: O(1)
      */
     public Node<E> getTail() {
         return tail;
     }
 
     /**
-     * {@inheritDoc} Runtime: O(1)
+     * {@inheritDoc} 
+     * Runtime: O(1)
      */
     @Override
     public int size() {
@@ -61,7 +64,8 @@ public class DoublyLinkedList<E> implements List<E> {
     }
 
     /**
-     * {@inheritDoc} Runtime: O(1)
+     * {@inheritDoc} 
+     * Runtime: O(1)
      */
     @Override
     public boolean isEmpty() {
@@ -69,7 +73,8 @@ public class DoublyLinkedList<E> implements List<E> {
     }
 
     /**
-     * {@inheritDoc} Runtime: O(n)
+     * {@inheritDoc} 
+     * Runtime: O(n)
      */
     @Override
     public boolean contains(Object o) {
@@ -77,7 +82,8 @@ public class DoublyLinkedList<E> implements List<E> {
     }
 
     /**
-     * {@inheritDoc} Runtime: O(n)
+     * {@inheritDoc} 
+     * Runtime: O(n)
      */
     @Override
     public int indexOf(Object o) {
@@ -100,14 +106,12 @@ public class DoublyLinkedList<E> implements List<E> {
 
     /**
      * Returns the index of the last occurrence of the specified element in this
-     * list, or -1 if this list does not contain the element. More formally, returns
-     * the highest index {@code i} such that
-     * <tt>(o==null&nbsp;?&nbsp;get(i)==null&nbsp;:&nbsp;o.equals(get(i)))</tt>, or
-     * -1 if there is no such index.
+     * list, or -1 if this list does not contain the element
      *
      * @param o element to search for
      * @return the index of the last occurrence of the specified element in this
      *         list, or -1 if this list does not contain the element
+     * Runtime: O(n)
      */
     public int lastIndexOf(Object o) {
         int index = size;
@@ -128,7 +132,8 @@ public class DoublyLinkedList<E> implements List<E> {
     }
 
     /**
-     * {@inheritDoc} Runtime: O(n)
+     * {@inheritDoc} 
+     * Runtime: O(n)
      */
     @Override
     public E get(int index) {
@@ -143,7 +148,8 @@ public class DoublyLinkedList<E> implements List<E> {
     }
 
     /**
-     * {@inheritDoc} Runtime: O(n)
+     * {@inheritDoc} 
+     * Runtime: O(n)
      */
     @Override
     public E set(int index, E element) {
@@ -162,7 +168,8 @@ public class DoublyLinkedList<E> implements List<E> {
     /**
      * A private helper function that inserts a new element into an empty list
      * 
-     * @param e an element to insert into the list Runtime: O(1)
+     * @param e an element to insert into the list 
+     * Runtime: O(1)
      */
     private void insertToEmptyList(E e) {
         head = tail = new Node<E>(e, null, null);
@@ -170,7 +177,8 @@ public class DoublyLinkedList<E> implements List<E> {
     }
 
     /**
-     * {@inheritDoc} Runtime: O(1)
+     * {@inheritDoc} 
+     * Runtime: O(1)
      */
     @Override
     public boolean add(E e) {
@@ -179,7 +187,8 @@ public class DoublyLinkedList<E> implements List<E> {
     }
 
     /**
-     * {@inheritDoc} Runtime: O(n)
+     * {@inheritDoc} 
+     * Runtime: O(n)
      */
     @Override
     public void add(int index, E element) {
@@ -203,7 +212,8 @@ public class DoublyLinkedList<E> implements List<E> {
     /**
      * Inserts the specified element at the beginning of this list
      * 
-     * @param e an element to insert at the head of the list Runtime: O(1)
+     * @param e an element to insert at the head of the list 
+     * Runtime: O(1)
      */
     public void addFirst(E e) {
         if (isEmpty()) {
@@ -219,7 +229,8 @@ public class DoublyLinkedList<E> implements List<E> {
     /**
      * Appends the specified element to the end of this list
      * 
-     * @param e an element to insert at the tail of the list Runtime: O(1)
+     * @param e an element to insert at the tail of the list
+     * Runtime: O(1)
      */
     public void addLast(E e) {
         if (isEmpty()) {
@@ -233,7 +244,8 @@ public class DoublyLinkedList<E> implements List<E> {
     }
 
     /**
-     * {@inheritDoc} Runtime: O(1)
+     * {@inheritDoc} 
+     * Runtime: O(1)
      */
     //@Override
     public void push(E item) {
@@ -241,7 +253,8 @@ public class DoublyLinkedList<E> implements List<E> {
     }
 
     /**
-     * {@inheritDoc} Runtime: O(1)
+     * {@inheritDoc} 
+     * Runtime: O(1)
      */
     //@Override
     public boolean offer(E e) {
@@ -250,7 +263,8 @@ public class DoublyLinkedList<E> implements List<E> {
     }
 
     /**
-     * {@inheritDoc} Runtime: O(1)
+     * {@inheritDoc} 
+     * Runtime: O(1)
      */
     //@Override
     public E peek() {
@@ -258,7 +272,8 @@ public class DoublyLinkedList<E> implements List<E> {
     }
 
     /**
-     * {@inheritDoc} Runtime: O(1)
+     * {@inheritDoc} 
+     * Runtime: O(1)
      */
     //@Override
     public E element() {
@@ -269,7 +284,8 @@ public class DoublyLinkedList<E> implements List<E> {
      * Retrieves, but does not remove, the first element of this list
      * 
      * @return the first element of this list, otherwise null
-     * @throws NoSuchElementException if the list is empty Runtime: O(1)
+     * @throws NoSuchElementException if the list is empty 
+     * Runtime: O(1)
      */
     public E peekFirst() {
         final Node<E> curr = head;
@@ -283,7 +299,8 @@ public class DoublyLinkedList<E> implements List<E> {
      * Retrieves, but does not remove, the last element of this list
      * 
      * @return the last element of this list, otherwise null
-     * @throws NoSuchElementExpection if the list is empty Runtime: O(1)
+     * @throws NoSuchElementExpection if the list is empty 
+     * Runtime: O(1)
      */
     public E peekLast() {
         final Node<E> curr = tail;
@@ -297,14 +314,16 @@ public class DoublyLinkedList<E> implements List<E> {
      * Retrieves and removes the head (first element) of this list
      * 
      * @return the head of this list, otherwise null
-     * @throws NoSuchElementExpection if the list is empty Runtime: O(1)
+     * @throws NoSuchElementExpection if the list is empty 
+     * Runtime: O(1)
      */
     public E remove() {
         return removeFirst();
     }
 
     /**
-     * {@inheritDoc} Runtime: O(n)
+     * {@inheritDoc} 
+     * Runtime: O(n)
      */
     @Override
     public E remove(int index) {
@@ -314,6 +333,8 @@ public class DoublyLinkedList<E> implements List<E> {
             throw new IllegalArgumentException("ERROR: Index out of bounds: " + index);
         } else if (index == 0) {
             return removeFirst();
+        } else if (index == size - 1) {
+            return removeLast();
         } else {
             Node<E> curr = head; // traveling node 1
             for (int i = 0; i < index; i++, curr = curr.next) {
@@ -328,7 +349,8 @@ public class DoublyLinkedList<E> implements List<E> {
     }
 
     /**
-     * {@inheritDoc} Runtime: O(n)
+     * {@inheritDoc} 
+     * Runtime: O(n)
      */
     @Override
     public boolean remove(Object o) {
@@ -360,7 +382,8 @@ public class DoublyLinkedList<E> implements List<E> {
      * element, it is unchanged.
      * 
      * @param o element to be removed from this list, if present
-     * @return true if the list contained the specified element Runtime: O(n)
+     * @return true if the list contained the specified element 
+     * Runtime: O(n)
      */
     public boolean removeFirstOccurrence(Object o) {
         return remove(o);
@@ -372,7 +395,8 @@ public class DoublyLinkedList<E> implements List<E> {
      * element, it is unchanged.
      * 
      * @param o element to be removed from this list, if present
-     * @return true if the list contained the specified element Runtime: O(n)
+     * @return true if the list contained the specified element 
+     * Runtime: O(n)
      */
     public boolean removeLastOccurrence(Object o) {
         int index = 0;
@@ -398,7 +422,8 @@ public class DoublyLinkedList<E> implements List<E> {
      * Removes and returns the first element from this list
      * 
      * @return head element of this list, otherwise null
-     * @throws NoSuchElementExpection if the list is empty Runtime: O(1)
+     * @throws NoSuchElementExpection if the list is empty 
+     * Runtime: O(1)
      */
     public E removeFirst() {
         if (isEmpty()) {
@@ -415,7 +440,8 @@ public class DoublyLinkedList<E> implements List<E> {
      * Removes and returns the last element from this list
      * 
      * @return tail element of this list, otherwise null
-     * @throws NoSuchElementExpection if the list is empty Runtime: O(1)
+     * @throws NoSuchElementExpection if the list is empty 
+     * Runtime: O(1)
      */
     public E removeLast() {
         if (isEmpty()) {
@@ -429,7 +455,8 @@ public class DoublyLinkedList<E> implements List<E> {
     }
 
     /**
-     * {@inheritDoc} Runtime: O(1)
+     * {@inheritDoc} 
+     * Runtime: O(1)
      */
     //@Override
     public E pop() {
@@ -437,7 +464,8 @@ public class DoublyLinkedList<E> implements List<E> {
     }
 
     /**
-     * {@inheritDoc} Runtime: O(1)
+     * {@inheritDoc} 
+     * Runtime: O(1)
      */
     //@Override
     public E poll() {
@@ -445,7 +473,8 @@ public class DoublyLinkedList<E> implements List<E> {
     }
 
     /**
-     * {@inheritDoc} Runtime: O(1)
+     * {@inheritDoc} 
+     * Runtime: O(1)
      */
     @Override
     public void clear() {
@@ -454,7 +483,8 @@ public class DoublyLinkedList<E> implements List<E> {
     }
 
     /**
-     * {@inheritDoc} Runtime: O(n)
+     * {@inheritDoc} 
+     * Runtime: O(n)
      */
     @Override
     public Object[] toArray() {
@@ -476,22 +506,17 @@ public class DoublyLinkedList<E> implements List<E> {
             final private int expectedSize = size; // used to check for concurrent modification
 
             /**
-             * {@inheritDoc} Checks for concurrent modification
-             * 
-             * @throws ConcurrentModificationException
+             * {@inheritDoc} 
              */
             @Override
             public boolean hasNext() {
-                if (expectedSize != size) {
-                    throw new ConcurrentModificationException("ERROR: Cannot modifiy the iterator");
-                }
                 return curr != null;
             }
 
             /**
-             * {@inheritDoc} Checks for concurrent modification
+             * {@inheritDoc}
              * 
-             * @throws ConcurrentModificationException
+             * @throws ConcurrentModificationException if size does not equal expectedSize
              */
             @Override
             public E next() {

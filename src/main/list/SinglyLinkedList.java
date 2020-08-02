@@ -415,9 +415,7 @@ public class SinglyLinkedList<E> implements List<E> {
             final private int expectedSize = size; // used to check for concurrent modification
 
             /**
-             * {@inheritDoc} Checks for concurrent modification
-             * 
-             * @throws ConcurrentModificationException
+             * {@inheritDoc}
              */
             @Override
             public boolean hasNext() {
@@ -425,9 +423,9 @@ public class SinglyLinkedList<E> implements List<E> {
             }
 
             /**
-             * {@inheritDoc} Checks for concurrent modification
+             * {@inheritDoc}
              * 
-             * @throws ConcurrentModificationException
+             * @throws ConcurrentModificationException if size does not equal expectedSize
              */
             @Override
             public E next() {
