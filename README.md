@@ -18,14 +18,31 @@ A side project for myself to somewhat mimic the Java Collections Library. I will
 
 ## Data Structures Links
 * [Array](https://github.com/jasont2022/Data-Structures/tree/master/src/main/array)
+  * [Array Interface](https://github.com/jasont2022/Data-Structures/tree/master/src/main/array/Array.java)
+  * [ArrayImpl](https://github.com/jasont2022/Data-Structures/tree/master/src/main/array/ArrayImpl.java)
 * [List](https://github.com/jasont2022/Data-Structures/tree/master/src/main/list)
-* [Stack]
-* [Queue]
-* [Tree]
+  * [List Interface](https://github.com/jasont2022/Data-Structures/tree/master/src/main/list/List.java)
+  * [SinglyLinkedList](https://github.com/jasont2022/Data-Structures/tree/master/src/main/list/SinglyLinkedList.java)
+  * [DoublyLinkedList](https://github.com/jasont2022/Data-Structures/tree/master/src/main/list/DoublyLinkedList.java)
+* [Set](https://github.com/jasont2022/Data-Structures/tree/master/src/main/set)
+  * [Set Interface](https://github.com/jasont2022/Data-Structures/tree/master/src/main/set/Set.java)
+  * [ArraySet](https://github.com/jasont2022/Data-Structures/tree/master/src/main/set/ArraySet.java)
+  * [TreeSet](https://github.com/jasont2022/Data-Structures/tree/master/src/main/set/TreeSet.java)
+  * [HashSet]
+* [Map](https://github.com/jasont2022/Data-Structures/tree/master/src/main/map)
+  * [Map Interface](https://github.com/jasont2022/Data-Structures/tree/master/src/main/map/Map.java)
+  * [ArrayMap](https://github.com/jasont2022/Data-Structures/tree/master/src/main/map/ArrayMap.java)
+  * [TreeMap](https://github.com/jasont2022/Data-Structures/tree/master/src/main/map/TreeMap.java)
+  * [HashMap]
+* [Stack](https://github.com/jasont2022/Data-Structures/tree/master/src/main/stack)
+  * [Stack Interface](https://github.com/jasont2022/Data-Structures/tree/master/src/main/Stack.java)
+  * [ArrayStack](https://github.com/jasont2022/Data-Structures/tree/master/src/main/ArrayStack.java)
+* [Queue](https://github.com/jasont2022/Data-Structures/tree/master/src/main/queue)
+  * [Queue Interface](https://github.com/jasont2022/Data-Structures/tree/master/src/main/queue/Queue.java)
+  * [ArrayQueue](https://github.com/jasont2022/Data-Structures/tree/master/src/main/queue/ArrayQueue.java)
 * [Heap]
-* [Set]
-* [Map]
 * [Priority Queue]
+* [Tree]
 * [Graph]
 
 ## Contribute
