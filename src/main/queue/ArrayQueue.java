@@ -6,9 +6,8 @@ import java.util.ConcurrentModificationException;
 
 /**
  * This class implements the queue interface using a resizable generic array,
- * also supports null elements to be insert, search, and delete in the array
+ * Supports null elements to be insert, search, and delete in the array
  * 
- * @param <E> the type of the elements in the queue
  * @author Jason Tran
  */
 @SuppressWarnings("unchecked")
