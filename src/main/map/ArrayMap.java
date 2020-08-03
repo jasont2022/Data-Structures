@@ -14,8 +14,6 @@ import java.util.ConcurrentModificationException;
  * NOTE: Did not use for-each loop because of null
  * entries (makes things complex) so I used regular for loops
  * 
- * @param <K> the type of keys in the map
- * @param <V> type of values in the map
  * @author Jason Tran
  */
 @SuppressWarnings("unchecked")
@@ -47,7 +45,8 @@ public class ArrayMap<K, V> implements Map<K, V> {
         }
 
         /**
-         * {@inheritDoc} Runtime: O(1)
+         * {@inheritDoc} 
+         * Runtime: O(1)
          */
         @Override
         public K getKey() {
@@ -55,7 +54,8 @@ public class ArrayMap<K, V> implements Map<K, V> {
         }
 
         /**
-         * {@inheritDoc} Runtime: O(1)
+         * {@inheritDoc} 
+         * Runtime: O(1)
          */
         @Override
         public V getValue() {
@@ -63,7 +63,8 @@ public class ArrayMap<K, V> implements Map<K, V> {
         }
 
         /**
-         * {@inheritDoc} Runtime: O(1)
+         * {@inheritDoc} 
+         * Runtime: O(1)
          */
         @Override
         public V setValue(V value) {
@@ -73,7 +74,8 @@ public class ArrayMap<K, V> implements Map<K, V> {
         }
 
         /**
-         * {@inheritDoc} Runtime: O(1)
+         * {@inheritDoc} 
+         * Runtime: O(1)
          */
         @Override
         public int hashCode() {
@@ -81,7 +83,8 @@ public class ArrayMap<K, V> implements Map<K, V> {
         }
 
         /**
-         * {@inheritDoc} Runtime: O(1)
+         * {@inheritDoc} 
+         * Runtime: O(1)
          */
         @Override
         public String toString() {
@@ -103,7 +106,8 @@ public class ArrayMap<K, V> implements Map<K, V> {
     }
 
     /**
-     * {@inheritDoc} Runtime: O(1)
+     * {@inheritDoc} 
+     * Runtime: O(1)
      */
     @Override
     public int size() {
@@ -111,7 +115,8 @@ public class ArrayMap<K, V> implements Map<K, V> {
     }
 
     /**
-     * {@inheritDoc} Runtime: O(1)
+     * {@inheritDoc} 
+     * Runtime: O(1)
      */
     @Override
     public boolean isEmpty() {
@@ -119,7 +124,8 @@ public class ArrayMap<K, V> implements Map<K, V> {
     }
 
     /**
-     * {@inheritDoc} Runtime: O(n)
+     * {@inheritDoc} 
+     * Runtime: O(n)
      */
     @Override
     public boolean containsKey(Object key) {
@@ -131,7 +137,7 @@ public class ArrayMap<K, V> implements Map<K, V> {
             }
         } else {
             for (int i = 0; i < size; i++) {
-                if (arr[i].key.equals(key)) {
+                if (key.equals(arr[i].key)) {
                     return true;
                 }
             }
@@ -140,7 +146,8 @@ public class ArrayMap<K, V> implements Map<K, V> {
     }
 
     /**
-     * {@inheritDoc} Runtime: O(n)
+     * {@inheritDoc} 
+     * Runtime: O(n)
      */
     @Override
     public boolean containsValue(Object value) {
@@ -152,7 +159,7 @@ public class ArrayMap<K, V> implements Map<K, V> {
             }
         } else {
             for (int i = 0; i < size; i++) {
-                if (arr[i].value.equals(value)) {
+                if (value.equals(arr[i].value)) {
                     return true;
                 }
             }
@@ -161,7 +168,8 @@ public class ArrayMap<K, V> implements Map<K, V> {
     }
 
     /**
-     * {@inheritDoc} Runtime: O(n)
+     * {@inheritDoc} 
+     * Runtime: O(n)
      */
     @Override
     public V get(Object key) {
@@ -173,7 +181,7 @@ public class ArrayMap<K, V> implements Map<K, V> {
             }
         } else {
             for (int i = 0; i < size; i++) {
-                if (arr[i].key.equals(key)) {
+                if (key.equals(arr[i].key)) {
                     return arr[i].value;
                 }
             }
@@ -182,7 +190,8 @@ public class ArrayMap<K, V> implements Map<K, V> {
     }
 
     /**
-     * {@inheritDoc} Runtime: O(n)
+     * {@inheritDoc} 
+     * Runtime: O(n)
      */
     @Override
     public V put(K key, V value) {
@@ -197,7 +206,7 @@ public class ArrayMap<K, V> implements Map<K, V> {
             }
         } else {
             for (int i = 0; i < size; i++) {
-                if (arr[i].key.equals(key)) {
+                if (key.equals(arr[i].key)) {
                     V prev = arr[i].value;
                     arr[i].setValue(value);
                     return prev;
@@ -213,8 +222,10 @@ public class ArrayMap<K, V> implements Map<K, V> {
     }
 
     /**
-     * {@inheritDoc} When the size is less than a quarter of capcaity, the array
-     * capacity will resize down by half Runtime: O(n)
+     * {@inheritDoc} 
+     * When the size is less than a quarter of capacity, the array
+     * capacity will resize down by half 
+     * Runtime: O(n)
      */
     @Override
     public V remove(Object key) {
@@ -226,7 +237,7 @@ public class ArrayMap<K, V> implements Map<K, V> {
             }
         } else {
             for (int i = 0; i < size; i++) {
-                if (arr[i].key.equals(key)) {
+                if (key.equals(arr[i].key)) {
                     return remove(i);
                 }
             }
@@ -239,7 +250,8 @@ public class ArrayMap<K, V> implements Map<K, V> {
      * less than a quarter of capacity, the array capacity will resize down by half
      * 
      * @param index the position to remove the entry
-     * @return the previous value associated with the entry Runtime: O(n)
+     * @return the previous value associated with the entry 
+     * Runtime: O(n)
      */
     private V remove(int index) {
         // shift the elements to the left
@@ -247,6 +259,7 @@ public class ArrayMap<K, V> implements Map<K, V> {
         for (int i = index; i < size; i++) {
             arr[i] = arr[i + 1];
         }
+        arr[size - 1] = null;
         size--;
         // resize the array by half is size less than a fourth of capacity
         if (size < arr.length / 4) {
@@ -256,9 +269,10 @@ public class ArrayMap<K, V> implements Map<K, V> {
     }
 
     /**
-     * This is a helper method that resizes the underyling Entry array
+     * This is a helper method that resizes the underlying Entry array
      * 
-     * @param length the length of the array Runtime: O(n)
+     * @param length the length of the array 
+     * Runtime: O(n)
      */
     private void resize(int length) {
         Entry<K, V>[] temp = new Entry[length];
@@ -269,7 +283,8 @@ public class ArrayMap<K, V> implements Map<K, V> {
     }
 
     /**
-     * {@inheritDoc} Runtime: O(1)
+     * {@inheritDoc} 
+     * Runtime: O(1)
      */
     @Override
     public void clear() {
@@ -278,7 +293,8 @@ public class ArrayMap<K, V> implements Map<K, V> {
     }
 
     /**
-     * {@inheritDoc} Runtime: O(n)
+     * {@inheritDoc} 
+     * Runtime: O(n)
      */
     @Override
     public Set<Map.Entry<K, V>> entrySet() {
@@ -290,7 +306,8 @@ public class ArrayMap<K, V> implements Map<K, V> {
     }
 
     /**
-     * {@inheritDoc} Runtime: O(n)
+     * {@inheritDoc} 
+     * Runtime: O(n)
      */
     @Override
     public Set<K> keySet() {

@@ -6,8 +6,6 @@ import java.util.Iterator;
 /**
  * A Map Interface that supports generics
  * 
- * @param <K> the type of keys in the map
- * @param <V> the type of values in the map
  * @author Jason Tran
  */
 public interface Map<K, V> {
@@ -19,7 +17,7 @@ public interface Map<K, V> {
     public int size();
 
     /**
-     * Tells whehter the map has elements or not
+     * Tells whether the map has elements or not
      * 
      * @return true if the map contains no elements
      */
@@ -57,7 +55,7 @@ public interface Map<K, V> {
      * 
      * @param key   a key to be paired with the value in the map
      * @param value a value to be paired with the key in the map
-     * @return the pervious value associated with the key otherwise null if no
+     * @return the previous value associated with the key otherwise null if no
      *         mapping for the key
      */
     public V put(K key, V value);
@@ -66,13 +64,13 @@ public interface Map<K, V> {
      * Removes the mapping for a key from this map if it is present
      * 
      * @param key the key to lookup in the map to remove the mapping
-     * @return the pervious value associated with the key otherwise null if no
+     * @return the previous value associated with the key otherwise null if no
      *         mapping for the key
      */
     public V remove(Object key);
 
     /**
-     * This method deletes all the elements in the map, the map will be empty after
+     * Deletes all the elements in the map, the map will be empty after
      * this call returns
      */
     public void clear();
