@@ -7,6 +7,8 @@ import java.util.ConcurrentModificationException;
 /**
  * This class implements the set interface using a resizable generic array, also
  * supports null elements to be insert, search, and delete in the array
+ * Another possible implementation of this class, is using the ArrayImpl class
+ * to implement the methods
  * 
  * @author Jason Tran
  */
@@ -101,6 +103,9 @@ public class ArraySet<E> implements Set<E> {
      */
     @Override
     public boolean remove(Object o) {
+        if (isEmpty()) {
+            throw new NoSuchElementException("ERROR: Cannot remove from an empty array");
+        }
         if (o == null) {
             for (int i = 0; i < size; i++) {
                 if (arr[i] == null) {
@@ -125,25 +130,22 @@ public class ArraySet<E> implements Set<E> {
      * 
      * @param index the index in the array
      * @return the element at that index
-     * @throws NoSuchElementExpection if the array is empty Runtime: O(n)
+     * Runtime: O(n)
      */
     private E remove(int index) {
-        if (isEmpty()) {
-            throw new NoSuchElementException("ERROR: Cannot remove from an empty array");
-        } else {
-            E prev = arr[index];
-            // shift the elements to the left
-            for (int i = index; i < size; i++) {
-                arr[i] = arr[i + 1];
-            }
-            arr[size - 1] = null;
-            size--;
-            // resize the array by half is size less than a fourth of capacity
-            if (size < arr.length / 4) {
-                resize(arr.length / 2);
-            }
-            return prev;
+        E prev = arr[index];
+        // shift the elements to the left
+        for (int i = index; i < size - 1; i++) {
+            arr[i] = arr[i + 1];
         }
+        arr[size - 1] = null;
+        size--;
+        // resize the array by half is size less than a fourth of capacity
+        if (size < arr.length / 4) {
+            resize(arr.length / 2);
+        }
+        return prev;
+        
     }
 
     /**
