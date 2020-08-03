@@ -1,10 +1,11 @@
 package test.queue;
-import org.junit.Test;
 
 import main.queue.ArrayQueue;
 import main.queue.Queue;
 
+import org.junit.Test;
 import static org.junit.Assert.*;
+
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 import java.util.ConcurrentModificationException;

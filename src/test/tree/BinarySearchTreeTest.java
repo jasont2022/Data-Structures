@@ -1,11 +1,11 @@
 package test.tree;
 
-import org.junit.Test;
-
 import main.tree.BinarySearchTree;
 import main.tree.Tree;
 
+import org.junit.Test;
 import static org.junit.Assert.*;
+
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 import java.util.ConcurrentModificationException;

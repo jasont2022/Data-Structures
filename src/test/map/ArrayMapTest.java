@@ -1,10 +1,11 @@
 package test.map;
-import org.junit.Test;
 
 import main.map.ArrayMap;
 import main.map.Map;
 
+import org.junit.Test;
 import static org.junit.Assert.*;
+
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 import java.util.ConcurrentModificationException;
