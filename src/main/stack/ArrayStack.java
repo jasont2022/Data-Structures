@@ -15,8 +15,12 @@ import java.util.EmptyStackException;
 public class ArrayStack<E> implements Stack<E> {
     private int size; // the number of elements in the stack
     private int head; // the position of the head (head index pointer)
-    // a generic array to store elements of the stack
-    private E[] arr = (E[]) new Object[2];
+    private E[] arr; // a generic array to store elements of the stack
+    
+    public ArrayStack() {
+        head = -1; // set head to point -1 index
+        arr = (E[]) new Object[2];
+    }
 
     /**
      * This returns the underlying array
@@ -68,9 +72,7 @@ public class ArrayStack<E> implements Stack<E> {
         if (size == arr.length) {
             resize(2 * arr.length);
         }
-        if (!isEmpty()) {
-            head++;
-        }
+        head++;
         arr[head] = item;
         size++;
     }
@@ -130,7 +132,8 @@ public class ArrayStack<E> implements Stack<E> {
     @Override
     public void clear() {
         arr = (E[]) new Object[2];
-        head = size = 0;
+        head = -1;
+        size = 0;
     }
 
     /**
