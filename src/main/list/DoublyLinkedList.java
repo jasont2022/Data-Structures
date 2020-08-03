@@ -1,15 +1,18 @@
 package main.list;
+import main.queue.Queue;
+import main.stack.Stack;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 import java.util.ConcurrentModificationException;
 
 /**
- * This class implements the List, Queue, and Stack interface, doubly linked list
+ * This class implements the List, Queue, and Stack interface using a 
+ * doubly linked list, supports null values to be inserted, deleted, and search
  * 
  * @author Jason Tran
  */
-public class DoublyLinkedList<E> implements List<E> {
+public class DoublyLinkedList<E> implements List<E>, Queue<E>, Stack<E> {
     private int size; // the number of elements in the list
     private Node<E> head, tail; // the head and tail pointer of the list
 
@@ -247,7 +250,7 @@ public class DoublyLinkedList<E> implements List<E> {
      * {@inheritDoc} 
      * Runtime: O(1)
      */
-    //@Override
+    @Override
     public void push(E item) {
         addFirst(item);
     }
@@ -256,7 +259,7 @@ public class DoublyLinkedList<E> implements List<E> {
      * {@inheritDoc} 
      * Runtime: O(1)
      */
-    //@Override
+    @Override
     public boolean offer(E e) {
         addFirst(e);
         return true;
@@ -266,7 +269,7 @@ public class DoublyLinkedList<E> implements List<E> {
      * {@inheritDoc} 
      * Runtime: O(1)
      */
-    //@Override
+    @Override
     public E peek() {
         return peekFirst();
     }
@@ -275,7 +278,7 @@ public class DoublyLinkedList<E> implements List<E> {
      * {@inheritDoc} 
      * Runtime: O(1)
      */
-    //@Override
+    @Override
     public E element() {
         return peek();
     }
@@ -458,7 +461,7 @@ public class DoublyLinkedList<E> implements List<E> {
      * {@inheritDoc} 
      * Runtime: O(1)
      */
-    //@Override
+    @Override
     public E pop() {
         return removeFirst();
     }
@@ -467,7 +470,7 @@ public class DoublyLinkedList<E> implements List<E> {
      * {@inheritDoc} 
      * Runtime: O(1)
      */
-    //@Override
+    @Override
     public E poll() {
         return removeFirst();
     }
@@ -544,7 +547,8 @@ public class DoublyLinkedList<E> implements List<E> {
     }
 
     /**
-     * {@inheritDoc} Runtime: O(n)
+     * {@inheritDoc} 
+     * Runtime: O(n)
      */
     @Override
     public String toString() {

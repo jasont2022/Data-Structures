@@ -37,9 +37,13 @@ A side project for myself to somewhat mimic the Java Collections Library. I will
 * [Stack](https://github.com/jasont2022/Data-Structures/tree/master/src/main/stack)
   * [Stack Interface](https://github.com/jasont2022/Data-Structures/tree/master/src/main/stack/Stack.java)
   * [ArrayStack](https://github.com/jasont2022/Data-Structures/tree/master/src/main/stack/ArrayStack.java)
+  * [SinglyLinkedList](https://github.com/jasont2022/Data-Structures/tree/master/src/main/list/SinglyLinkedList.java)
+  * [DoublyLinkedList](https://github.com/jasont2022/Data-Structures/tree/master/src/main/list/DoublyLinkedList.java)
 * [Queue](https://github.com/jasont2022/Data-Structures/tree/master/src/main/queue)
   * [Queue Interface](https://github.com/jasont2022/Data-Structures/tree/master/src/main/queue/Queue.java)
   * [ArrayQueue](https://github.com/jasont2022/Data-Structures/tree/master/src/main/queue/ArrayQueue.java)
+  * [SinglyLinkedList](https://github.com/jasont2022/Data-Structures/tree/master/src/main/list/SinglyLinkedList.java)
+  * [DoublyLinkedList](https://github.com/jasont2022/Data-Structures/tree/master/src/main/list/DoublyLinkedList.java)
 * [Heap]
   * [Heap Interface]
   * [BinaryMaxHeap]

@@ -1,16 +1,18 @@
 package main.list;
+import main.queue.Queue;
+import main.stack.Stack;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 import java.util.ConcurrentModificationException;
 
 /**
- * This class implements the List interface using a singly linked
+ * This class implements the the List, Queue, and Stack interface using a singly linked
  * list, supports null values to be inserted, deleted, and search
  * 
  * @author Jason Tran
  */
-public class SinglyLinkedList<E> implements List<E> {
+public class SinglyLinkedList<E> implements List<E>, Queue<E>, Stack<E> {
     private int size; // the number of elements in the list
     private Node<E> head, tail; // the head and tail pointer of the list
 
@@ -36,7 +38,8 @@ public class SinglyLinkedList<E> implements List<E> {
     /**
      * This method returns the head of this list
      * 
-     * @return the head of this list Runtime: O(1)
+     * @return the head of this list 
+     * Runtime: O(1)
      */
     public Node<E> getHead() {
         return head;
@@ -45,14 +48,16 @@ public class SinglyLinkedList<E> implements List<E> {
     /**
      * This method returns the tail of this list
      * 
-     * @return the tail of this list Runtime: O(1)
+     * @return the tail of this list 
+     * Runtime: O(1)
      */
     public Node<E> getTail() {
         return tail;
     }
 
     /**
-     * {@inheritDoc} Runtime: O(1)
+     * {@inheritDoc} 
+     * Runtime: O(1)
      */
     @Override
     public int size() {
@@ -60,7 +65,8 @@ public class SinglyLinkedList<E> implements List<E> {
     }
 
     /**
-     * {@inheritDoc} Runtime: O(1)
+     * {@inheritDoc} 
+     * Runtime: O(1)
      */
     @Override
     public boolean isEmpty() {
@@ -68,7 +74,8 @@ public class SinglyLinkedList<E> implements List<E> {
     }
 
     /**
-     * {@inheritDoc} Runtime: O(n)
+     * {@inheritDoc} 
+     * Runtime: O(n)
      */
     @Override
     public boolean contains(Object o) {
@@ -76,7 +83,8 @@ public class SinglyLinkedList<E> implements List<E> {
     }
 
     /**
-     * {@inheritDoc} Runtime: O(n)
+     * {@inheritDoc} 
+     * Runtime: O(n)
      */
     @Override
     public int indexOf(Object o) {
@@ -98,7 +106,8 @@ public class SinglyLinkedList<E> implements List<E> {
     }
 
     /**
-     * {@inheritDoc} Runtime: O(n)
+     * {@inheritDoc} 
+     * Runtime: O(n)
      */
     @Override
     public E get(int index) {
@@ -113,7 +122,8 @@ public class SinglyLinkedList<E> implements List<E> {
     }
 
     /**
-     * {@inheritDoc} Runtime: O(n)
+     * {@inheritDoc} 
+     * Runtime: O(n)
      */
     @Override
     public E set(int index, E element) {
@@ -132,7 +142,8 @@ public class SinglyLinkedList<E> implements List<E> {
     /**
      * A private helper function that inserts a new element into an empty list
      * 
-     * @param e an element to insert into the list Runtime: O(1)
+     * @param e an element to insert into the list 
+     * Runtime: O(1)
      */
     private void insertToEmptyList(E e) {
         head = tail = new Node<E>(e, null);
@@ -140,7 +151,8 @@ public class SinglyLinkedList<E> implements List<E> {
     }
 
     /**
-     * {@inheritDoc} Runtime: O(1)
+     * {@inheritDoc} 
+     * Runtime: O(1)
      */
     @Override
     public boolean add(E e) {
@@ -149,7 +161,8 @@ public class SinglyLinkedList<E> implements List<E> {
     }
 
     /**
-     * {@inheritDoc} Runtime: O(n)
+     * {@inheritDoc} 
+     * Runtime: O(n)
      */
     @Override
     public void add(int index, E element) {
@@ -172,7 +185,8 @@ public class SinglyLinkedList<E> implements List<E> {
     /**
      * Inserts the specified element at the beginning of this list
      * 
-     * @param e an element to insert at the head of the list Runtime: O(1)
+     * @param e an element to insert at the head of the list 
+     * Runtime: O(1)
      */
     public void addFirst(E e) {
         if (isEmpty()) {
@@ -187,7 +201,8 @@ public class SinglyLinkedList<E> implements List<E> {
     /**
      * Appends the specified element to the end of this list
      * 
-     * @param e an element to insert at the tail of the list Runtime: O(1)
+     * @param e an element to insert at the tail of the list 
+     * Runtime: O(1)
      */
     public void addLast(E e) {
         if (isEmpty()) {
@@ -201,26 +216,29 @@ public class SinglyLinkedList<E> implements List<E> {
     }
 
     /**
-     * {@inheritDoc} Runtime: O(1)
+     * {@inheritDoc} 
+     * Runtime: O(1)
      */
-    //@Override
+    @Override
     public void push(E item) {
         addFirst(item);
     }
 
     /**
-     * {@inheritDoc} Runtime: O(1)
+     * {@inheritDoc} 
+     * Runtime: O(1)
      */
-    //@Override
+    @Override
     public boolean offer(E e) {
         addFirst(e);
         return true;
     }
 
     /**
-     * {@inheritDoc} Runtime: O(1)
+     * {@inheritDoc} 
+     * Runtime: O(1)
      */
-    //@Override
+    @Override
     public E peek() {
         return peekFirst();
     }
@@ -229,7 +247,8 @@ public class SinglyLinkedList<E> implements List<E> {
      * Retrieves, but does not remove, the first element of this list
      * 
      * @return the first element of this list, otherwise null
-     * @throws NoSuchElementException if the list is empty Runtime: O(1)
+     * @throws NoSuchElementException if the list is empty 
+     * Runtime: O(1)
      */
     public E peekFirst() {
         final Node<E> curr = head;
@@ -243,7 +262,8 @@ public class SinglyLinkedList<E> implements List<E> {
      * Retrieves, but does not remove, the last element of this list
      * 
      * @return the last element of this list, otherwise null
-     * @throws NoSuchElementExpection if the list is empty Runtime: O(1)
+     * @throws NoSuchElementExpection if the list is empty 
+     * Runtime: O(1)
      */
     public E peekLast() {
         final Node<E> curr = tail;
@@ -254,9 +274,10 @@ public class SinglyLinkedList<E> implements List<E> {
     }
 
     /**
-     * {@inheritDoc} Runtime: O(1)
+     * {@inheritDoc} 
+     * Runtime: O(1)
      */
-    //@Override
+    @Override
     public E element() {
         return peek();
     }
@@ -265,14 +286,16 @@ public class SinglyLinkedList<E> implements List<E> {
      * Retrieves and removes the head (first element) of this list
      * 
      * @return the head of this list, otherwise null
-     * @throws NoSuchElementExpection if the list is empty Runtime: O(1)
+     * @throws NoSuchElementExpection if the list is empty 
+     * Runtime: O(1)
      */
     public E remove() {
         return removeFirst();
     }
 
     /**
-     * {@inheritDoc} Runtime: O(n)
+     * {@inheritDoc} 
+     * Runtime: O(n)
      */
     @Override
     public E remove(int index) {
@@ -302,7 +325,8 @@ public class SinglyLinkedList<E> implements List<E> {
     }
 
     /**
-     * {@inheritDoc} Runtime: O(n)
+     * {@inheritDoc} 
+     * Runtime: O(n)
      */
     @Override
     public boolean remove(Object o) {
@@ -334,7 +358,8 @@ public class SinglyLinkedList<E> implements List<E> {
      * element, it is unchanged.
      * 
      * @param o element to be removed from this list, if present
-     * @return true if the list contained the specified element Runtime: O(n)
+     * @return true if the list contained the specified element 
+     * Runtime: O(n)
      */
     public boolean removeFirstOccurrence(Object o) {
         return remove(o);
@@ -344,7 +369,8 @@ public class SinglyLinkedList<E> implements List<E> {
      * Removes and returns the first element from this list
      * 
      * @return head element of this list, otherwise null
-     * @throws NoSuchElementExpection if the list is empty Runtime: O(1)
+     * @throws NoSuchElementExpection if the list is empty 
+     * Runtime: O(1)
      */
     public E removeFirst() {
         if (isEmpty()) {
@@ -361,30 +387,34 @@ public class SinglyLinkedList<E> implements List<E> {
      * Removes and returns the last element from this list
      * 
      * @return tail element of this list, otherwise null
-     * @throws NoSuchElementExpection if the list is empty Runtime: O(n)
+     * @throws NoSuchElementExpection if the list is empty 
+     * Runtime: O(n)
      */
     public E removeLast() {
         return remove(size - 1);
     }
 
     /**
-     * {@inheritDoc} Runtime: O(1)
+     * {@inheritDoc} 
+     * Runtime: O(1)
      */
-    //@Override
+    @Override
     public E pop() {
         return removeFirst();
     }
 
     /**
-     * {@inheritDoc} Runtime: O(1)
+     * {@inheritDoc} 
+     * Runtime: O(1)
      */
-    //@Override
+    @Override
     public E poll() {
         return removeFirst();
     }
 
     /**
-     * {@inheritDoc} Runtime: O(1)
+     * {@inheritDoc} 
+     * Runtime: O(1)
      */
     @Override
     public void clear() {
@@ -393,7 +423,8 @@ public class SinglyLinkedList<E> implements List<E> {
     }
 
     /**
-     * {@inheritDoc} Runtime: O(n)
+     * {@inheritDoc} 
+     * Runtime: O(n)
      */
     @Override
     public Object[] toArray() {
@@ -453,7 +484,8 @@ public class SinglyLinkedList<E> implements List<E> {
     }
 
     /**
-     * {@inheritDoc} Runtime: O(n)
+     * {@inheritDoc} 
+     * Runtime: O(n)
      */
     @Override
     public String toString() {
