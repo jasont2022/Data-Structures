@@ -145,7 +145,6 @@ public class ArraySet<E> implements Set<E> {
             resize(arr.length / 2);
         }
         return prev;
-        
     }
 
     /**
@@ -214,10 +213,12 @@ public class ArraySet<E> implements Set<E> {
      */
     @Override
     public boolean subset(Set<E> set) {
-        /**
-         * for (E e : arr) { if (!set.contains(e)) { return false; } } return true;
-         */
-        return false;
+        for (E e : arr) {
+            if (!set.contains(e)) {
+                return false;
+            }
+        }
+        return true;
     }
 
     /**

@@ -268,7 +268,7 @@ public class ArraySetTest {
         assertFalse(union.isEmpty());
         assertEquals("{1, 7, 8, 10, 3, 5}", union.toString());
     }
-
+    
     @Test
     public void testIntersection() {
         Set<Integer> set1 = new ArraySet<>();
@@ -322,14 +322,51 @@ public class ArraySetTest {
         assertFalse(difference.isEmpty());
         assertEquals("{10, 8}", difference.toString());
     }
-
-    /*
-     * @Test public void testSubset() { Set<Integer> set1 = new ArraySet<>();
-     * set1.add(1); set1.add(7); Set<Integer> set2 = new ArraySet<>(); set2.add(1);
-     * set2.add(7); set2.add(3); set2.add(5); boolean subset = set1.subset(set2);
-     * assertTrue(subset); }
-     */
     
+    @Test
+    public void testEmptyDifference() {
+        Set<Integer> set1 = new ArraySet<>();
+        Set<Integer> set2 = new ArraySet<>();
+        set1.add(1);
+        set1.add(7);
+        set2.add(1);
+        set2.add(3);
+        set2.add(5);
+        set2.add(7);
+        Set<Integer> difference = set1.difference(set2);
+        assertEquals(0, difference.size());
+        assertTrue(difference.isEmpty());
+        assertEquals("{}", difference.toString());
+    }
+
+    @Test
+    public void testSubsetTrue() {
+        Set<Integer> set1 = new ArraySet<>();
+        set1.add(1);
+        set1.add(7);
+        Set<Integer> set2 = new ArraySet<>();
+        set2.add(1);
+        set2.add(7);
+        set2.add(3);
+        set2.add(5);
+        boolean subset = set1.subset(set2);
+        assertTrue(subset);
+    }
+    
+    @Test
+    public void testSubsetFalse() {
+        Set<Integer> set1 = new ArraySet<>();
+        set1.add(1);
+        set1.add(7);
+        Set<Integer> set2 = new ArraySet<>();
+        set2.add(1);
+        set2.add(7);
+        set2.add(3);
+        set2.add(5);
+        boolean subset = set2.subset(set1);
+        assertFalse(subset);
+    }
+  
     @Test
     public void testClear() {
         ArraySet<Integer> set = new ArraySet<>();
