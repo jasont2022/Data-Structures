@@ -29,7 +29,7 @@ public class ArrayMap<K, V> implements Map<K, V> {
      * @param <V> type of values in the entry
      * @author Jason Tran
      */
-    static class Entry<K, V> implements Map.Entry<K, V> {
+    private static class Entry<K, V> implements Map.Entry<K, V> {
         private final K key; // the key in the entry
         private V value; // the value in the entry
 
@@ -333,14 +333,13 @@ public class ArrayMap<K, V> implements Map<K, V> {
              */
             @Override
             public boolean hasNext() {
-                if (expectedSize != size) {
-                    throw new ConcurrentModificationException("ERROR: Cannot modifiy the iterator");
-                }
                 return count < expectedSize;
             }
 
             /**
              * {@inheritDoc}
+             * 
+             * @throws ConcurrentModificationException if size does not equal expectedSize
              */
             @Override
             public Map.Entry<K, V> next() {

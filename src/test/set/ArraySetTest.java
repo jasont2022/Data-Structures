@@ -12,13 +12,13 @@ import java.util.NoSuchElementException;
 import java.util.ConcurrentModificationException;
 
 public class ArraySetTest {
-    private ArraySet<Integer> empty; // an empty array
-    private ArraySet<Integer> singleton; // an single element array
-    private ArraySet<Integer> threeElements; // an array with three elements
-    private ArraySet<Integer> hasNullElements; // an array with null elements
+    private ArraySet<Integer> empty; // an empty set
+    private ArraySet<Integer> singleton; // an single element set
+    private ArraySet<Integer> threeElements; // an set with three elements
+    private ArraySet<Integer> hasNullElements; // an set with null elements
     
     @Before
-    public void setupTestArrays() {
+    public void setupTestSets() {
         empty = new ArraySet<>();
 
         singleton = new ArraySet<>();
@@ -63,7 +63,6 @@ public class ArraySetTest {
         assertEquals(3, threeElements.size());
         assertEquals("{5, 1, 3}",  threeElements.toString());
     }
-    
     
     @Test
     public void testGetNonEmptyNullElementsArray() {
@@ -469,12 +468,12 @@ public class ArraySetTest {
     }
     
     @Test
-    public void testToStringEmptyArray() {
+    public void testToStringEmptySet() {
         assertEquals("{}", empty.toString());
     }
 
     @Test
-    public void testToStringNonEmptyArray() {
+    public void testToStringNonEmptySet() {
         assertEquals("{1, 3, null}", hasNullElements.toString());
     }
 }
