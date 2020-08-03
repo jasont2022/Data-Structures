@@ -35,14 +35,20 @@ A side project for myself to somewhat mimic the Java Collections Library. I will
   * [TreeMap](https://github.com/jasont2022/Data-Structures/tree/master/src/main/map/TreeMap.java)
   * [HashMap]
 * [Stack](https://github.com/jasont2022/Data-Structures/tree/master/src/main/stack)
-  * [Stack Interface](https://github.com/jasont2022/Data-Structures/tree/master/src/main/Stack.java)
-  * [ArrayStack](https://github.com/jasont2022/Data-Structures/tree/master/src/main/ArrayStack.java)
+  * [Stack Interface](https://github.com/jasont2022/Data-Structures/tree/master/src/main/stack/Stack.java)
+  * [ArrayStack](https://github.com/jasont2022/Data-Structures/tree/master/src/main/stack/ArrayStack.java)
 * [Queue](https://github.com/jasont2022/Data-Structures/tree/master/src/main/queue)
   * [Queue Interface](https://github.com/jasont2022/Data-Structures/tree/master/src/main/queue/Queue.java)
   * [ArrayQueue](https://github.com/jasont2022/Data-Structures/tree/master/src/main/queue/ArrayQueue.java)
 * [Heap]
+  * [Heap Interface]
+  * [BinaryMaxHeap]
+  * [BinaryMinHeap]
+  * [Fibonacci Heap]
 * [Priority Queue]
-* [Tree]
+* [Tree](https://github.com/jasont2022/Data-Structures/tree/master/src/main/tree)
+  * [Tree Interface](https://github.com/jasont2022/Data-Structures/tree/master/src/main/tree/Tree.java)
+  * [BinarySearchTree]https://github.com/jasont2022/Data-Structures/tree/master/src/main/tree/BinarySearchTree.java)
 * [Graph]
 
 ## Contribute
