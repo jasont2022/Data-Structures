@@ -21,7 +21,7 @@ public class ArrayMapTest {
     private ArrayMap<Integer, Integer> hasNullElements; // an map with null keys
     
     @Before
-    public void setupTestArrays() {
+    public void setupTestMaps() {
         empty = new ArrayMap<>();
 
         singleton = new ArrayMap<>();
