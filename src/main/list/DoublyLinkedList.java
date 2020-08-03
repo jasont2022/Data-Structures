@@ -10,8 +10,8 @@ import java.util.ConcurrentModificationException;
  * @author Jason Tran
  */
 public class DoublyLinkedList<E> implements List<E> {
-    private int size = 0; // the number of elements in the list
-    private Node<E> head, tail = null; // the head and tail pointer of the list
+    private int size; // the number of elements in the list
+    private Node<E> head, tail; // the head and tail pointer of the list
 
     /**
      * Private Inner Class to represent a Node<E> in a doubly linked list
@@ -96,7 +96,7 @@ public class DoublyLinkedList<E> implements List<E> {
             }
         } else {
             for (Node<E> curr = head; curr != null; curr = curr.next, index++) {
-                if (curr.value.equals(o)) {
+                if (o.equals(curr.value)) {
                     return index;
                 }
             }
@@ -114,16 +114,16 @@ public class DoublyLinkedList<E> implements List<E> {
      * Runtime: O(n)
      */
     public int lastIndexOf(Object o) {
-        int index = size;
+        int index = size - 1;
         if (o == null) {
-            for (Node<E> curr = tail; curr != null; curr = curr.prev, index++) {
+            for (Node<E> curr = tail; curr != null; curr = curr.prev, index--) {
                 if (curr.value == null) {
                     return index;
                 }
             }
         } else {
-            for (Node<E> curr = tail; curr != null; curr = curr.prev, index++) {
-                if (curr.value == null) {
+            for (Node<E> curr = tail; curr != null; curr = curr.prev, index--) {
+                if (o.equals(curr.value)) {
                     return index;
                 }
             }
@@ -367,7 +367,7 @@ public class DoublyLinkedList<E> implements List<E> {
             }
         } else {
             for (Node<E> curr = head; curr != null; curr = curr.next, index++) {
-                if (curr.value.equals(o)) {
+                if (o.equals(curr.value)) {
                     remove(index);
                     return true;
                 }
@@ -399,17 +399,17 @@ public class DoublyLinkedList<E> implements List<E> {
      * Runtime: O(n)
      */
     public boolean removeLastOccurrence(Object o) {
-        int index = 0;
+        int index = size - 1;
         if (o == null) {
-            for (Node<E> curr = tail; curr != null; curr = curr.prev, index++) {
+            for (Node<E> curr = tail; curr != null; curr = curr.prev, index--) {
                 if (curr.value == null) {
                     remove(index);
                     return true;
                 }
             }
         } else {
-            for (Node<E> curr = tail; curr != null; curr = curr.prev, index++) {
-                if (curr.value.equals(o)) {
+            for (Node<E> curr = tail; curr != null; curr = curr.prev, index--) {
+                if (o.equals(curr.value)) {
                     remove(index);
                     return true;
                 }
