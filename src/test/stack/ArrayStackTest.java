@@ -10,6 +10,7 @@ import static org.junit.Assert.*;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 import java.util.ConcurrentModificationException;
+import java.util.EmptyStackException;
 
 public class ArrayStackTest {
     private ArrayStack<Integer> empty; // an empty stack
@@ -113,22 +114,110 @@ public class ArrayStackTest {
     
     @Test
     public void testPushSingleton() {
-        
+        ArrayStack<Integer> stack = new ArrayStack<>();
+        stack.push(1);
+        assertEquals(2, ((Object[]) stack.getArray()).length);
+        assertEquals(1, stack.size());
+        assertEquals(0, stack.getHead());
+        assertEquals("[1]", stack.toString());
     }
     
     @Test
     public void testPushNonEmptyStack() {
-        
+        ArrayStack<Integer> stack = new ArrayStack<>();
+        stack.push(1);
+        stack.push(2);
+        assertEquals(2, ((Object[]) stack.getArray()).length);
+        assertEquals(2, stack.size());
+        assertEquals(1, stack.getHead());
+        assertEquals("[2, 1]", stack.toString());
     }
     
     @Test
-    public void testPeek() {
-        
+    public void testPushResizeStack() {
+        ArrayStack<Integer> stack = new ArrayStack<>();
+        stack.push(1);
+        stack.push(2);
+        assertEquals(2, ((Object[]) stack.getArray()).length);
+        assertEquals(2, stack.size());
+        assertEquals(1, stack.getHead());
+        assertEquals("[2, 1]", stack.toString());
+        stack.push(3);
+        stack.push(4);
+        assertEquals(4, ((Object[]) stack.getArray()).length);
+        assertEquals(4, stack.size());
+        assertEquals(3, stack.getHead());
+        assertEquals("[4, 3, 2, 1]", stack.toString());
+    }
+    
+    @Test (expected = EmptyStackException.class)
+    public void testPeekEmptyStack() {
+        empty.peek();
     }
     
     @Test
-    public void testPop() {
-        
+    public void testPeekNonEmptyStack() {
+        assertEquals(3, (int) threeElements.peek());
+        assertEquals(3, threeElements.size());
+        assertEquals(2, threeElements.getHead());
+        assertEquals("[3, 1, 5]",  threeElements.toString());
+    }
+    
+    @Test (expected = EmptyStackException.class)
+    public void testPopEmptyStack() {
+        empty.pop();
+    }
+    
+    @Test
+    public void testPopNonEmptyStack() {
+        ArrayStack<Integer> stack = new ArrayStack<>();
+        stack.push(1);
+        stack.push(2);
+        stack.push(3);
+        stack.push(4);
+        assertEquals(4, (int) stack.pop());
+        assertEquals(3, (int) stack.pop());
+        assertEquals(4, ((Object[]) stack.getArray()).length);
+        assertEquals(2, stack.size());
+        assertEquals(1, stack.getHead());
+        assertEquals("[2, 1]", stack.toString());
+    }
+    
+    @Test
+    public void testPopResizeStack() {
+        ArrayStack<Integer> stack = new ArrayStack<>();
+        stack.push(1);
+        stack.push(2);
+        stack.push(3);
+        stack.push(4);
+        assertEquals(4, (int) stack.pop());
+        assertEquals(3, (int) stack.pop());
+        assertEquals(2, (int) stack.pop());
+        assertEquals(1, (int) stack.pop());
+        assertEquals(2, ((Object[]) stack.getArray()).length);
+        assertEquals(0, stack.size());
+        assertEquals(-1, stack.getHead());
+        assertEquals("[]", stack.toString());
+    }
+    
+    @Test
+    public void testPushAndPop() {
+        ArrayStack<Integer> stack = new ArrayStack<>();
+        stack.push(1);
+        assertEquals(2, ((Object[]) stack.getArray()).length);
+        assertEquals(1, stack.size());
+        assertEquals(0, stack.getHead());
+        assertEquals("[1]", stack.toString());
+        stack.pop();
+        assertEquals(2, ((Object[]) stack.getArray()).length);
+        assertEquals(0, stack.size());
+        assertEquals(-1, stack.getHead());
+        assertEquals("[]", stack.toString());
+        stack.push(1);
+        assertEquals(2, ((Object[]) stack.getArray()).length);
+        assertEquals(1, stack.size());
+        assertEquals(0, stack.getHead());
+        assertEquals("[1]", stack.toString());
     }
     
     @Test
