@@ -10,7 +10,7 @@ import java.util.Iterator;
 public interface Queue<E> extends Iterable<E> {
 
     /**
-     * Returns the number of elements (key-value pairs) in the queue
+     * Returns the number of elements in the queue
      * 
      * @return the number of elements in the queue
      */
@@ -73,7 +73,7 @@ public interface Queue<E> extends Iterable<E> {
     public E remove();
 
     /**
-     * This method deletes all the elements in the queue, the queue will be empty
+     * Deletes all the elements in the queue, the queue will be empty
      * after this call returns
      */
     public void clear();
@@ -87,7 +87,7 @@ public interface Queue<E> extends Iterable<E> {
     public Iterator<E> iterator();
 
     /**
-     * This method returns a string representation of the whole queue in the format
+     * Returns a string representation of the whole queue in the format
      * [q_1, q_2, ...., q_n] or [] if the queue is empty
      * 
      * @return the string format of the stack

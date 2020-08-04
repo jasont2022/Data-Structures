@@ -6,7 +6,7 @@ import java.util.ConcurrentModificationException;
 
 /**
  * This class implements the queue interface using a resizable generic array,
- * Supports null elements to be insert, search, and delete in the array
+ * supports null elements to be insert, search, and delete in the array
  * 
  * @author Jason Tran
  */
@@ -25,34 +25,38 @@ public class ArrayQueue<E> implements Queue<E> {
     }
 
     /**
-     * This returns the underlying array
+     * Returns the underlying array
      * 
-     * @return the underlying array Runtime: O(1)
+     * @return the underlying array 
+     * Runtime: O(1)
      */
     public E[] getArray() {
         return arr;
     }
 
     /**
-     * This returns the head of the queue
+     * Returns the head of the queue
      * 
-     * @return the positon of the head in the queue Runtime: O(1)
+     * @return the position of the head in the queue 
+     * Runtime: O(1)
      */
     public int getHead() {
         return head;
     }
 
     /**
-     * This returns the tail of the queue
+     * Returns the tail of the queue
      * 
-     * @return the positon of the head in the queue Runtime: O(1)
+     * @return the position of the head in the queue 
+     * Runtime: O(1)
      */
     public int getTail() {
         return tail;
     }
 
     /**
-     * {@inheritDoc} Runtime: O(1)
+     * {@inheritDoc} 
+     * Runtime: O(1)
      */
     @Override
     public int size() {
@@ -60,7 +64,8 @@ public class ArrayQueue<E> implements Queue<E> {
     }
 
     /**
-     * {@inheritDoc} Runtime: O(1)
+     * {@inheritDoc} 
+     * Runtime: O(1)
      */
     @Override
     public boolean isEmpty() {
@@ -68,8 +73,10 @@ public class ArrayQueue<E> implements Queue<E> {
     }
 
     /**
-     * {@inheritDoc} When the size is at capacity, the array will resize double its
-     * capacity Runtime: Amortized O(1), Worst Case O(n)
+     * {@inheritDoc} 
+     * When the size is at capacity, the array will resize double its
+     * capacity 
+     * Runtime: Amortized O(1), Worst Case O(n)
      */
     @Override
     public boolean add(E e) {
@@ -88,7 +95,8 @@ public class ArrayQueue<E> implements Queue<E> {
     }
 
     /**
-     * {@inheritDoc} Runtime: Amortized O(1), Worst Case O(n)
+     * {@inheritDoc} 
+     * Runtime: Amortized O(1), Worst Case O(n)
      */
     @Override
     public boolean offer(E e) {
@@ -96,7 +104,8 @@ public class ArrayQueue<E> implements Queue<E> {
     }
 
     /**
-     * {@inheritDoc} Runtime: O(1)
+     * {@inheritDoc} 
+     * Runtime: O(1)
      */
     @Override
     public E element() {
@@ -104,7 +113,8 @@ public class ArrayQueue<E> implements Queue<E> {
     }
 
     /**
-     * {@inheritDoc} Runtime: O(1)
+     * {@inheritDoc} 
+     * Runtime: O(1)
      */
     @Override
     public E peek() {
@@ -115,8 +125,10 @@ public class ArrayQueue<E> implements Queue<E> {
     }
 
     /**
-     * {@inheritDoc} When the size is less than a quarter of capcaity, the array
-     * capacity will resize down by half Runtime: Amortized O(1), Worst Case O(n)
+     * {@inheritDoc} 
+     * When the size is less than a quarter of capacity, the array
+     * capacity will resize down by half
+     * Runtime: Amortized O(1), Worst Case O(n)
      */
     @Override
     public E poll() {
@@ -139,10 +151,11 @@ public class ArrayQueue<E> implements Queue<E> {
     }
 
     /**
-     * This is a helper method that resizes the underyling array and unwinds the
+     * Helper method that resizes the underlying array and unwinds the
      * queue, so that head points at the beginning of the array
      * 
-     * @param length the length of the array Runtime: O(n)
+     * @param length the length of the array 
+     * Runtime: O(n)
      */
     private void resize(int length) {
         E[] temp = (E[]) new Object[length];
@@ -156,7 +169,8 @@ public class ArrayQueue<E> implements Queue<E> {
     }
 
     /**
-     * {@inheritDoc} Runtime: Amortized O(1), Worst Case O(n)
+     * {@inheritDoc} 
+     * Runtime: Amortized O(1), Worst Case O(n)
      */
     @Override
     public E remove() {
@@ -167,7 +181,8 @@ public class ArrayQueue<E> implements Queue<E> {
     }
 
     /**
-     * {@inheritDoc} Runtime: O(1)
+     * {@inheritDoc} 
+     * Runtime: O(1)
      */
     @Override
     public void clear() {
@@ -186,34 +201,28 @@ public class ArrayQueue<E> implements Queue<E> {
             final private int expectedSize = size; // check for concurrent modification
 
             /**
-             * {@inheritDoc} Checks for concurrent modification
-             * 
-             * @throws ConcurrentModificationException
+             * {@inheritDoc}             
              */
             @Override
             public boolean hasNext() {
-                if (expectedSize != size) {
-                    throw new ConcurrentModificationException("ERROR: Cannot modifiy the iterator");
-                }
                 return count < expectedSize;
             }
 
             /**
-             * {@inheritDoc} Checks for concurrent modification
-             * 
-             * @throws ConcurrentModificationException
+             * {@inheritDoc}
+             * @throws ConcurrentModificationException if size does not equal expectedSize
              */
             @Override
             public E next() {
                 if (expectedSize != size) {
                     throw new ConcurrentModificationException("ERROR: Cannot modifiy the iterator");
                 }
-                if (hasNext()) {
+                if (!hasNext()) {
+                    throw new NoSuchElementException("ERROR: No more elements to iterate");
+                } else {
                     E prev = arr[(count + head) % arr.length];
                     count++;
                     return prev;
-                } else {
-                    throw new NoSuchElementException("ERROR: No more elements to iterate");
                 }
             }
 
@@ -222,7 +231,8 @@ public class ArrayQueue<E> implements Queue<E> {
              */
             @Override
             public void remove() {
-                throw new UnsupportedOperationException("ERROR: Remove not supported by this iterator");
+                throw new UnsupportedOperationException("ERROR: Remove not Supported by this " + 
+                        "Iterator");
             }
         };
     }
