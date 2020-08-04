@@ -373,14 +373,37 @@ public class ArrayQueueTest {
         assertEquals(6, (int) queue.poll());
         assertEquals(7, (int) queue.poll());
         assertEquals(4, ((Object[]) queue.getArray()).length);
-        assertEquals(8, (int) ((Object[]) queue.getArray())[0]);
-        assertNull(((Object[]) queue.getArray())[1]);
-        assertNull(((Object[]) queue.getArray())[2]);
-        assertNull(((Object[]) queue.getArray())[3]);
         assertEquals(0, queue.getHead());
         assertEquals(0, queue.getTail());
         assertEquals(1, queue.size());
         assertEquals("[8]", queue.toString());
+    }
+    
+    @Test
+    public void testAnotherMultipleAddAndPolls() {
+        ArrayQueue<Integer> queue = new ArrayQueue<>();
+        queue.add(1);
+        queue.add(2);
+        queue.add(3);
+        queue.add(4);
+        assertEquals(1, (int) queue.poll());
+        assertEquals(2, (int) queue.poll());
+        assertEquals(4, ((Object[]) queue.getArray()).length);
+        assertEquals(2, queue.getHead());
+        assertEquals(3, queue.getTail());
+        assertEquals(2, queue.size());
+        queue.add(5);
+        queue.add(6);
+        assertEquals(4, ((Object[]) queue.getArray()).length);
+        assertEquals(2, queue.getHead());
+        assertEquals(1, queue.getTail());
+        assertEquals(4, queue.size());
+        assertEquals(3, (int) queue.poll());
+        assertEquals(4, (int) queue.poll());
+        assertEquals(0, queue.getHead());
+        assertEquals(1, queue.getTail());
+        assertEquals(2, queue.size());
+        assertEquals("[5, 6]", queue.toString());
     }
     
     @Test
@@ -462,6 +485,29 @@ public class ArrayQueueTest {
         assertNull(queueIter.next());
         assertTrue(queueIter.hasNext());
         assertEquals(2, (int) queueIter.next());
+        assertFalse(queueIter.hasNext());
+    }
+    
+    @Test
+    public void testIteratorWrapAround() {
+        Queue<Integer> queue = new ArrayQueue<>();
+        queue.add(1);
+        queue.add(2);
+        queue.add(3);
+        queue.add(4);
+        queue.poll();
+        queue.poll();
+        queue.add(5);
+        queue.add(6);
+        Iterator<Integer> queueIter = queue.iterator();
+        assertTrue(queueIter.hasNext());
+        assertEquals(3, (int) queueIter.next());
+        assertTrue(queueIter.hasNext());
+        assertEquals(4, (int) queueIter.next());
+        assertTrue(queueIter.hasNext());
+        assertEquals(5, (int) queueIter.next());
+        assertTrue(queueIter.hasNext());
+        assertEquals(6, (int) queueIter.next());
         assertFalse(queueIter.hasNext());
     }
     
