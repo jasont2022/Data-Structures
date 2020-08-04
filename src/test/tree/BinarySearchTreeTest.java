@@ -12,12 +12,29 @@ import java.util.NoSuchElementException;
 import java.util.ConcurrentModificationException;
 
 public class BinarySearchTreeTest {
+    private BinarySearchTree<Integer> empty; // an empty BST
+    private BinarySearchTree<Integer> singleton; // an single element BST
+    private BinarySearchTree<Integer> threeElements; // an BST with three elements
+    
+    @Before
+    public void setupTestStacks() {
+        empty = new BinarySearchTree<>();
+
+        singleton = new BinarySearchTree<>();
+        singleton.insert(1);
+        
+        threeElements = new BinarySearchTree<>();
+        threeElements.insert(5);
+        threeElements.insert(1);
+        threeElements.insert(3);
+    }
+    
     @Test
     public void testConstructor() {
-        BinarySearchTree<Integer> bst = new BinarySearchTree<>();
-        assertEquals(0, bst.size());
-        assertNull(bst.getRoot());
-        assertTrue(bst.isEmpty());
+        assertEquals(0, empty.size());
+        assertNull(empty.getRoot());
+        assertTrue(empty.isEmpty());
+        assertEquals("null", empty.toString());
     }
 
     @Test(expected = NoSuchElementException.class)
@@ -78,5 +95,12 @@ public class BinarySearchTreeTest {
         assertTrue(bstInOrder.hasNext());
         assertEquals(9, (int) bstInOrder.next());
         assertFalse(bstInOrder.hasNext());
+    }
+    
+    @Test (expected = UnsupportedOperationException.class)
+    public void testInOrderIteratorRemove() {
+        Iterator<Integer> bstInOrder = threeElements.iterator(Tree.IteratorType.IN_ORDER);
+        bstInOrder.remove();
+        
     }
 }
