@@ -5,7 +5,6 @@ import java.util.Iterator;
 /**
  * A Tree Interface that supports generics
  * 
- * @param <E> the type of the elements in the array
  * @author Jason Tran
  */
 public interface Tree<E extends Comparable<E>> {
@@ -58,7 +57,8 @@ public interface Tree<E extends Comparable<E>> {
     public boolean delete(E e);
 
     /**
-     * Removes all of the elements from this tree
+     * Removes all of the elements from this tree, the tree will be empty
+     * as a result of this call
      */
     public void clear();
 
@@ -72,7 +72,7 @@ public interface Tree<E extends Comparable<E>> {
     public Object[] toArray();
 
     /**
-     * An enum class for the iterator type Depending on which type the iterator will
+     * An Enum class for the iterator type Depending on which type the iterator will
      * iterate in that order
      */
     public enum IteratorType {
@@ -89,7 +89,7 @@ public interface Tree<E extends Comparable<E>> {
     public Iterator<E> iterator(IteratorType type);
 
     /**
-     * This method returns a string representation of the whole tree in the format:
+     * Returns a string representation of the whole tree in the format:
      *      root 
      *      / \ 
      *   node node 

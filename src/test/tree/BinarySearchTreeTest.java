@@ -1,8 +1,9 @@
 package test.tree;
 
-import main.tree.BinarySearchTree;
 import main.tree.Tree;
+import main.tree.BinarySearchTree;
 
+import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 

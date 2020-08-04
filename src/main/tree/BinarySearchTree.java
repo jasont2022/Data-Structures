@@ -10,18 +10,14 @@ import java.util.NoSuchElementException;
 import java.util.ConcurrentModificationException;
 
 /**
- * This class implements the Tree Interface, a Binary Search Tree A Binary Tree
- * (connect, acyclic, and undirected graph) with at most 2 children with the
- * following invariant: for every node x, all left children.value < x and all
- * right children.value > than x and empty nodes are BST NOTE: No Duplicates of
- * element values are allowed
+ * This class implements the Tree Interface, a Binary Search Tree 
+ * NOTE: No Duplicates of element values are allowed
  * 
- * @param <E> the type of the elements in the BST
  * @author Jason Tran
  */
 public class BinarySearchTree<E extends Comparable<E>> implements Tree<E> {
-    private int size = 0; // the number nodes in the BST
-    private Node<E> root = null; // the root of the BST
+    private int size; // the number nodes in the BST
+    private Node<E> root; // the root of the BST
 
     /**
      * Private Inner Class represent a Node<E> in a binary search tree
@@ -35,9 +31,9 @@ public class BinarySearchTree<E extends Comparable<E>> implements Tree<E> {
         /**
          * Constructor: Creates a new node
          * 
-         * @param left  the left subchild of the node
+         * @param left  the left child of the node
          * @param value the data in the node
-         * @param right the right subchild of the node
+         * @param right the right child of the node
          */
         public Node(Node<E> left, E value, Node<E> right) {
             this.left = left;
@@ -47,7 +43,8 @@ public class BinarySearchTree<E extends Comparable<E>> implements Tree<E> {
     }
 
     /**
-     * {@inheritDoc} Runtime: O(1)
+     * {@inheritDoc} 
+     * Runtime: O(1)
      */
     @Override
     public int size() {
@@ -55,7 +52,8 @@ public class BinarySearchTree<E extends Comparable<E>> implements Tree<E> {
     }
 
     /**
-     * {@inheritDoc} Runtime: O(1)
+     * {@inheritDoc} 
+     * Runtime: O(1)
      */
     @Override
     public boolean isEmpty() {
@@ -63,7 +61,7 @@ public class BinarySearchTree<E extends Comparable<E>> implements Tree<E> {
     }
 
     /**
-     * This method returns the root of the binary search tree
+     * Returns the root of the binary search tree
      * 
      * @return the root of the binary search tree
      */
@@ -72,7 +70,8 @@ public class BinarySearchTree<E extends Comparable<E>> implements Tree<E> {
     }
 
     /**
-     * {@inheritDoc} Runtime: O(n)
+     * {@inheritDoc} 
+     * Runtime: O(n)
      */
     @Override
     public int height() {
@@ -80,10 +79,11 @@ public class BinarySearchTree<E extends Comparable<E>> implements Tree<E> {
     }
 
     /**
-     * This a helper function that calculates the height of the BST
+     * Helper function that calculates the height of the BST
      * 
      * @param node a node in the tree
-     * @return the height of the tree Runtime: O(n)
+     * @return the height of the tree 
+     * Runtime: O(n)
      */
     private int height(Node<E> node) {
         if (node == null) {
@@ -94,7 +94,8 @@ public class BinarySearchTree<E extends Comparable<E>> implements Tree<E> {
     }
 
     /**
-     * {@inheritDoc} Runtime: O(n)
+     * {@inheritDoc} 
+     * Runtime: O(n)
      */
     @Override
     public boolean contains(E e) {
@@ -102,11 +103,12 @@ public class BinarySearchTree<E extends Comparable<E>> implements Tree<E> {
     }
 
     /**
-     * A helper function to check if e is in the BST
+     * Helper function to check if e is in the BST
      * 
      * @param e    an element to lookup in the tree
      * @param node a node in the tree
-     * @return true if e is in the tree Runtime: O(n)
+     * @return true if e is in the tree 
+     * Runtime: O(n)
      */
     private boolean contains(E e, Node<E> node) {
         if (node == null) {
@@ -124,19 +126,21 @@ public class BinarySearchTree<E extends Comparable<E>> implements Tree<E> {
     }
 
     /**
-     * This method returns the minimum value in the BST
+     * Returns the minimum value in the BST
      * 
-     * @return the minimum value in the BST Runtime: O(n)
+     * @return the minimum value in the BST 
+     * Runtime: O(n)
      */
     public E getMinimum() {
         return getMinimum(root).value;
     }
 
     /**
-     * A helper function to get the minimum value in the BST
+     * Helper function to get the minimum value in the BST
      * 
      * @param node a node in the tree
-     * @return the node containing the minimum value in the BST Runtime: O(n)
+     * @return the node containing the minimum value in the BST 
+     * Runtime: O(n)
      */
     private Node<E> getMinimum(Node<E> node) {
         while (node.left != null) {
@@ -146,19 +150,21 @@ public class BinarySearchTree<E extends Comparable<E>> implements Tree<E> {
     }
 
     /**
-     * This method returns the maximum value in the BST
+     * Returns the maximum value in the BST
      * 
-     * @return the maximum value in the BST Runtime: O(n)
+     * @return the maximum value in the BST 
+     * Runtime: O(n)
      */
     public E getMaximum() {
         return getMaximum(root).value;
     }
 
     /**
-     * A helper function to get the maximum value in the BST
+     * Helper function to get the maximum value in the BST
      * 
      * @param node a node in the tree
-     * @return the node containing the maximum value in the BST Runtime: O(n)
+     * @return the node containing the maximum value in the BST 
+     * Runtime: O(n)
      */
     private Node<E> getMaximum(Node<E> node) {
         while (node.right != null) {
@@ -170,7 +176,8 @@ public class BinarySearchTree<E extends Comparable<E>> implements Tree<E> {
     /**
      * Tells if the BST is balanced or not
      * 
-     * @return ture if the tree is balanced Runtime: O(n)
+     * @return true if the tree is balanced 
+     * Runtime: O(n)
      */
     public boolean isBalanced() {
         return false;
@@ -179,7 +186,8 @@ public class BinarySearchTree<E extends Comparable<E>> implements Tree<E> {
     /**
      * Tells whether the BST is perfect (full and complete)
      * 
-     * @return true if the BST is perfect Runtime: O(n)
+     * @return true if the BST is perfect 
+     * Runtime: O(n)
      */
     public boolean isPerfect() {
         return isComplete() && isFull();
@@ -189,24 +197,26 @@ public class BinarySearchTree<E extends Comparable<E>> implements Tree<E> {
      * Tells whether the BST is complete (Each level of the BST is filled from left
      * to right, the last level may only be filled from the far left as possible)
      * 
-     * @return true if the BST is complete, otherwise false Runtime: O(n)
+     * @return true if the BST is complete, otherwise false 
+     * Runtime: O(n)
      */
     public boolean isComplete() {
         return isComplete(root);
     }
 
     /**
-     * This method tells whether the BST is complete or not
+     * Tells whether the BST is complete or not
      * 
      * @param node the node to start recursing over
-     * @return true if the BST is complete, otherwise false Runtime: O(n)
+     * @return true if the BST is complete, otherwise false 
+     * Runtime: O(n)
      */
     private boolean isComplete(Node<E> node) {
         if (node == null) {
             return true;
         }
         boolean isNullChild = false;
-        final Queue<Node<E>> queue = new LinkedList<>();
+        Queue<Node<E>> queue = new LinkedList<>();
         queue.offer(node);
 
         while (!queue.isEmpty()) {
@@ -236,17 +246,19 @@ public class BinarySearchTree<E extends Comparable<E>> implements Tree<E> {
      * Tells whether the BST is full (Every node other than the leaves has two
      * children)
      * 
-     * @return true if the BST is full, otherwise false Runtime: O(n)
+     * @return true if the BST is full, otherwise false 
+     * Runtime: O(n)
      */
     public boolean isFull() {
         return isFull(root);
     }
 
     /**
-     * This method tells whether the BST is full or not
+     * Tells whether the BST is full or not
      * 
      * @param node the node to start recursing over
-     * @return true if the BST is full, otherwise false Runtime: O(n)
+     * @return true if the BST is full, otherwise false 
+     * Runtime: O(n)
      */
     private boolean isFull(Node<E> node) {
         if (node == null) {
@@ -261,7 +273,8 @@ public class BinarySearchTree<E extends Comparable<E>> implements Tree<E> {
     }
 
     /**
-     * {@inheritDoc} Runtime: O(n)
+     * {@inheritDoc} 
+     * Runtime: O(n)
      */
     @Override
     public boolean insert(E e) {
@@ -275,12 +288,13 @@ public class BinarySearchTree<E extends Comparable<E>> implements Tree<E> {
     }
 
     /**
-     * This is a helper function that inserts a new node into the BST at the correct
-     * level and position and does not insert new nodes with duplicate values
+     * Inserts a new node into the BST at the correct level and 
+     * position and does not insert new nodes with duplicate values
      * 
      * @param e    a new element to insert into the BST
      * @param node a node to start recursing from
-     * @return Runtime: O(n)
+     * @return the node that is inserted
+     * Runtime: O(n)
      */
     private Node<E> insert(E e, Node<E> node) {
         if (node == null) {
@@ -297,7 +311,8 @@ public class BinarySearchTree<E extends Comparable<E>> implements Tree<E> {
     }
 
     /**
-     * {@inheritDoc} Runtime: O(n)
+     * {@inheritDoc} 
+     * Runtime: O(n)
      */
     @Override
     public boolean delete(E e) {
@@ -310,12 +325,12 @@ public class BinarySearchTree<E extends Comparable<E>> implements Tree<E> {
     }
 
     /**
-     * This is a helper function that deletes a node from the BST at the correct
-     * level and position
+     * Deletes a node from the BST at the correct level and position
      * 
      * @param e    an element to delete from the BST
      * @param node a node to start recursing from
-     * @return Runtime: O(n)
+     * @return the node to be deleted
+     * Runtime: O(n)
      */
     private Node<E> delete(E e, Node<E> node) {
         if (node == null) {
@@ -346,9 +361,10 @@ public class BinarySearchTree<E extends Comparable<E>> implements Tree<E> {
     }
 
     /**
-     * This method returns a list with elements in order from the BST
+     * Returns a list with elements in order from the BST
      * 
-     * @return a list that contains the elements of the BST in order Runtime: O(n)
+     * @return a list that contains the elements of the BST in order 
+     * Runtime: O(n)
      */
     public List<E> inOrder() {
         List<E> list = new LinkedList<>();
@@ -367,10 +383,10 @@ public class BinarySearchTree<E extends Comparable<E>> implements Tree<E> {
     }
 
     /**
-     * This method returns a list with elements preorder from the BST
+     * Returns a list with elements pre-order from the BST
      * 
-     * @return a list that contains the elements of the BST in preorder Runtime:
-     *         O(n)
+     * @return a list that contains the elements of the BST in pre-order 
+     * Runtime: O(n)
      */
     public List<E> preOrder() {
         List<E> list = new LinkedList<>();
@@ -389,10 +405,10 @@ public class BinarySearchTree<E extends Comparable<E>> implements Tree<E> {
     }
 
     /**
-     * This method returns a list with elements postorder from the BST
+     * Returns a list with elements post-order from the BST
      * 
-     * @return a list that contains the elements of the BST in postorder Runtime:
-     *         O(n)
+     * @return a list that contains the elements of the BST in post-order 
+     * Runtime: O(n)
      */
     public List<E> postOrder() {
         List<E> list = new LinkedList<>();
@@ -411,10 +427,10 @@ public class BinarySearchTree<E extends Comparable<E>> implements Tree<E> {
     }
 
     /**
-     * This method returns a list with elements level-order from the BST
+     * Returns a list with elements level-order from the BST
      * 
      * @return a list that contains the elements of the BST in the level-order
-     *         Runtime: O(n)
+     * Runtime: O(n)
      */
     public List<E> levelOrder() {
         List<E> list = new LinkedList<>();
@@ -436,7 +452,8 @@ public class BinarySearchTree<E extends Comparable<E>> implements Tree<E> {
     }
 
     /**
-     * {@inheritDoc} Runtime: O(1)
+     * {@inheritDoc} 
+     * Runtime: O(1)
      */
     @Override
     public void clear() {
@@ -445,7 +462,8 @@ public class BinarySearchTree<E extends Comparable<E>> implements Tree<E> {
     }
 
     /**
-     * {@inheritDoc} Runtime: O(n)
+     * {@inheritDoc} 
+     * Runtime: O(n)
      */
     @Override
     public Object[] toArray() {
@@ -479,7 +497,7 @@ public class BinarySearchTree<E extends Comparable<E>> implements Tree<E> {
     }
 
     /**
-     * This private method returns a inorder iterator
+     * Returns a in-order iterator
      * 
      * @return an inorder iterator for the BST
      */
@@ -492,29 +510,26 @@ public class BinarySearchTree<E extends Comparable<E>> implements Tree<E> {
             private Node<E> curr = root; // the current element pointing in the BST
 
             /**
-             * {@inheritDoc} Checks for concurrent modification
-             * 
-             * @throws ConcurrentModificationException
+             * {@inheritDoc}
              */
             @Override
             public boolean hasNext() {
-                if (expectedSize != size) {
-                    throw new ConcurrentModificationException("ERROR: Cannot modifiy the iterator");
-                }
                 return root != null && !stack.isEmpty();
             }
 
             /**
-             * {@inheritDoc} Checks for concurrent modification
+             * {@inheritDoc}
              * 
-             * @throws ConcurrentModificationException
+             * @throws ConcurrentModificationException if size does not equal expectedSize
              */
             @Override
             public E next() {
                 if (expectedSize != size) {
                     throw new ConcurrentModificationException("ERROR: Cannot modifiy the iterator");
                 }
-                if (hasNext()) {
+                if (!hasNext()) {
+                    throw new NoSuchElementException("ERROR: No more elements to iterate");
+                } else {
                     // travel down far left as possible
                     while (curr != null && curr.left != null) {
                         stack.push(curr.left);
@@ -529,68 +544,6 @@ public class BinarySearchTree<E extends Comparable<E>> implements Tree<E> {
                     }
 
                     return node.value;
-                } else {
-                    throw new NoSuchElementException("ERROR: No more elements to iterate");
-                }
-            }
-
-            /**
-             * {@inheritDoc} Checks for concurrent modification
-             * 
-             * @throws ConcurrentModificationException
-             */
-            @Override
-            public void remove() {
-                throw new UnsupportedOperationException("ERROR: Remove not Supported by this Iterator");
-            }
-        };
-    }
-
-    /**
-     * This private method returns a preorder iterator
-     * 
-     * @return a preorder iterator for the BST
-     */
-    private Iterator<E> preOrderIterator() {
-        final int expectedSize = size; // used to check for concurrent modification
-        final Stack<Node<E>> stack = new Stack<>();
-        stack.push(root);
-
-        return new Iterator<E>() {
-            /**
-             * {@inheritDoc} Checks for concurrent modification
-             * 
-             * @throws ConcurrentModificationException
-             */
-            @Override
-            public boolean hasNext() {
-                if (expectedSize != size) {
-                    throw new ConcurrentModificationException("ERROR: Cannot modifiy the iterator");
-                }
-                return root != null && !stack.isEmpty();
-            }
-
-            /**
-             * {@inheritDoc} Checks for concurrent modification
-             * 
-             * @throws ConcurrentModificationException
-             */
-            @Override
-            public E next() {
-                if (expectedSize != size) {
-                    throw new ConcurrentModificationException("ERROR: Cannot modifiy the iterator");
-                }
-                if (hasNext()) {
-                    Node<E> node = stack.pop();
-                    if (node.right != null) {
-                        stack.push(node.right);
-                    }
-                    if (node.left != null) {
-                        stack.push(node.left);
-                    }
-                    return node.value;
-                } else {
-                    throw new NoSuchElementException("ERROR: No more elements to iterate");
                 }
             }
 
@@ -599,15 +552,70 @@ public class BinarySearchTree<E extends Comparable<E>> implements Tree<E> {
              */
             @Override
             public void remove() {
-                throw new UnsupportedOperationException("ERROR: Remove not Supported by this Iterator");
+                throw new UnsupportedOperationException("ERROR: Remove not Supported by this " + 
+                        "Iterator");
             }
         };
     }
 
     /**
-     * This private method returns a postorder iterator
+     * Returns a pre-order iterator
      * 
-     * @return a postorder iterator for the BST
+     * @return a pre-order iterator for the BST
+     */
+    private Iterator<E> preOrderIterator() {
+        final int expectedSize = size; // used to check for concurrent modification
+        final Stack<Node<E>> stack = new Stack<>();
+        stack.push(root);
+
+        return new Iterator<E>() {
+            /**
+             * {@inheritDoc}
+             */
+            @Override
+            public boolean hasNext() {
+                return root != null && !stack.isEmpty();
+            }
+
+            /**
+             * {@inheritDoc}
+             * 
+             * @throws ConcurrentModificationException if size does not equal expectedSize
+             */
+            @Override
+            public E next() {
+                if (expectedSize != size) {
+                    throw new ConcurrentModificationException("ERROR: Cannot modifiy the iterator");
+                }
+                if (!hasNext()) {
+                    throw new NoSuchElementException("ERROR: No more elements to iterate");
+                } else {
+                    Node<E> node = stack.pop();
+                    if (node.right != null) {
+                        stack.push(node.right);
+                    }
+                    if (node.left != null) {
+                        stack.push(node.left);
+                    }
+                    return node.value;
+                }
+            }
+
+            /**
+             * {@inheritDoc}
+             */
+            @Override
+            public void remove() {
+                throw new UnsupportedOperationException("ERROR: Remove not Supported by this " + 
+                        "Iterator");
+            }
+        };
+    }
+
+    /**
+     * This private method returns a post-order iterator
+     * 
+     * @return a post-order iterator for the BST
      */
     private Iterator<E> postOrderIterator() {
         final int expectedSize = size; // used to check for concurrent modification
@@ -630,32 +638,27 @@ public class BinarySearchTree<E extends Comparable<E>> implements Tree<E> {
 
         return new Iterator<E>() {
             /**
-             * {@inheritDoc} Checks for concurrent modification
-             * 
-             * @throws ConcurrentModificationException
+             * {@inheritDoc} 
              */
             @Override
             public boolean hasNext() {
-                if (expectedSize != size) {
-                    throw new ConcurrentModificationException("ERROR: Cannot modifiy the iterator");
-                }
                 return root != null && !stack2.isEmpty();
             }
 
             /**
-             * {@inheritDoc} Checks for concurrent modification
+             * {@inheritDoc}
              * 
-             * @throws ConcurrentModificationException
+             * @throws ConcurrentModificationException if size does not equal expectedSize
              */
             @Override
             public E next() {
                 if (expectedSize != size) {
                     throw new ConcurrentModificationException("ERROR: Cannot modifiy the iterator");
                 }
-                if (hasNext()) {
-                    return stack2.pop().value;
-                } else {
+                if (!hasNext()) {
                     throw new NoSuchElementException("ERROR: No more elements to iterate");
+                } else {
+                    return stack2.pop().value;
                 }
             }
 
@@ -664,7 +667,8 @@ public class BinarySearchTree<E extends Comparable<E>> implements Tree<E> {
              */
             @Override
             public void remove() {
-                throw new UnsupportedOperationException("ERROR: Remove not Supported by this Iterator");
+                throw new UnsupportedOperationException("ERROR: Remove not Supported by this " + 
+                        "Iterator");
             }
         };
     }
@@ -681,29 +685,26 @@ public class BinarySearchTree<E extends Comparable<E>> implements Tree<E> {
 
         return new Iterator<E>() {
             /**
-             * {@inheritDoc} Checks for concurrent modification
-             * 
-             * @throws ConcurrentModificationException
+             * {@inheritDoc}
              */
             @Override
             public boolean hasNext() {
-                if (expectedSize != size) {
-                    throw new ConcurrentModificationException("ERROR: Cannot modifiy the iterator");
-                }
                 return root != null && !queue.isEmpty();
             }
 
             /**
-             * {@inheritDoc} Checks for concurrent modification
+             * {@inheritDoc}
              * 
-             * @throws ConcurrentModificationException
+             * @throws ConcurrentModificationException if size does not equal expectedSize
              */
             @Override
             public E next() {
                 if (expectedSize != size) {
                     throw new ConcurrentModificationException("ERROR: Cannot modifiy the iterator");
                 }
-                if (hasNext()) {
+                if (!hasNext()) {
+                    throw new NoSuchElementException("ERROR: No more elements to iterate");
+                } else {
                     Node<E> node = queue.poll();
                     if (node.left != null) {
                         queue.offer(node.left);
@@ -712,8 +713,6 @@ public class BinarySearchTree<E extends Comparable<E>> implements Tree<E> {
                         queue.offer(node.right);
                     }
                     return node.value;
-                } else {
-                    throw new NoSuchElementException("ERROR: No more elements to iterate");
                 }
             }
 
@@ -722,13 +721,15 @@ public class BinarySearchTree<E extends Comparable<E>> implements Tree<E> {
              */
             @Override
             public void remove() {
-                throw new UnsupportedOperationException("ERROR: Remove not Supported by this Iterator");
+                throw new UnsupportedOperationException("ERROR: Remove not Supported by this " + 
+                        "Iterator");
             }
         };
     }
 
     /**
-     * {@inheritDoc} Runtime: O(n)
+     * {@inheritDoc} 
+     * Runtime: O(n)
      */
     @Override
     public String toString() {

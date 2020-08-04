@@ -5,8 +5,8 @@ import java.util.NoSuchElementException;
 import java.util.ConcurrentModificationException;
 
 public class TreeSet<E> implements Set<E> {
-    private int size = 0; // the number of elements in the set
-    private Node<E> root = null;
+    private int size; // the number of elements in the set
+    private Node<E> root;
 
     private static class Node<E> {
 
@@ -117,34 +117,28 @@ public class TreeSet<E> implements Set<E> {
             final private int expectedSize = size; // used to check for concurrent modification
 
             /**
-             * {@inheritDoc} Checks for concurrent modification
-             * 
-             * @throws ConcurrentModificationException
+             * {@inheritDoc}
              */
             @Override
             public boolean hasNext() {
-                if (expectedSize != size) {
-                    throw new ConcurrentModificationException("ERROR: Cannot modifiy the iterator");
-                }
                 return false;
             }
 
             /**
-             * {@inheritDoc} Checks for concurrent modification
+             * {@inheritDoc}
              * 
-             * @throws ConcurrentModificationException
+             * @throws ConcurrentModificationException if size does not equal expectedSize
              */
             @Override
             public E next() {
                 if (expectedSize != size) {
                     throw new ConcurrentModificationException("ERROR: Cannot modifiy the iterator");
                 }
-                if (hasNext()) {
-
-                } else {
+                if (!hasNext()) {
                     throw new NoSuchElementException("ERROR: No more elements to iterate");
+                } else {
+                    return null;
                 }
-                return null;
             }
 
             /**
@@ -152,13 +146,15 @@ public class TreeSet<E> implements Set<E> {
              */
             @Override
             public void remove() {
-                throw new UnsupportedOperationException("ERROR: Remove not Supported by this Iterator");
+                throw new UnsupportedOperationException("ERROR: Remove not Supported by this " + 
+                        "Iterator");
             }
         };
     }
 
     /**
-     * {@inheritDoc} Runtime: O()
+     * {@inheritDoc} 
+     * Runtime: O()
      */
     @Override
     public String toString() {

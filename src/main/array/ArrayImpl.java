@@ -102,7 +102,7 @@ public class ArrayImpl<E> implements Array<E> {
      * @param o an element to search the last occurring index
      * @return the index of the last occurring o or -1 if not present
      */
-    public int lastIndexOf(Object o) {
+     public int lastIndexOf(Object o) {
         if (o == null) {
             for (int i = size - 1; i >= 0; i--) {
                 if (arr[i] == null) {
