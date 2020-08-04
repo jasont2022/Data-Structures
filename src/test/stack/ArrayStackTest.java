@@ -308,12 +308,12 @@ public class ArrayStackTest {
     }
     
     @Test
-    public void testToStringEmptyArray() {
+    public void testToStringEmptyStack() {
         assertEquals("[]", empty.toString());
     }
 
     @Test
-    public void testToStringNonEmptyArray() {
+    public void testToStringNonEmptyStack() {
         assertEquals("[null, 3, null, 3, 1]", hasNullElements.toString());
     }
 }

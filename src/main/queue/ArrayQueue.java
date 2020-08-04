@@ -151,6 +151,18 @@ public class ArrayQueue<E> implements Queue<E> {
     }
 
     /**
+     * {@inheritDoc} 
+     * Runtime: Amortized O(1), Worst Case O(n)
+     */
+    @Override
+    public E remove() {
+        if (isEmpty()) {
+            throw new NoSuchElementException("ERROR: Cannot remove from empty queue");
+        }
+        return poll();
+    }
+    
+    /**
      * Helper method that resizes the underlying array and unwinds the
      * queue, so that head points at the beginning of the array
      * 
@@ -166,18 +178,6 @@ public class ArrayQueue<E> implements Queue<E> {
         arr = temp;
         head = 0;
         tail = size - 1;
-    }
-
-    /**
-     * {@inheritDoc} 
-     * Runtime: Amortized O(1), Worst Case O(n)
-     */
-    @Override
-    public E remove() {
-        if (isEmpty()) {
-            throw new NoSuchElementException("ERROR: Cannot remove from empty queue");
-        }
-        return poll();
     }
 
     /**
