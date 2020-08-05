@@ -126,12 +126,16 @@ public class BinarySearchTree<E extends Comparable<E>> implements Tree<E> {
     }
 
     /**
-     * Returns the minimum value in the BST
+     * Returns the minimum value in the BST, if the tree
+     * is empty return null
      * 
-     * @return the minimum value in the BST 
+     * @return the minimum value in the BST, otherwise null
      * Runtime: O(n)
      */
     public E getMinimum() {
+        if (isEmpty()) {
+            return null;
+        }
         return getMinimum(root).value;
     }
 
@@ -150,12 +154,16 @@ public class BinarySearchTree<E extends Comparable<E>> implements Tree<E> {
     }
 
     /**
-     * Returns the maximum value in the BST
+     * Returns the maximum value in the BST, if the tree
+     * is empty return null
      * 
-     * @return the maximum value in the BST 
+     * @return the maximum value in the BST, otherwise null
      * Runtime: O(n)
      */
     public E getMaximum() {
+        if (isEmpty()) {
+            return null;
+        }
         return getMaximum(root).value;
     }
 
@@ -173,15 +181,14 @@ public class BinarySearchTree<E extends Comparable<E>> implements Tree<E> {
         return node;
     }
 
-    /**
+    /*
+     **
      * Tells if the BST is balanced or not
      * 
-     * @return true if the tree is balanced 
-     * Runtime: O(n)
+     * @return true if the tree is balanced Runtime: O(n)
+     *
+     * public boolean isBalanced() { return false; }
      */
-    public boolean isBalanced() {
-        return false;
-    }
 
     /**
      * Tells whether the BST is perfect (full and complete)
