@@ -441,6 +441,10 @@ public class BinarySearchTree<E extends Comparable<E>> implements Tree<E> {
      */
     public List<E> levelOrder() {
         List<E> list = new LinkedList<>();
+        // empty BST 
+        if (isEmpty()) {
+            return list;
+        }
         Queue<Node<E>> queue = new LinkedList<>();
         queue.add(root);
 

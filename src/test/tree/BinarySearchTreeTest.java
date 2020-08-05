@@ -7,6 +7,9 @@ import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
+import java.util.List;
+import java.util.LinkedList;
+
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 import java.util.ConcurrentModificationException;
@@ -364,23 +367,261 @@ public class BinarySearchTreeTest {
     }
     
     @Test
-    public void testInOrder() {
+    public void testInOrderEmpty() {
+        List<Integer> expected = new LinkedList<>();
+        assertEquals(expected, empty.inOrder());
+    }
+    @Test
+    public void testInOrderNonEmpty() {
+        List<Integer> expected0 = new LinkedList<>();
+        expected0.add(1);
+        assertEquals(expected0, singleton.inOrder());
         
+        List<Integer> expected1 = new LinkedList<>();
+        expected1.add(0);
+        expected1.add(1);
+        expected1.add(3);
+        expected1.add(5);
+        expected1.add(7);
+        expected1.add(8);
+        expected1.add(9);
+        assertEquals(expected1, multipleElements.inOrder());
+        
+        List<Integer> expected2 = new LinkedList<>();
+        expected2.add(1);
+        expected2.add(2);
+        expected2.add(3);
+        expected2.add(4);
+        expected2.add(5);
+        assertEquals(expected2, linearRight.inOrder());
+        
+        assertEquals(expected2, linearLeft.inOrder());
+        
+        List<Integer> expected4 = new LinkedList<>();
+        expected4.add(0);
+        expected4.add(1);
+        expected4.add(3);
+        expected4.add(4); 
+        expected4.add(5);
+        expected4.add(6);
+        assertEquals(expected4, complete.inOrder());
+        
+        List<Integer> expected5 = new LinkedList<>();
+        expected5.add(0);
+        expected5.add(1);
+        expected5.add(2);
+        expected5.add(3);
+        expected5.add(4); 
+        expected5.add(5);
+        expected5.add(6);
+        assertEquals(expected5, full.inOrder());
+        
+        assertEquals(expected1, perfect.inOrder());
+    }
+    
+    
+    @Test
+    public void testPreOrderEmpty() {
+        List<Integer> expected = new LinkedList<>();
+        assertEquals(expected, empty.preOrder());
     }
     
     @Test
-    public void testPreOrder() {
+    public void testPreOrderNonEmpty() {
+        List<Integer> expected0 = new LinkedList<>();
+        expected0.add(1);
+        assertEquals(expected0, singleton.preOrder());
         
+        List<Integer> expected1 = new LinkedList<>();
+        expected1.add(5);
+        expected1.add(1);
+        expected1.add(0);
+        expected1.add(3);
+        expected1.add(7);
+        expected1.add(8);
+        expected1.add(9);
+        assertEquals(expected1, multipleElements.preOrder());
+        
+        List<Integer> expected2 = new LinkedList<>();
+        expected2.add(1);
+        expected2.add(2);
+        expected2.add(3);
+        expected2.add(4);
+        expected2.add(5);
+        assertEquals(expected2, linearRight.preOrder());
+        
+        List<Integer> expected3 = new LinkedList<>();
+        expected3.add(5);
+        expected3.add(4);
+        expected3.add(3);
+        expected3.add(2);
+        expected3.add(1);
+        assertEquals(expected3, linearLeft.preOrder());
+        
+        List<Integer> expected4 = new LinkedList<>();
+        expected4.add(4);
+        expected4.add(1);
+        expected4.add(0);
+        expected4.add(3);
+        expected4.add(6);
+        expected4.add(5);
+        assertEquals(expected4, complete.preOrder());
+        
+        List<Integer> expected5 = new LinkedList<>();
+        expected5.add(1);
+        expected5.add(0);
+        expected5.add(3);
+        expected5.add(2);
+        expected5.add(5);
+        expected5.add(4);
+        expected5.add(6);
+        assertEquals(expected5, full.preOrder());
+        
+        List<Integer> expected6 = new LinkedList<>();
+        expected6.add(5);
+        expected6.add(1);
+        expected6.add(0);
+        expected6.add(3);
+        expected6.add(8);
+        expected6.add(7);
+        expected6.add(9);
+        assertEquals(expected6, perfect.preOrder());
     }
     
     @Test
-    public void testPostOrder() {
-        
+    public void testPostOrderEmpty() {
+        List<Integer> expected = new LinkedList<>();
+        assertEquals(expected, empty.postOrder());
     }
     
     @Test
-    public void testLevelOrder() {
+    public void testPostOrderNonEmpty() {
+        List<Integer> expected0 = new LinkedList<>();
+        expected0.add(1);
+        assertEquals(expected0, singleton.postOrder());
         
+        List<Integer> expected1 = new LinkedList<>();
+        expected1.add(0);
+        expected1.add(3);
+        expected1.add(1);
+        expected1.add(9);
+        expected1.add(8);
+        expected1.add(7);
+        expected1.add(5);
+        assertEquals(expected1, multipleElements.postOrder());
+        
+        List<Integer> expected2 = new LinkedList<>();
+        expected2.add(5);
+        expected2.add(4);
+        expected2.add(3);
+        expected2.add(2);
+        expected2.add(1);
+        assertEquals(expected2, linearRight.postOrder());
+        
+        List<Integer> expected3 = new LinkedList<>();
+        expected3.add(1);
+        expected3.add(2);
+        expected3.add(3);
+        expected3.add(4);
+        expected3.add(5);
+        assertEquals(expected3, linearLeft.postOrder());
+        
+        List<Integer> expected4 = new LinkedList<>();
+        expected4.add(0);
+        expected4.add(3);
+        expected4.add(1);
+        expected4.add(5);
+        expected4.add(6);
+        expected4.add(4);
+        assertEquals(expected4, complete.postOrder());
+        
+        List<Integer> expected5 = new LinkedList<>();
+        expected5.add(0);
+        expected5.add(2);
+        expected5.add(4);
+        expected5.add(6);
+        expected5.add(5);
+        expected5.add(3);
+        expected5.add(1);
+        assertEquals(expected5, full.postOrder());
+        
+        List<Integer> expected6 = new LinkedList<>();
+        expected6.add(0);
+        expected6.add(3);
+        expected6.add(1);
+        expected6.add(7);
+        expected6.add(9);
+        expected6.add(8);
+        expected6.add(5);
+        assertEquals(expected6, perfect.postOrder());
+    }
+    
+    @Test
+    public void testLevelOrderEmpty() {
+        List<Integer> expected = new LinkedList<>();
+        assertEquals(expected, empty.levelOrder());
+    }
+    
+    @Test
+    public void testLevelOrderNonEmpty() {
+        List<Integer> expected0 = new LinkedList<>();
+        expected0.add(1);
+        assertEquals(expected0, singleton.levelOrder());
+        
+        List<Integer> expected1 = new LinkedList<>();
+        expected1.add(5);
+        expected1.add(1);
+        expected1.add(7);
+        expected1.add(0);
+        expected1.add(3);
+        expected1.add(8);
+        expected1.add(9);
+        assertEquals(expected1, multipleElements.levelOrder());
+        
+        List<Integer> expected2 = new LinkedList<>();
+        expected2.add(1);
+        expected2.add(2);
+        expected2.add(3);
+        expected2.add(4);
+        expected2.add(5);
+        assertEquals(expected2, linearRight.levelOrder());
+        
+        List<Integer> expected3 = new LinkedList<>();
+        expected3.add(5);
+        expected3.add(4);
+        expected3.add(3);
+        expected3.add(2);
+        expected3.add(1);
+        assertEquals(expected3, linearLeft.levelOrder());
+        
+        List<Integer> expected4 = new LinkedList<>();
+        expected4.add(4);
+        expected4.add(1);
+        expected4.add(6);
+        expected4.add(0);
+        expected4.add(3);
+        expected4.add(5);
+        assertEquals(expected4, complete.levelOrder());
+        
+        List<Integer> expected5 = new LinkedList<>();
+        expected5.add(1);
+        expected5.add(0);
+        expected5.add(3);
+        expected5.add(2);
+        expected5.add(5);
+        expected5.add(4);
+        expected5.add(6);
+        assertEquals(expected5, full.levelOrder());
+        
+        List<Integer> expected6 = new LinkedList<>();
+        expected6.add(5);
+        expected6.add(1);
+        expected6.add(8);
+        expected6.add(0);
+        expected6.add(3);
+        expected6.add(7);
+        expected6.add(9);
+        assertEquals(expected6, perfect.levelOrder());
     }
     
     @Test
@@ -415,9 +656,8 @@ public class BinarySearchTreeTest {
         
         Object[] expected2 = {1, 2, 3, 4, 5};
         assertArrayEquals(expected2, linearRight.toArray());
-        
-        Object[] expected3 = {1, 2, 3, 4, 5};
-        assertArrayEquals(expected3, linearLeft.toArray());
+       
+        assertArrayEquals(expected2, linearLeft.toArray());
         
         Object[] expected4 = {0, 1, 3, 4, 5, 6};
         assertArrayEquals(expected4, complete.toArray());
@@ -425,8 +665,7 @@ public class BinarySearchTreeTest {
         Object[] expected5 = {0, 1, 2, 3, 4, 5, 6};
         assertArrayEquals(expected5, full.toArray());
         
-        Object[] expected6 = {0, 1, 3, 5, 7, 8, 9};
-        assertArrayEquals(expected6, perfect.toArray());
+        assertArrayEquals(expected1, perfect.toArray());
     }
        
     @Test(expected = NoSuchElementException.class)
