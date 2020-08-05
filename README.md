@@ -13,10 +13,14 @@ A side project for myself to somewhat mimic the Java Collections Library. I will
 ## Motivation
 
 ## Technologies
+Java
+Java Collections
+JUnit
 
 ## Getting Started
 
 ## Data Structures Links
+The links down below are shortcuts to access the source code
 * [Array](https://github.com/jasont2022/Data-Structures/tree/master/src/main/array)
   * [Array Interface](https://github.com/jasont2022/Data-Structures/tree/master/src/main/array/Array.java)
   * [ArrayImpl](https://github.com/jasont2022/Data-Structures/tree/master/src/main/array/ArrayImpl.java)
