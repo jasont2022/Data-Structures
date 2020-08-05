@@ -55,7 +55,8 @@ A side project for myself to somewhat mimic the Java Collections Library. I will
 * [Tree](https://github.com/jasont2022/Data-Structures/tree/master/src/main/tree)
   * [Tree Interface](https://github.com/jasont2022/Data-Structures/tree/master/src/main/tree/Tree.java)
   * [BinarySearchTree](https://github.com/jasont2022/Data-Structures/tree/master/src/main/tree/BinarySearchTree.java)
-* [Graph](https://github.com/jasont2022/Data-Structures/tree/master/src/main/heap/Graph.java)
+* [Graph](https://github.com/jasont2022/Data-Structures/tree/master/src/main/graph)
+  * [Graph Interface](https://github.com/jasont2022/Data-Structures/tree/master/src/main/graph/Graph.java)
   * [Adjaceny List]
   * [Adjaceny Maxtrix]
 
