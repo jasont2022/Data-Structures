@@ -49,7 +49,8 @@ A side project for myself to somewhat mimic the Java Collections Library. I will
   * [BinaryMaxHeap](https://github.com/jasont2022/Data-Structures/tree/master/src/main/heap/BinaryMaxHeap.java)
   * [BinaryMinHeap](https://github.com/jasont2022/Data-Structures/tree/master/src/main/heap/BinaryMinHeap.java)
   * [Fibonacci Heap]
-* [Priority Queue](https://github.com/jasont2022/Data-Structures/tree/master/src/main/heap/PriorityQueue.java)
+* [Priority Queue](https://github.com/jasont2022/Data-Structures/tree/master/src/main/priorityqueue)
+  * [Priority Queue Interface](https://github.com/jasont2022/Data-Structures/tree/master/src/main/priorityqueue/PriorityQueue.java)
   * [Priority Queue Impl]
 * [Tree](https://github.com/jasont2022/Data-Structures/tree/master/src/main/tree)
   * [Tree Interface](https://github.com/jasont2022/Data-Structures/tree/master/src/main/tree/Tree.java)
