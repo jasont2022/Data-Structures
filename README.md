@@ -44,16 +44,19 @@ A side project for myself to somewhat mimic the Java Collections Library. I will
   * [ArrayQueue](https://github.com/jasont2022/Data-Structures/tree/master/src/main/queue/ArrayQueue.java)
   * [SinglyLinkedList](https://github.com/jasont2022/Data-Structures/tree/master/src/main/list/SinglyLinkedList.java)
   * [DoublyLinkedList](https://github.com/jasont2022/Data-Structures/tree/master/src/main/list/DoublyLinkedList.java)
-* [Heap]
-  * [Heap Interface]
-  * [BinaryMaxHeap]
-  * [BinaryMinHeap]
+* [Heap](https://github.com/jasont2022/Data-Structures/tree/master/src/main/heap)
+  * [Heap Interface](https://github.com/jasont2022/Data-Structures/tree/master/src/main/heap/Heap.java)
+  * [BinaryMaxHeap](https://github.com/jasont2022/Data-Structures/tree/master/src/main/heap/BinaryMaxHeap.java)
+  * [BinaryMinHeap](https://github.com/jasont2022/Data-Structures/tree/master/src/main/heap/BinaryMinHeap.java)
   * [Fibonacci Heap]
-* [Priority Queue]
+* [Priority Queue](https://github.com/jasont2022/Data-Structures/tree/master/src/main/heap/PriorityQueue.java)
+  * [Priority Queue Impl]
 * [Tree](https://github.com/jasont2022/Data-Structures/tree/master/src/main/tree)
   * [Tree Interface](https://github.com/jasont2022/Data-Structures/tree/master/src/main/tree/Tree.java)
   * [BinarySearchTree](https://github.com/jasont2022/Data-Structures/tree/master/src/main/tree/BinarySearchTree.java)
-* [Graph]
+* [Graph](https://github.com/jasont2022/Data-Structures/tree/master/src/main/heap/Graph.java)
+  * [Adjaceny List]
+  * [Adjaceny Maxtrix]
 
 ## Contribute
 
