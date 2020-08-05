@@ -132,7 +132,6 @@ public class BinarySearchTreeTest {
         assertEquals("5, 1, 8, 0, 3, 7, 9, ", perfect.toString());
     }
     
-
     @Test(expected = NoSuchElementException.class)
     public void testEmptyInOrderIterator() {
         Tree<Integer> bst = new BinarySearchTree<>();
