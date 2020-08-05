@@ -41,6 +41,15 @@ public class BinarySearchTree<E extends Comparable<E>> implements Tree<E> {
             this.right = right;
         }
     }
+    
+    /**
+     * Returns the root of the binary search tree
+     * 
+     * @return the root of the binary search tree
+     */
+    public Node<E> getRoot() {
+        return root;
+    }
 
     /**
      * {@inheritDoc} 
@@ -58,15 +67,6 @@ public class BinarySearchTree<E extends Comparable<E>> implements Tree<E> {
     @Override
     public boolean isEmpty() {
         return size == 0;
-    }
-
-    /**
-     * Returns the root of the binary search tree
-     * 
-     * @return the root of the binary search tree
-     */
-    public Node<E> getRoot() {
-        return root;
     }
 
     /**
@@ -742,7 +742,7 @@ public class BinarySearchTree<E extends Comparable<E>> implements Tree<E> {
 
             while (!queue.isEmpty()) {
                 Node<E> node = queue.poll();
-                tree.append(node.value);
+                tree.append(node.value + ", ");
 
                 if (node.left != null) {
                     queue.add(node.left);
