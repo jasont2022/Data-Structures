@@ -493,16 +493,9 @@ public class BinarySearchTree<E extends Comparable<E>> implements Tree<E> {
      */
     @Override
     public Iterator<E> iterator(IteratorType type) {
-        if (type == Tree.IteratorType.IN_ORDER) {
-            return inOrderIterator();
-        } else if (type == Tree.IteratorType.PRE_ORDER) {
-            return preOrderIterator();
-        } else if (type == Tree.IteratorType.POST_ORDER) {
-            return postOrderIterator();
-        } else {
-            return levelOrderIterator();
+        if (type == null) {
+            return null;
         }
-        /*
         switch (type) {
             case IN_ORDER:
                 return inOrderIterator();
@@ -515,7 +508,6 @@ public class BinarySearchTree<E extends Comparable<E>> implements Tree<E> {
             default:
                 return null;
         }
-        */
     }
 
     /**

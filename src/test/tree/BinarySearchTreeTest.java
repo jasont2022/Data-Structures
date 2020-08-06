@@ -684,6 +684,11 @@ public class BinarySearchTreeTest {
         
         assertArrayEquals(expected1, perfect.toArray());
     }
+    
+    @Test
+    public void testIteratorNoType() {
+        assertNull(empty.iterator(null));
+    }
        
     @Test(expected = NoSuchElementException.class)
     public void testEmptyInOrderIterator() {
