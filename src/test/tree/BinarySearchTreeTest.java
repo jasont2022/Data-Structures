@@ -370,17 +370,81 @@ public class BinarySearchTreeTest {
     
     @Test
     public void testDeleteEmpty() {
-        
+        assertFalse(empty.delete(1));
+        assertEquals(0, empty.size());
+        assertEquals("null", empty.toString());
     }
     
     @Test
-    public void testDeleteNonEmpty() {
-        
+    public void testDeleteNoChild() {
+        BinarySearchTree<Integer> bst = new BinarySearchTree<>();
+        bst.insert(5);
+        bst.insert(1);
+        bst.insert(0);
+        bst.insert(3);
+        bst.insert(8);
+        bst.insert(7);
+        bst.insert(9);
+        assertTrue(bst.delete(0));
+        assertFalse(bst.contains(0));
+        assertEquals(6, bst.size());
+        assertEquals("5, 1, 8, 3, 7, 9, ", bst.toString());
+    }
+    
+    @Test
+    public void testDeleteOneChild() {
+        BinarySearchTree<Integer> right = new BinarySearchTree<>();
+        right.insert(1);
+        right.insert(2);
+        right.insert(3);
+        right.insert(4);
+        right.insert(5);
+        assertTrue(right.delete(3));
+        assertFalse(right.contains(3));
+        assertEquals(4, right.size());
+        assertEquals("1, 2, 4, 5, ", right.toString());
+        BinarySearchTree<Integer> left = new BinarySearchTree<>();
+        left.insert(5);
+        left.insert(4);
+        left.insert(3);
+        left.insert(2);
+        left.insert(1);
+        assertTrue(left.delete(3));
+        assertFalse(left.contains(3));
+        assertEquals(4, left.size());
+        assertEquals("5, 4, 2, 1, ", left.toString());
+    }
+    
+    @Test
+    public void testDeleteTwoChild() {
+        BinarySearchTree<Integer> bst = new BinarySearchTree<>();
+        bst.insert(5);
+        bst.insert(1);
+        bst.insert(0);
+        bst.insert(3);
+        bst.insert(8);
+        bst.insert(7);
+        bst.insert(9);
+        assertTrue(bst.delete(8));
+        assertFalse(bst.contains(8));
+        assertEquals(6, bst.size());
+        assertEquals("5, 1, 9, 0, 3, 7, ", bst.toString());
     }
     
     @Test
     public void testDeleteValueDoesNotExist() {
-        
+        BinarySearchTree<Integer> bst = new BinarySearchTree<>();
+        bst.insert(5);
+        bst.insert(1);
+        bst.insert(0);
+        bst.insert(3);
+        bst.insert(8);
+        bst.insert(7);
+        bst.insert(9);
+        assertFalse(bst.delete(4));
+        assertFalse(bst.contains(4));
+        assertEquals(7, bst.size());
+        assertEquals("5, 1, 8, 0, 3, 7, 9, ", bst.toString());
     }
     
     @Test
