@@ -1,10 +1,11 @@
 # Data Structures
-A side project for myself to somewhat mimic the Java Collections Library. I will be implementing common data structures in the Java programming language from scratch.
+A project for myself to somewhat mimic the Java Collections Library. I will be implementing common data structures in the Java programming language from scratch.
 
 ## Table of Contents
 * [Motivation](#motivation)
 * [Technologies](#technologies)
 * [Getting Started](#getting-started)
+* [Developing](#developing)
 * [Data Structures Links](#data-structures-links)
 * [Contribute](#contribute)
 * [Credits](#credits)
@@ -13,11 +14,14 @@ A side project for myself to somewhat mimic the Java Collections Library. I will
 ## Motivation
 
 ## Technologies
-Java
-Java Collections
-JUnit
+This project is created with:
+* Java
+* Java Collections Library
+* JUnit4 \(for testing\)
 
 ## Getting Started
+
+## Developing
 
 ## Data Structures Links
 The links down below are shortcuts to access the source code
@@ -55,7 +59,7 @@ The links down below are shortcuts to access the source code
   * [Fibonacci Heap]
 * [Priority Queue](https://github.com/jasont2022/Data-Structures/tree/master/src/main/priorityqueue)
   * [Priority Queue Interface](https://github.com/jasont2022/Data-Structures/tree/master/src/main/priorityqueue/PriorityQueue.java)
-  * [Priority Queue Impl]
+  * [PriorityQueueImpl]
 * [Tree](https://github.com/jasont2022/Data-Structures/tree/master/src/main/tree)
   * [Tree Interface](https://github.com/jasont2022/Data-Structures/tree/master/src/main/tree/Tree.java)
   * [BinarySearchTree](https://github.com/jasont2022/Data-Structures/tree/master/src/main/tree/BinarySearchTree.java)
