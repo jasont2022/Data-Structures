@@ -348,12 +348,24 @@ public class BinarySearchTreeTest {
     
     @Test
     public void testInsertSingleton() {
-        
+        BinarySearchTree<Integer> bst = new BinarySearchTree<>();
+        assertTrue(bst.insert(1));
+        assertEquals(1, bst.size());
+        assertEquals("1, ", bst.toString());
     }
     
     @Test
     public void testInsertValueExists() {
-        
+        BinarySearchTree<Integer> bst = new BinarySearchTree<>();
+        assertTrue(bst.insert(1));
+        assertTrue(bst.insert(0));
+        assertTrue(bst.insert(4));
+        assertTrue(bst.insert(3));
+        assertFalse(bst.insert(1));
+        assertTrue(bst.insert(5));
+        assertFalse(bst.insert(4));
+        assertEquals(5, bst.size());
+        assertEquals("1, 0, 4, 3, 5, ", bst.toString());
     }
     
     @Test
@@ -363,6 +375,11 @@ public class BinarySearchTreeTest {
     
     @Test
     public void testDeleteNonEmpty() {
+        
+    }
+    
+    @Test
+    public void testDeleteValueDoesNotExist() {
         
     }
     
@@ -699,28 +716,513 @@ public class BinarySearchTreeTest {
 
     @Test
     public void testInOrderIterator() {
-        Iterator<Integer> bstInOrder = multipleElements.iterator(Tree.IteratorType.IN_ORDER);
-        assertTrue(bstInOrder.hasNext());
-        assertEquals(0, (int) bstInOrder.next());
-        assertTrue(bstInOrder.hasNext());
-        assertEquals(1, (int) bstInOrder.next());
-        assertTrue(bstInOrder.hasNext());
-        assertEquals(3, (int) bstInOrder.next());
-        assertTrue(bstInOrder.hasNext());
-        assertEquals(5, (int) bstInOrder.next());
-        assertTrue(bstInOrder.hasNext());
-        assertEquals(7, (int) bstInOrder.next());
-        assertTrue(bstInOrder.hasNext());
-        assertEquals(8, (int) bstInOrder.next());
-        assertTrue(bstInOrder.hasNext());
-        assertEquals(9, (int) bstInOrder.next());
-        assertFalse(bstInOrder.hasNext());
+        Iterator<Integer> bstInOrder0 = singleton.iterator(Tree.IteratorType.IN_ORDER);
+        assertTrue(bstInOrder0.hasNext());
+        assertEquals(1, (int) bstInOrder0.next());
+        assertFalse(bstInOrder0.hasNext());
+        
+        Iterator<Integer> bstInOrder1 = multipleElements.iterator(Tree.IteratorType.IN_ORDER);
+        assertTrue(bstInOrder1.hasNext());
+        assertEquals(0, (int) bstInOrder1.next());
+        assertTrue(bstInOrder1.hasNext());
+        assertEquals(1, (int) bstInOrder1.next());
+        assertTrue(bstInOrder1.hasNext());
+        assertEquals(3, (int) bstInOrder1.next());
+        assertTrue(bstInOrder1.hasNext());
+        assertEquals(5, (int) bstInOrder1.next());
+        assertTrue(bstInOrder1.hasNext());
+        assertEquals(7, (int) bstInOrder1.next());
+        assertTrue(bstInOrder1.hasNext());
+        assertEquals(8, (int) bstInOrder1.next());
+        assertTrue(bstInOrder1.hasNext());
+        assertEquals(9, (int) bstInOrder1.next());
+        assertFalse(bstInOrder1.hasNext());
+        
+        Iterator<Integer> bstInOrder2 = linearRight.iterator(Tree.IteratorType.IN_ORDER);
+        assertTrue(bstInOrder2.hasNext());
+        assertEquals(1, (int) bstInOrder2.next());
+        assertTrue(bstInOrder2.hasNext());
+        assertEquals(2, (int) bstInOrder2.next());
+        assertTrue(bstInOrder2.hasNext());
+        assertEquals(3, (int) bstInOrder2.next());
+        assertTrue(bstInOrder2.hasNext());
+        assertEquals(4, (int) bstInOrder2.next());
+        assertTrue(bstInOrder2.hasNext());
+        assertEquals(5, (int) bstInOrder2.next());
+        assertFalse(bstInOrder2.hasNext());
+        
+        Iterator<Integer> bstInOrder3 = linearLeft.iterator(Tree.IteratorType.IN_ORDER);
+        assertTrue(bstInOrder3.hasNext());
+        assertEquals(1, (int) bstInOrder3.next());
+        assertTrue(bstInOrder3.hasNext());
+        assertEquals(2, (int) bstInOrder3.next());
+        assertTrue(bstInOrder3.hasNext());
+        assertEquals(3, (int) bstInOrder3.next());
+        assertTrue(bstInOrder3.hasNext());
+        assertEquals(4, (int) bstInOrder3.next());
+        assertTrue(bstInOrder3.hasNext());
+        assertEquals(5, (int) bstInOrder3.next());
+        assertFalse(bstInOrder3.hasNext());
+        
+        Iterator<Integer> bstInOrder4 = complete.iterator(Tree.IteratorType.IN_ORDER);
+        assertTrue(bstInOrder4.hasNext());
+        assertEquals(0, (int) bstInOrder4.next());
+        assertTrue(bstInOrder4.hasNext());
+        assertEquals(1, (int) bstInOrder4.next());
+        assertTrue(bstInOrder4.hasNext());
+        assertEquals(3, (int) bstInOrder4.next());
+        assertTrue(bstInOrder4.hasNext());
+        assertEquals(4, (int) bstInOrder4.next());
+        assertTrue(bstInOrder4.hasNext());
+        assertEquals(5, (int) bstInOrder4.next());
+        assertTrue(bstInOrder4.hasNext());
+        assertEquals(6, (int) bstInOrder4.next());
+        assertFalse(bstInOrder4.hasNext());
+       
+        Iterator<Integer> bstInOrder5 = full.iterator(Tree.IteratorType.IN_ORDER);
+        assertTrue(bstInOrder5.hasNext());
+        assertEquals(0, (int) bstInOrder5.next());
+        assertTrue(bstInOrder5.hasNext());
+        assertEquals(1, (int) bstInOrder5.next());
+        assertTrue(bstInOrder5.hasNext());
+        assertEquals(2, (int) bstInOrder5.next());
+        assertTrue(bstInOrder5.hasNext());
+        assertEquals(3, (int) bstInOrder5.next());
+        assertTrue(bstInOrder5.hasNext());
+        assertEquals(4, (int) bstInOrder5.next());
+        assertTrue(bstInOrder5.hasNext());
+        assertEquals(5, (int) bstInOrder5.next());
+        assertTrue(bstInOrder5.hasNext());
+        assertEquals(6, (int) bstInOrder5.next());
+        assertFalse(bstInOrder5.hasNext());
+       
+        bstInOrder1 = perfect.iterator(Tree.IteratorType.IN_ORDER);
+        assertTrue(bstInOrder1.hasNext());
+        assertEquals(0, (int) bstInOrder1.next());
+        assertTrue(bstInOrder1.hasNext());
+        assertEquals(1, (int) bstInOrder1.next());
+        assertTrue(bstInOrder1.hasNext());
+        assertEquals(3, (int) bstInOrder1.next());
+        assertTrue(bstInOrder1.hasNext());
+        assertEquals(5, (int) bstInOrder1.next());
+        assertTrue(bstInOrder1.hasNext());
+        assertEquals(7, (int) bstInOrder1.next());
+        assertTrue(bstInOrder1.hasNext());
+        assertEquals(8, (int) bstInOrder1.next());
+        assertTrue(bstInOrder1.hasNext());
+        assertEquals(9, (int) bstInOrder1.next());
+        assertFalse(bstInOrder1.hasNext());
     }
     
     @Test (expected = UnsupportedOperationException.class)
     public void testInOrderIteratorRemove() {
         Iterator<Integer> bstInOrder = perfect.iterator(Tree.IteratorType.IN_ORDER);
         bstInOrder.remove();
+    }
+    
+    @Test(expected = NoSuchElementException.class)
+    public void testEmptyPreOrderIterator() {
+        Iterator<Integer> bstPreOrder = empty.iterator(Tree.IteratorType.PRE_ORDER);
+        bstPreOrder.next();
+    }
+
+    @Test(expected = NoSuchElementException.class)
+    public void testPreOrderIteratorCallNextTooManyTimes() {
+        Iterator<Integer> bstPreOrder = linearRight.iterator(Tree.IteratorType.PRE_ORDER);
+        bstPreOrder.next();
+        bstPreOrder.next();
+        bstPreOrder.next();
+        bstPreOrder.next();
+        bstPreOrder.next();
+        bstPreOrder.next();
+    }
+
+    @Test(expected = ConcurrentModificationException.class)
+    public void testPreOrderIteratorConcurrentModificationException() {
+        Tree<Integer> bst = new BinarySearchTree<>();
+        bst.insert(5);
+        bst.insert(1);
+        bst.insert(7);
+        Iterator<Integer> bstPreOrder = bst.iterator(Tree.IteratorType.PRE_ORDER);
+        bstPreOrder.next();
+        bst.insert(3);
+        bstPreOrder.next();
+    }
+    
+    @Test
+    public void testPreOrderIterator() {
+        Iterator<Integer> bstPreOrder = singleton.iterator(Tree.IteratorType.PRE_ORDER);
+        assertTrue(bstPreOrder.hasNext());
+        assertEquals(1, (int) bstPreOrder.next());
+        assertFalse(bstPreOrder.hasNext());
+        
+        bstPreOrder = multipleElements.iterator(Tree.IteratorType.PRE_ORDER);
+        assertTrue(bstPreOrder.hasNext());
+        assertEquals(5, (int) bstPreOrder.next());
+        assertTrue(bstPreOrder.hasNext());
+        assertEquals(1, (int) bstPreOrder.next());
+        assertTrue(bstPreOrder.hasNext());
+        assertEquals(0, (int) bstPreOrder.next());
+        assertTrue(bstPreOrder.hasNext());
+        assertEquals(3, (int) bstPreOrder.next());
+        assertTrue(bstPreOrder.hasNext());
+        assertEquals(7, (int) bstPreOrder.next());
+        assertTrue(bstPreOrder.hasNext());
+        assertEquals(8, (int) bstPreOrder.next());
+        assertTrue(bstPreOrder.hasNext());
+        assertEquals(9, (int) bstPreOrder.next());
+        assertFalse(bstPreOrder.hasNext());
+        
+        bstPreOrder = linearRight.iterator(Tree.IteratorType.PRE_ORDER);
+        assertTrue(bstPreOrder.hasNext());
+        assertEquals(1, (int) bstPreOrder.next());
+        assertTrue(bstPreOrder.hasNext());
+        assertEquals(2, (int) bstPreOrder.next());
+        assertTrue(bstPreOrder.hasNext());
+        assertEquals(3, (int) bstPreOrder.next());
+        assertTrue(bstPreOrder.hasNext());
+        assertEquals(4, (int) bstPreOrder.next());
+        assertTrue(bstPreOrder.hasNext());
+        assertEquals(5, (int) bstPreOrder.next());
+        assertFalse(bstPreOrder.hasNext());
+        
+        bstPreOrder = linearLeft.iterator(Tree.IteratorType.PRE_ORDER);
+        assertTrue(bstPreOrder.hasNext());
+        assertEquals(5, (int) bstPreOrder.next());
+        assertTrue(bstPreOrder.hasNext());
+        assertEquals(4, (int) bstPreOrder.next());
+        assertTrue(bstPreOrder.hasNext());
+        assertEquals(3, (int) bstPreOrder.next());
+        assertTrue(bstPreOrder.hasNext());
+        assertEquals(2, (int) bstPreOrder.next());
+        assertTrue(bstPreOrder.hasNext());
+        assertEquals(1, (int) bstPreOrder.next());
+        assertFalse(bstPreOrder.hasNext());
+        
+        bstPreOrder = complete.iterator(Tree.IteratorType.PRE_ORDER);
+        assertTrue(bstPreOrder.hasNext());
+        assertEquals(4, (int) bstPreOrder.next());
+        assertTrue(bstPreOrder.hasNext());
+        assertEquals(1, (int) bstPreOrder.next());
+        assertTrue(bstPreOrder.hasNext());
+        assertEquals(0, (int) bstPreOrder.next());
+        assertTrue(bstPreOrder.hasNext());
+        assertEquals(3, (int) bstPreOrder.next());
+        assertTrue(bstPreOrder.hasNext());
+        assertEquals(6, (int) bstPreOrder.next());
+        assertTrue(bstPreOrder.hasNext());
+        assertEquals(5, (int) bstPreOrder.next());
+        assertFalse(bstPreOrder.hasNext());
+        
+        bstPreOrder = full.iterator(Tree.IteratorType.PRE_ORDER);
+        assertTrue(bstPreOrder.hasNext());
+        assertEquals(1, (int) bstPreOrder.next());
+        assertTrue(bstPreOrder.hasNext());
+        assertEquals(0, (int) bstPreOrder.next());
+        assertTrue(bstPreOrder.hasNext());
+        assertEquals(3, (int) bstPreOrder.next());
+        assertTrue(bstPreOrder.hasNext());
+        assertEquals(2, (int) bstPreOrder.next());
+        assertTrue(bstPreOrder.hasNext());
+        assertEquals(5, (int) bstPreOrder.next());
+        assertTrue(bstPreOrder.hasNext());
+        assertEquals(4, (int) bstPreOrder.next());
+        assertTrue(bstPreOrder.hasNext());
+        assertEquals(6, (int) bstPreOrder.next());
+        assertFalse(bstPreOrder.hasNext());
+        
+        bstPreOrder = perfect.iterator(Tree.IteratorType.PRE_ORDER);
+        assertTrue(bstPreOrder.hasNext());
+        assertEquals(5, (int) bstPreOrder.next());
+        assertTrue(bstPreOrder.hasNext());
+        assertEquals(1, (int) bstPreOrder.next());
+        assertTrue(bstPreOrder.hasNext());
+        assertEquals(0, (int) bstPreOrder.next());
+        assertTrue(bstPreOrder.hasNext());
+        assertEquals(3, (int) bstPreOrder.next());
+        assertTrue(bstPreOrder.hasNext());
+        assertEquals(8, (int) bstPreOrder.next());
+        assertTrue(bstPreOrder.hasNext());
+        assertEquals(7, (int) bstPreOrder.next());
+        assertTrue(bstPreOrder.hasNext());
+        assertEquals(9, (int) bstPreOrder.next());
+        assertFalse(bstPreOrder.hasNext());
+    }
+    
+    @Test (expected = UnsupportedOperationException.class)
+    public void testPreOrderIteratorRemove() {
+        Iterator<Integer> bstPreOrder = perfect.iterator(Tree.IteratorType.PRE_ORDER);
+        bstPreOrder.remove();
+    }
+    
+    @Test (expected = NoSuchElementException.class)
+    public void testEmptyPostOrderIterator() {
+        Iterator<Integer> bstPostOrder = empty.iterator(Tree.IteratorType.POST_ORDER);
+        bstPostOrder.next();
+    }
+
+    @Test(expected = NoSuchElementException.class)
+    public void testPostOrderIteratorCallNextTooManyTimes() {
+        Iterator<Integer> bstPostOrder = linearRight.iterator(Tree.IteratorType.POST_ORDER);
+        bstPostOrder.next();
+        bstPostOrder.next();
+        bstPostOrder.next();
+        bstPostOrder.next();
+        bstPostOrder.next();
+        bstPostOrder.next();
+    }
+
+    @Test(expected = ConcurrentModificationException.class)
+    public void testPostOrderIteratorConcurrentModificationException() {
+        Tree<Integer> bst = new BinarySearchTree<>();
+        bst.insert(5);
+        bst.insert(1);
+        bst.insert(7);
+        Iterator<Integer> bstPostOrder = bst.iterator(Tree.IteratorType.POST_ORDER);
+        bstPostOrder.next();
+        bst.insert(3);
+        bstPostOrder.next();
+    }
+    
+    @Test
+    public void testPostOrderIterator() {
+        Iterator<Integer> bstPostOrder = singleton.iterator(Tree.IteratorType.POST_ORDER);
+        assertTrue(bstPostOrder.hasNext());
+        assertEquals(1, (int) bstPostOrder.next());
+        assertFalse(bstPostOrder.hasNext());
+        
+        bstPostOrder = multipleElements.iterator(Tree.IteratorType.POST_ORDER);
+        assertTrue(bstPostOrder.hasNext());
+        assertEquals(0, (int) bstPostOrder.next());
+        assertTrue(bstPostOrder.hasNext());
+        assertEquals(3, (int) bstPostOrder.next());
+        assertTrue(bstPostOrder.hasNext());
+        assertEquals(1, (int) bstPostOrder.next());
+        assertTrue(bstPostOrder.hasNext());
+        assertEquals(9, (int) bstPostOrder.next());
+        assertTrue(bstPostOrder.hasNext());
+        assertEquals(8, (int) bstPostOrder.next());
+        assertTrue(bstPostOrder.hasNext());
+        assertEquals(7, (int) bstPostOrder.next());
+        assertTrue(bstPostOrder.hasNext());
+        assertEquals(5, (int) bstPostOrder.next());
+        assertFalse(bstPostOrder.hasNext());
+        
+        bstPostOrder = linearRight.iterator(Tree.IteratorType.POST_ORDER);
+        assertTrue(bstPostOrder.hasNext());
+        assertEquals(5, (int) bstPostOrder.next());
+        assertTrue(bstPostOrder.hasNext());
+        assertEquals(4, (int) bstPostOrder.next());
+        assertTrue(bstPostOrder.hasNext());
+        assertEquals(3, (int) bstPostOrder.next());
+        assertTrue(bstPostOrder.hasNext());
+        assertEquals(2, (int) bstPostOrder.next());
+        assertTrue(bstPostOrder.hasNext());
+        assertEquals(1, (int) bstPostOrder.next());
+        assertFalse(bstPostOrder.hasNext());
+        
+        bstPostOrder = linearLeft.iterator(Tree.IteratorType.POST_ORDER);
+        assertTrue(bstPostOrder.hasNext());
+        assertEquals(1, (int) bstPostOrder.next());
+        assertTrue(bstPostOrder.hasNext());
+        assertEquals(2, (int) bstPostOrder.next());
+        assertTrue(bstPostOrder.hasNext());
+        assertEquals(3, (int) bstPostOrder.next());
+        assertTrue(bstPostOrder.hasNext());
+        assertEquals(4, (int) bstPostOrder.next());
+        assertTrue(bstPostOrder.hasNext());
+        assertEquals(5, (int) bstPostOrder.next());
+        assertFalse(bstPostOrder.hasNext());
+        
+        bstPostOrder = complete.iterator(Tree.IteratorType.POST_ORDER);
+        assertTrue(bstPostOrder.hasNext());
+        assertEquals(0, (int) bstPostOrder.next());
+        assertTrue(bstPostOrder.hasNext());
+        assertEquals(3, (int) bstPostOrder.next());
+        assertTrue(bstPostOrder.hasNext());
+        assertEquals(1, (int) bstPostOrder.next());
+        assertTrue(bstPostOrder.hasNext());
+        assertEquals(5, (int) bstPostOrder.next());
+        assertTrue(bstPostOrder.hasNext());
+        assertEquals(6, (int) bstPostOrder.next());
+        assertTrue(bstPostOrder.hasNext());
+        assertEquals(4, (int) bstPostOrder.next());
+        assertFalse(bstPostOrder.hasNext());
+        
+        bstPostOrder = full.iterator(Tree.IteratorType.POST_ORDER);
+        assertTrue(bstPostOrder.hasNext());
+        assertEquals(0, (int) bstPostOrder.next());
+        assertTrue(bstPostOrder.hasNext());
+        assertEquals(2, (int) bstPostOrder.next());
+        assertTrue(bstPostOrder.hasNext());
+        assertEquals(4, (int) bstPostOrder.next());
+        assertTrue(bstPostOrder.hasNext());
+        assertEquals(6, (int) bstPostOrder.next());
+        assertTrue(bstPostOrder.hasNext());
+        assertEquals(5, (int) bstPostOrder.next());
+        assertTrue(bstPostOrder.hasNext());
+        assertEquals(3, (int) bstPostOrder.next());
+        assertTrue(bstPostOrder.hasNext());
+        assertEquals(1, (int) bstPostOrder.next());
+        assertFalse(bstPostOrder.hasNext());
+        
+        bstPostOrder = perfect.iterator(Tree.IteratorType.POST_ORDER);
+        assertTrue(bstPostOrder.hasNext());
+        assertEquals(0, (int) bstPostOrder.next());
+        assertTrue(bstPostOrder.hasNext());
+        assertEquals(3, (int) bstPostOrder.next());
+        assertTrue(bstPostOrder.hasNext());
+        assertEquals(1, (int) bstPostOrder.next());
+        assertTrue(bstPostOrder.hasNext());
+        assertEquals(7, (int) bstPostOrder.next());
+        assertTrue(bstPostOrder.hasNext());
+        assertEquals(9, (int) bstPostOrder.next());
+        assertTrue(bstPostOrder.hasNext());
+        assertEquals(8, (int) bstPostOrder.next());
+        assertTrue(bstPostOrder.hasNext());
+        assertEquals(5, (int) bstPostOrder.next());
+        assertFalse(bstPostOrder.hasNext());
+    }
+    
+    @Test (expected = UnsupportedOperationException.class)
+    public void testPostOrderIteratorRemove() {
+        Iterator<Integer> bstPostOrder = perfect.iterator(Tree.IteratorType.POST_ORDER);
+        bstPostOrder.remove();
+    }
+    
+    @Test (expected = NoSuchElementException.class)
+    public void testEmptyLevelOrderIterator() {
+        Iterator<Integer> bstLevelOrder = empty.iterator(Tree.IteratorType.LEVEL_ORDER);
+        bstLevelOrder.next();
+    }
+
+    @Test(expected = NoSuchElementException.class)
+    public void testLevelOrderIteratorCallNextTooManyTimes() {
+        Iterator<Integer> bstLevelOrder = linearRight.iterator(Tree.IteratorType.LEVEL_ORDER);
+        bstLevelOrder.next();
+        bstLevelOrder.next();
+        bstLevelOrder.next();
+        bstLevelOrder.next();
+        bstLevelOrder.next();
+        bstLevelOrder.next();
+    }
+
+    @Test(expected = ConcurrentModificationException.class)
+    public void testLevelOrderIteratorConcurrentModificationException() {
+        Tree<Integer> bst = new BinarySearchTree<>();
+        bst.insert(5);
+        bst.insert(1);
+        bst.insert(7);
+        Iterator<Integer> bstLevelOrder = bst.iterator(Tree.IteratorType.LEVEL_ORDER);
+        bstLevelOrder.next();
+        bst.insert(3);
+        bstLevelOrder.next();
+    }
+    
+    @Test
+    public void testLevelOrderIterator() {
+        Iterator<Integer> bstLevelOrder = singleton.iterator(Tree.IteratorType.LEVEL_ORDER);
+        assertTrue(bstLevelOrder.hasNext());
+        assertEquals(1, (int) bstLevelOrder.next());
+        assertFalse(bstLevelOrder.hasNext());
+        
+        bstLevelOrder = multipleElements.iterator(Tree.IteratorType.LEVEL_ORDER);
+        assertTrue(bstLevelOrder.hasNext());
+        assertEquals(5, (int) bstLevelOrder.next());
+        assertTrue(bstLevelOrder.hasNext());
+        assertEquals(1, (int) bstLevelOrder.next());
+        assertTrue(bstLevelOrder.hasNext());
+        assertEquals(7, (int) bstLevelOrder.next());
+        assertTrue(bstLevelOrder.hasNext());
+        assertEquals(0, (int) bstLevelOrder.next());
+        assertTrue(bstLevelOrder.hasNext());
+        assertEquals(3, (int) bstLevelOrder.next());
+        assertTrue(bstLevelOrder.hasNext());
+        assertEquals(8, (int) bstLevelOrder.next());
+        assertTrue(bstLevelOrder.hasNext());
+        assertEquals(9, (int) bstLevelOrder.next());
+        assertFalse(bstLevelOrder.hasNext());
+        
+        bstLevelOrder = linearRight.iterator(Tree.IteratorType.LEVEL_ORDER);
+        assertTrue(bstLevelOrder.hasNext());
+        assertEquals(1, (int) bstLevelOrder.next());
+        assertTrue(bstLevelOrder.hasNext());
+        assertEquals(2, (int) bstLevelOrder.next());
+        assertTrue(bstLevelOrder.hasNext());
+        assertEquals(3, (int) bstLevelOrder.next());
+        assertTrue(bstLevelOrder.hasNext());
+        assertEquals(4, (int) bstLevelOrder.next());
+        assertTrue(bstLevelOrder.hasNext());
+        assertEquals(5, (int) bstLevelOrder.next());
+        assertFalse(bstLevelOrder.hasNext());
+        
+        bstLevelOrder = linearLeft.iterator(Tree.IteratorType.LEVEL_ORDER);
+        assertTrue(bstLevelOrder.hasNext());
+        assertEquals(5, (int) bstLevelOrder.next());
+        assertTrue(bstLevelOrder.hasNext());
+        assertEquals(4, (int) bstLevelOrder.next());
+        assertTrue(bstLevelOrder.hasNext());
+        assertEquals(3, (int) bstLevelOrder.next());
+        assertTrue(bstLevelOrder.hasNext());
+        assertEquals(2, (int) bstLevelOrder.next());
+        assertTrue(bstLevelOrder.hasNext());
+        assertEquals(1, (int) bstLevelOrder.next());
+        assertFalse(bstLevelOrder.hasNext());
+
+        bstLevelOrder = complete.iterator(Tree.IteratorType.LEVEL_ORDER);
+        assertTrue(bstLevelOrder.hasNext());
+        assertEquals(4, (int) bstLevelOrder.next());
+        assertTrue(bstLevelOrder.hasNext());
+        assertEquals(1, (int) bstLevelOrder.next());
+        assertTrue(bstLevelOrder.hasNext());
+        assertEquals(6, (int) bstLevelOrder.next());
+        assertTrue(bstLevelOrder.hasNext());
+        assertEquals(0, (int) bstLevelOrder.next());
+        assertTrue(bstLevelOrder.hasNext());
+        assertEquals(3, (int) bstLevelOrder.next());
+        assertTrue(bstLevelOrder.hasNext());
+        assertEquals(5, (int) bstLevelOrder.next());
+        assertFalse(bstLevelOrder.hasNext());
+        
+        bstLevelOrder = full.iterator(Tree.IteratorType.LEVEL_ORDER);
+        assertTrue(bstLevelOrder.hasNext());
+        assertEquals(1, (int) bstLevelOrder.next());
+        assertTrue(bstLevelOrder.hasNext());
+        assertEquals(0, (int) bstLevelOrder.next());
+        assertTrue(bstLevelOrder.hasNext());
+        assertEquals(3, (int) bstLevelOrder.next());
+        assertTrue(bstLevelOrder.hasNext());
+        assertEquals(2, (int) bstLevelOrder.next());
+        assertTrue(bstLevelOrder.hasNext());
+        assertEquals(5, (int) bstLevelOrder.next());
+        assertTrue(bstLevelOrder.hasNext());
+        assertEquals(4, (int) bstLevelOrder.next());
+        assertTrue(bstLevelOrder.hasNext());
+        assertEquals(6, (int) bstLevelOrder.next());
+        assertFalse(bstLevelOrder.hasNext());
+        
+        bstLevelOrder = perfect.iterator(Tree.IteratorType.LEVEL_ORDER);
+        assertTrue(bstLevelOrder.hasNext());
+        assertEquals(5, (int) bstLevelOrder.next());
+        assertTrue(bstLevelOrder.hasNext());
+        assertEquals(1, (int) bstLevelOrder.next());
+        assertTrue(bstLevelOrder.hasNext());
+        assertEquals(8, (int) bstLevelOrder.next());
+        assertTrue(bstLevelOrder.hasNext());
+        assertEquals(0, (int) bstLevelOrder.next());
+        assertTrue(bstLevelOrder.hasNext());
+        assertEquals(3, (int) bstLevelOrder.next());
+        assertTrue(bstLevelOrder.hasNext());
+        assertEquals(7, (int) bstLevelOrder.next());
+        assertTrue(bstLevelOrder.hasNext());
+        assertEquals(9, (int) bstLevelOrder.next());
+        assertFalse(bstLevelOrder.hasNext());
+    }
+    
+    @Test (expected = UnsupportedOperationException.class)
+    public void testLevelOrderIteratorRemove() {
+        Iterator<Integer> bstLevelOrder = perfect.iterator(Tree.IteratorType.LEVEL_ORDER);
+        bstLevelOrder.remove();
     }
     
     @Test
