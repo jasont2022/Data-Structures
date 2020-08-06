@@ -280,7 +280,7 @@ public class BinarySearchTree<E extends Comparable<E>> implements Tree<E> {
     }
 
     /**
-     * {@inheritDoc} 
+     * {@inheritDoc}
      * Runtime: O(n)
      */
     @Override
