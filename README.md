@@ -20,11 +20,17 @@ This project is created with:
 * JUnit4 \(for testing\)
 
 ## Getting Started
+Install an IDE that supports Java, I used Eclipse IDE when coding out this project.
 
 ## Developing
+Here's a brief intro about what a developer must do in order to start developing the project further:
+```bash
+$ git clone https://github.com/jasont2022/Data-Structures.git
+$ cd Data-Structures
+```
 
 ## Data Structures Links
-The links down below are shortcuts to access the source code
+The links down below are shortcuts to access the source code in this repo:
 * [Array](https://github.com/jasont2022/Data-Structures/tree/master/src/main/array)
   * [Array Interface](https://github.com/jasont2022/Data-Structures/tree/master/src/main/array/Array.java)
   * [ArrayImpl](https://github.com/jasont2022/Data-Structures/tree/master/src/main/array/ArrayImpl.java)
