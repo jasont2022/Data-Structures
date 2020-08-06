@@ -2,19 +2,19 @@ package main.heap;
 
 import java.util.Collection;
 import java.util.List;
-import java.util.ArrayList;
 import java.util.Map;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 /**
- * This class implements the Heap Interface using a Binary Max Heap with
+ * Implements the Heap Interface using a Binary Max Heap with
  * ArrayList and HashMap for faster operations (in terms of Runtime), this
  * implementation does not support null elements
  * 
- * @param <E> the type of elements in the binary max heap
  * @author Jason Tran
  */
 public class BinaryMaxHeap<E extends Comparable<E>> implements Heap<E> {

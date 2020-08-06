@@ -4,7 +4,6 @@ import java.util.Iterator;
 /**
  * A Heap Interface that supports generics
  * 
- * @param <E> the type of elements in the queue
  * @author Jason Tran
  */
 public interface Heap<E extends Comparable<E>> extends Iterable<E> {
