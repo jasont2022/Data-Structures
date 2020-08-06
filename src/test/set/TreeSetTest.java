@@ -1,4 +1,3 @@
 package test.set;
-public class TreeSetTest {
-  
-}
+
+public class TreeSetTest {}
