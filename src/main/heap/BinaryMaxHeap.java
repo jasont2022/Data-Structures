@@ -14,7 +14,7 @@ import java.util.NoSuchElementException;
  * Implements the Heap Interface using a Binary Max Heap with
  * ArrayList and HashMap for faster operations (in terms of Runtime), this
  * implementation does not support null elements
- * 
+ *
  * @author Jason Tran
  */
 public class BinaryMaxHeap<E extends Comparable<E>> implements Heap<E> {
@@ -24,16 +24,14 @@ public class BinaryMaxHeap<E extends Comparable<E>> implements Heap<E> {
     // ArrayList
     private Map<E, HashSet<Integer>> map = new HashMap<>();
 
-    /**
-     * Constructor: Creates an empty BinaryMaxHeap
-     */
+    /** Constructor: Creates an empty BinaryMaxHeap */
     public BinaryMaxHeap() {
         this(0);
     }
 
     /**
      * Constructor: Creates a BinaryMaxHeap with the specified size
-     * 
+     *
      * @param size the number of elements for the heap
      */
     public BinaryMaxHeap(int size) {
@@ -43,7 +41,7 @@ public class BinaryMaxHeap<E extends Comparable<E>> implements Heap<E> {
     /**
      * Constructor: Creates a BinaryMaxHeap with the array, similar to the Build
      * Heap Algorithm
-     * 
+     *
      * @param array Runtime: O(n)
      */
     public BinaryMaxHeap(E[] array) {
@@ -63,7 +61,7 @@ public class BinaryMaxHeap<E extends Comparable<E>> implements Heap<E> {
 
     /**
      * Constructor: Creates a BinaryMaxHeap with the collection
-     * 
+     *
      * @param collection Runtime: O(nlg(n))
      */
     public BinaryMaxHeap(Collection<E> collection) {
@@ -73,25 +71,19 @@ public class BinaryMaxHeap<E extends Comparable<E>> implements Heap<E> {
         }
     }
 
-    /**
-     * {@inheritDoc} Runtime: O(1)
-     */
+    /** {@inheritDoc} Runtime: O(1) */
     @Override
     public int size() {
         return size;
     }
 
-    /**
-     * {@inheritDoc} Runtime: O(1)
-     */
+    /** {@inheritDoc} Runtime: O(1) */
     @Override
     public boolean isEmpty() {
         return size == 0;
     }
 
-    /**
-     * {@inheritDoc} Runtime: Expected O(1)
-     */
+    /** {@inheritDoc} Runtime: Expected O(1) */
     @Override
     public boolean contains(Object o) {
         if (o == null) {
@@ -100,9 +92,7 @@ public class BinaryMaxHeap<E extends Comparable<E>> implements Heap<E> {
         return map.containsKey(o);
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    /** {@inheritDoc} */
     @Override
     public boolean insert(E e) {
         if (e == null) {
@@ -116,9 +106,7 @@ public class BinaryMaxHeap<E extends Comparable<E>> implements Heap<E> {
         return false;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    /** {@inheritDoc} */
     @Override
     public E peek() {
         if (isEmpty()) {
@@ -127,9 +115,7 @@ public class BinaryMaxHeap<E extends Comparable<E>> implements Heap<E> {
         return arr.get(0);
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    /** {@inheritDoc} */
     @Override
     public E extract() {
         if (isEmpty()) {
@@ -138,33 +124,23 @@ public class BinaryMaxHeap<E extends Comparable<E>> implements Heap<E> {
         return null;
     }
 
-    /**
-     * {@inheritDoc} Runtime O(n)
-     */
+    /** {@inheritDoc} Runtime O(n) */
     @Override
     public boolean remove(Object o) {
         return false;
     }
 
-    /**
-     * 
-     * @param i Runtime: O(lg n)
-     */
+    /** @param i Runtime: O(lg n) */
     private void shiftUp(int i) {
-
     }
 
-    /**
-     * 
-     * @param i Runtime: O(lg n)
-     */
+    /** @param i Runtime: O(lg n) */
     private void shiftDown(int i) {
-
     }
 
     /**
      * A helper method that puts a key-value pair into the HashMap map
-     * 
+     *
      * @param e an element to be added to the map
      * @param i the index to be added to the set of indices Runtime: Expected O(1)
      */
@@ -180,16 +156,13 @@ public class BinaryMaxHeap<E extends Comparable<E>> implements Heap<E> {
     }
 
     /**
-     * 
      * @param e
      * @param i
      */
     private void mapRemove(E e, int i) {
-
     }
 
     /**
-     * 
      * @param e
      * @return
      */
@@ -198,26 +171,20 @@ public class BinaryMaxHeap<E extends Comparable<E>> implements Heap<E> {
     }
 
     /**
-     * 
      * @param i
      * @param j
      */
     private void mapSwap(int i, int j) {
-
     }
 
     /**
-     * 
      * @param i
      * @param j
      */
     private void swap(int i, int j) {
-
     }
 
-    /**
-     * {@inheritDoc} Runtime O(1)
-     */
+    /** {@inheritDoc} Runtime O(1) */
     @Override
     public void clear() {
         arr = new ArrayList<>();
@@ -225,17 +192,13 @@ public class BinaryMaxHeap<E extends Comparable<E>> implements Heap<E> {
         size = 0;
     }
 
-    /**
-     * {@inheritDoc} Runtime: O(1)
-     */
+    /** {@inheritDoc} Runtime: O(1) */
     @Override
     public Iterator<E> iterator() {
         return arr.iterator();
     }
 
-    /**
-     * {@inheritDoc} Runtime O(n)
-     */
+    /** {@inheritDoc} Runtime O(n) */
     @Override
     public String toString() {
         if (isEmpty()) {
