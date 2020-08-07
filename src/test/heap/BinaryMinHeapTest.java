@@ -1,5 +1,3 @@
 package test.heap;
 
-public class BinaryMinHeapTest {
-    
-}
+public class BinaryMinHeapTest {}
