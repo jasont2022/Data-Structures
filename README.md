@@ -1,4 +1,8 @@
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![GitHub stars](https://img.shields.io/github/stars/badges/shields.svg?style=social&label=Stars&style=plastic)](https://github.com/jasont2022/Data-Structures/stargazers)
+[![GitHub watchers](https://img.shields.io/github/watchers/badges/shields.svg?style=social&label=Watch&style=plastic)](https://github.com/jasont2022/Data-Structures/watchers)
+[![GitHub forks](https://img.shields.io/github/forks/badges/shields.svg?style=social&label=Fork&style=plastic)](https://github.com/jasont2022/Data-Structures/network/members)
+[![GitHub issues](https://img.shields.io/github/issues/Naereen/StrapDown.js.svg)](https://github.com/jasont2022/Data-Structures/issues)
+[![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)](https://github.com/jasont2022/Data-Structures/blob/master/LICENSE)
 ![README Checker](https://github.com/jasont2022/Data-Structures/workflows/README%20URL%20Checker/badge.svg)
 
 # Data Structures
@@ -77,7 +81,7 @@ The links down below are shortcuts to access the source code in this repo:
   * [Adjaceny List]
   * [Adjaceny Maxtrix]
 
-## Contribute
+## Contribute [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/dwyl/esta/issues)
 
 ## Credits
 
