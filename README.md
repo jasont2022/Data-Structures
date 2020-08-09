@@ -1,8 +1,8 @@
-[![Forks][forks-shield]][https://github.com/jasont2022/Data-Structures/network/members]
-[![Stargazers][stars-shield]][https://github.com/jasont2022/Data-Structures/stargazers]
-[![Issues][issues-shield]][https://github.com/jasont2022/Data-Structures/issues]
+[![Forks][forks-shield]](https://github.com/jasont2022/Data-Structures/network/members)
+[![Stargazers][stars-shield]](https://github.com/jasont2022/Data-Structures/stargazers)
+[![Issues][issues-shield]](https://github.com/jasont2022/Data-Structures/issues)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-![README Checker](https://github.com/williamfiset/Algorithms/workflows/README%20URL%20Checker/badge.svg)
+[![README Checker](https://github.com/williamfiset/Algorithms/workflows/README%20URL%20Checker/badge.svg)
 
 # Data Structures
 A project for myself to somewhat mimic the Java Collections Library. I will be implementing common data structures in the Java programming language from scratch.
