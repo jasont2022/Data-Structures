@@ -1,9 +1,11 @@
-[![GitHub stars](https://img.shields.io/github/stars/badges/shields.svg?style=social&label=Stars&style=plastic)](https://github.com/jasont2022/Data-Structures/stargazers)
 [![GitHub watchers](https://img.shields.io/github/watchers/badges/shields.svg?style=social&label=Watch&style=plastic)](https://github.com/jasont2022/Data-Structures/watchers)
-[![GitHub forks](https://img.shields.io/github/forks/badges/shields.svg?style=social&label=Fork&style=plastic)](https://github.com/jasont2022/Data-Structures/network/members)
-[![GitHub issues](https://img.shields.io/github/issues/Naereen/StrapDown.js.svg)](https://github.com/jasont2022/Data-Structures/issues)
-[![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)](https://github.com/jasont2022/Data-Structures/blob/master/LICENSE)
+[![Contributors][contributors-shield]][contributors-url]
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
+[![MIT License][license-shield]][license-url]
 ![README Checker](https://github.com/jasont2022/Data-Structures/workflows/README%20URL%20Checker/badge.svg)
+[![LinkedIn][linkedin-shield]][linkedin-url]
 
 # Data Structures
 A project for myself to somewhat mimic the Java Collections Library. I will be implementing common data structures in the Java programming language from scratch.
@@ -87,3 +89,17 @@ The links down below are shortcuts to access the source code in this repo:
 
 ## License
 This repository is released under the [MIT license](https://opensource.org/licenses/MIT). In short, this means you are free to use this software in any personal, open-source or commercial projects. Attribution is optional but appreciated.
+
+<!-- Links -->
+[contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=flat-square
+[contributors-url]: https://github.com/jasont2022/Data-Structures/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/othneildrew/Best-README-Template.svg?style=flat-square
+[forks-url]: https://github.com/jasont2022/Data-Structures/network/members
+[stars-shield]: https://img.shields.io/github/stars/othneildrew/Best-README-Template.svg?style=flat-square
+[stars-url]: https://github.com/jasont2022/Data-Structures/stargazers
+[issues-shield]: https://img.shields.io/github/issues/othneildrew/Best-README-Template.svg?style=flat-square
+[issues-url]: https://github.com/jasont2022/Data-Structures/issues
+[license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=flat-square
+[license-url]: https://github.com/jasont2022/Data-Structures/blob/master/LICENSE
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
+[linkedin-url]: https://linkedin.com/in/jasontran2022
