@@ -88,7 +88,7 @@ The links down below are shortcuts to access the source code in this repo:
 ## Credits
 
 ## License
-This repository is released under the [MIT license](license-url). In short, this means you are free to use this software in any personal, open-source or commercial projects. Attribution is optional but appreciated.
+This repository is released under the [MIT license](https://github.com/jasont2022/Data-Structures/blob/master/LICENSE). In short, this means you are free to use this software in any personal, open-source or commercial projects. Attribution is optional but appreciated.
 
 <!-- Links -->
 [contributors-shield]: https://img.shields.io/github/contributors/jasont2022/Data-Structures.svg?color=brightgreen&style=flat-square
