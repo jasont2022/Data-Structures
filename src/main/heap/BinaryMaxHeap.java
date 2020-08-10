@@ -1,7 +1,6 @@
 package main.heap;
 
 import java.util.Collection;
-import java.util.ConcurrentModificationException;
 import java.util.List;
 import java.util.Map;
 import java.util.ArrayList;
@@ -10,6 +9,7 @@ import java.util.HashSet;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.ConcurrentModificationException;
 
 /**
  * Implements the Heap Interface using a Binary Max Heap with ArrayList and
@@ -89,19 +89,19 @@ public class BinaryMaxHeap<E extends Comparable<E>> implements Heap<E> {
         return arr;
     }
 
-    /** {@inheritDoc} Runtime: O(1) */
+    /** {@inheritDoc}, Runtime: O(1) */
     @Override
     public int size() {
         return size;
     }
 
-    /** {@inheritDoc} Runtime: O(1) */
+    /** {@inheritDoc}, Runtime: O(1) */
     @Override
     public boolean isEmpty() {
         return size == 0;
     }
 
-    /** {@inheritDoc} Runtime: Expected O(1) */
+    /** {@inheritDoc}, Runtime: Expected O(1) */
     @Override
     public boolean contains(Object o) {
         if (o == null) {
@@ -150,15 +150,22 @@ public class BinaryMaxHeap<E extends Comparable<E>> implements Heap<E> {
 
     /** @param i Runtime: O(lg n) */
     private void shiftUp(int i) {
+        
     }
 
-    /** @param i Runtime: O(lg n) */
+    /** 
+     * Helper method that performs MaxHeapfiy operation, assume i is a
+     * valid index, Runtime: O(lg n) 
+     * 
+     * @param i an index in the heap
+     */
     private void shiftDown(int i) {
+        
     }
 
     /**
-     * Helper method that puts a key-value pair into the HashMap, Runtime: Expected
-     * O(1)
+     * Helper method that puts a key-value pair into the HashMap, 
+     * Runtime: Expected O(1)
      *
      * @param e an element to be added to the map
      * @param i the index to be added to the set of indices
