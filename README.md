@@ -83,15 +83,16 @@ The links down below are shortcuts to access the source code in this repo:
   * [Adjaceny List]
   * [Adjaceny Maxtrix]
 
-## Contribute [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/dwyl/esta/issues)
+## Contribute [![contributions welcome](contributors-welcome-shield)](issues-url)
 
 ## Credits
 
 ## License
-This repository is released under the [MIT license](https://opensource.org/licenses/MIT). In short, this means you are free to use this software in any personal, open-source or commercial projects. Attribution is optional but appreciated.
+This repository is released under the [MIT license](license-url). In short, this means you are free to use this software in any personal, open-source or commercial projects. Attribution is optional but appreciated.
 
 <!-- Links -->
-[contributors-shield]: https://img.shields.io/github/contributors/jasont2022/Data-Structures.svg?style=flat-square
+[contributors-shield]: https://img.shields.io/github/contributors/jasont2022/Data-Structures.svg?color=brightgreen&style=flat-square
+[contributors-welcome-shield]: https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat
 [contributors-url]: https://github.com/jasont2022/Data-Structures/graphs/contributors
 [watchers-shield]: https://img.shields.io/github/watchers/jasont2022/Data-Structures?style=flat-square
 [watchers-url]: https://github.com/jasont2022/Data-Structures/watchers
@@ -99,7 +100,7 @@ This repository is released under the [MIT license](https://opensource.org/licen
 [forks-url]: https://github.com/jasont2022/Data-Structures/network/members
 [stars-shield]: https://img.shields.io/github/stars/jasont2022/Data-Structures.svg?style=flat-square
 [stars-url]: https://github.com/jasont2022/Data-Structures/stargazers
-[issues-shield]: https://img.shields.io/github/issues/jasont2022/Data-Structures.svg?style=flat-square
+[issues-shield]: https://img.shields.io/github/issues/jasont2022/Data-Structures?color=success&style=flat-square
 [issues-url]: https://github.com/jasont2022/Data-Structures/issues
 [license-shield]: https://img.shields.io/github/license/jasont2022/Data-Structures.svg?style=flat-square
 [license-url]: https://github.com/jasont2022/Data-Structures/blob/master/LICENSE
