@@ -1,5 +1,5 @@
-[![GitHub watchers](https://img.shields.io/github/watchers/badges/shields.svg?style=social&label=Watch&style=plastic)](https://github.com/jasont2022/Data-Structures/watchers)
 [![Contributors][contributors-shield]][contributors-url]
+[![Watchers][watchers-shield]][watchers-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
@@ -91,15 +91,17 @@ The links down below are shortcuts to access the source code in this repo:
 This repository is released under the [MIT license](https://opensource.org/licenses/MIT). In short, this means you are free to use this software in any personal, open-source or commercial projects. Attribution is optional but appreciated.
 
 <!-- Links -->
-[contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=flat-square
+[contributors-shield]: https://img.shields.io/github/contributors/jasont2022/Data-Structures.svg?style=flat-square
 [contributors-url]: https://github.com/jasont2022/Data-Structures/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/othneildrew/Best-README-Template.svg?style=flat-square
+[watchers-shield]: https://img.shields.io/github/watchers/jasont2022/Data-Structures?style=flat-square
+[watchers-url]: https://github.com/jasont2022/Data-Structures/watchers
+[forks-shield]: https://img.shields.io/github/forks/jasont2022/Data-Structures.svg?style=flat-square
 [forks-url]: https://github.com/jasont2022/Data-Structures/network/members
-[stars-shield]: https://img.shields.io/github/stars/othneildrew/Best-README-Template.svg?style=flat-square
+[stars-shield]: https://img.shields.io/github/stars/jasont2022/Data-Structures.svg?style=flat-square
 [stars-url]: https://github.com/jasont2022/Data-Structures/stargazers
-[issues-shield]: https://img.shields.io/github/issues/othneildrew/Best-README-Template.svg?style=flat-square
+[issues-shield]: https://img.shields.io/github/issues/jasont2022/Data-Structures.svg?style=flat-square
 [issues-url]: https://github.com/jasont2022/Data-Structures/issues
-[license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=flat-square
+[license-shield]: https://img.shields.io/github/license/jasont2022/Data-Structures.svg?style=flat-square
 [license-url]: https://github.com/jasont2022/Data-Structures/blob/master/LICENSE
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/jasontran2022
