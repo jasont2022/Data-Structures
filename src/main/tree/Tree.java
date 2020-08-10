@@ -61,7 +61,7 @@ public interface Tree<E extends Comparable<E>> {
    * Returns an array containing all of the elements in this tree in proper sequence (in sorted
    * order), in order traversal
    *
-   * @return an array containing all of the elements in this list in proper sequence
+   * @return an array containing all of the elements in this tree in proper sequence
    */
   public Object[] toArray();
 
