@@ -83,7 +83,7 @@ The links down below are shortcuts to access the source code in this repo:
   * [Adjaceny List]
   * [Adjaceny Maxtrix]
 
-## Contribute [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](issues-url)
+## Contribute [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/jasont2022/Data-Structures/issues)
 
 ## Credits
 
