@@ -83,7 +83,7 @@ The links down below are shortcuts to access the source code in this repo:
   * [Adjaceny List]
   * [Adjaceny Maxtrix]
 
-## Contribute [![contributions welcome](contributors-welcome-shield)](issues-url)
+## Contribute [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](issues-url)
 
 ## Credits
 
@@ -92,7 +92,6 @@ This repository is released under the [MIT license](license-url). In short, this
 
 <!-- Links -->
 [contributors-shield]: https://img.shields.io/github/contributors/jasont2022/Data-Structures.svg?color=brightgreen&style=flat-square
-[contributors-welcome-shield]: https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat
 [contributors-url]: https://github.com/jasont2022/Data-Structures/graphs/contributors
 [watchers-shield]: https://img.shields.io/github/watchers/jasont2022/Data-Structures?style=flat-square
 [watchers-url]: https://github.com/jasont2022/Data-Structures/watchers
