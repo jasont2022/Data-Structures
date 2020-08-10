@@ -83,12 +83,13 @@ The links down below are shortcuts to access the source code in this repo:
   * [Adjaceny List]
   * [Adjaceny Maxtrix]
 
-## Contribute [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/jasont2022/Data-Structures/issues)
+## Contribute 
+[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/jasont2022/Data-Structures/issues)
 
 ## Credits
 
 ## License
-This repository is released under the [MIT license](https://github.com/jasont2022/Data-Structures/blob/master/LICENSE). In short, this means you are free to use this software in any personal, open-source or commercial projects. Attribution is optional but appreciated.
+This repository is released under the [MIT license](https://github.com/jasont2022/Data-Structures/blob/master/LICENSE.md). In short, this means you are free to use this software in any personal, open-source or commercial projects. Attribution is optional but appreciated.
 
 <!-- Links -->
 [contributors-shield]: https://img.shields.io/github/contributors/jasont2022/Data-Structures.svg?color=brightgreen&style=flat-square
@@ -102,6 +103,6 @@ This repository is released under the [MIT license](https://github.com/jasont202
 [issues-shield]: https://img.shields.io/github/issues/jasont2022/Data-Structures?color=success&style=flat-square
 [issues-url]: https://github.com/jasont2022/Data-Structures/issues
 [license-shield]: https://img.shields.io/github/license/jasont2022/Data-Structures.svg?style=flat-square
-[license-url]: https://github.com/jasont2022/Data-Structures/blob/master/LICENSE
+[license-url]: https://github.com/jasont2022/Data-Structures/blob/master/LICENSE.md
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/jasontran2022
