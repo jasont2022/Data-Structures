@@ -168,8 +168,8 @@ public class BinaryMaxHeap<E extends Comparable<E>> implements Heap<E> {
     }
 
     /**
-     * Helper method that puts a key-value pair into the HashMap, Runtime: Expected
-     * O(1)
+     * Helper method that puts a key-value pair into the HashMap, 
+     * Runtime: Expected O(1)
      *
      * @param e an element to be added to the map
      * @param i the index to be added to the set of indices
@@ -267,7 +267,8 @@ public class BinaryMaxHeap<E extends Comparable<E>> implements Heap<E> {
             /** {@inheritDoc} */
             @Override
             public void remove() {
-                throw new UnsupportedOperationException("ERROR: Remove not Supported by this Iterator");
+                throw new UnsupportedOperationException(
+                        "ERROR: Remove not Supported by this Iterator");
             }
         };
         // return arr.iterator();
