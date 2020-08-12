@@ -1,6 +1,6 @@
 package test.heap;
 
-//import main.heap.Heap;
+import main.heap.Heap;
 import main.heap.BinaryMaxHeap;
 
 import org.junit.Before;
@@ -9,18 +9,20 @@ import static org.junit.Assert.*;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.util.ConcurrentModificationException;
 import java.util.LinkedList;
 import java.util.HashSet;
 
-//import java.util.Iterator;
+import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 public class BinaryMaxHeapTest {
-    private BinaryMaxHeap<Integer> empty;
-    private List<Integer> emptyArr;
-    private BinaryMaxHeap<Integer> multipleElements;
-    private List<Integer> multiArr;
-    private BinaryMaxHeap<Integer> largeHeap;
+    private BinaryMaxHeap<Integer> empty; // an empty BinaryMaxHeap
+    private List<Integer> emptyArr; // the underlying array storing the elements
+    private BinaryMaxHeap<Integer> multipleElements; // a heap containing multiple elements
+    private List<Integer> multiArr; // the underlying array storing the elements
+    private BinaryMaxHeap<Integer> largeHeap; // a large heap
+    private List<Integer>  largeArr; // the underlying array storing the elements
 
     @Before
     public void setUpBinaryMaxHeaps() {
@@ -59,6 +61,23 @@ public class BinaryMaxHeapTest {
         largeHeap.insert(1);
         largeHeap.insert(2);
         largeHeap.insert(1);
+        
+        largeArr = new ArrayList<>();
+        largeArr.add(9);
+        largeArr.add(8);
+        largeArr.add(7);
+        largeArr.add(6);
+        largeArr.add(5);
+        largeArr.add(1);
+        largeArr.add(2);
+        largeArr.add(2);
+        largeArr.add(2);
+        largeArr.add(3);
+        largeArr.add(4);
+        largeArr.add(0);
+        largeArr.add(1);
+        largeArr.add(2);
+        largeArr.add(1);
     }
 
     @Test
@@ -204,6 +223,9 @@ public class BinaryMaxHeapTest {
     public void testGetArrayNonEmpty() {
         assertEquals(multiArr, multipleElements.getArray());
         assertEquals(6, multipleElements.size());
+        
+        assertEquals(largeArr, largeHeap.getArray());
+        assertEquals(15, largeHeap.size());
     }
 
     @Test
@@ -218,6 +240,7 @@ public class BinaryMaxHeapTest {
         assertEquals(multiArr, multipleElements.getArray());
 
         assertEquals(15, largeHeap.size());
+        assertEquals(largeArr, largeHeap.getArray());
     }
 
     @Test
@@ -235,6 +258,7 @@ public class BinaryMaxHeapTest {
 
         assertFalse(largeHeap.isEmpty());
         assertEquals(15, largeHeap.size());
+        assertEquals(largeArr, largeHeap.getArray());
     }
 
     @Test
@@ -242,6 +266,10 @@ public class BinaryMaxHeapTest {
         assertFalse(multipleElements.contains(null));
         assertEquals(6, multipleElements.size());
         assertEquals(multiArr, multipleElements.getArray());
+        
+        assertFalse(largeHeap.contains(null));
+        assertEquals(15, largeHeap.size());
+        assertEquals(largeArr, largeHeap.getArray());
     }
 
     @Test
@@ -249,6 +277,10 @@ public class BinaryMaxHeapTest {
         assertTrue(multipleElements.contains(2));
         assertEquals(6, multipleElements.size());
         assertEquals(multiArr, multipleElements.getArray());
+        
+        assertTrue(largeHeap.contains(2));
+        assertEquals(15, largeHeap.size());
+        assertEquals(largeArr, largeHeap.getArray());
     }
 
     @Test
@@ -256,11 +288,51 @@ public class BinaryMaxHeapTest {
         assertFalse(multipleElements.contains(4));
         assertEquals(6, multipleElements.size());
         assertEquals(multiArr, multipleElements.getArray());
+        
+        assertFalse(largeHeap.contains(11));
+        assertEquals(15, largeHeap.size());
+        assertEquals(largeArr, largeHeap.getArray());
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testInsertNullElement() {
         multipleElements.insert(null);
+    }
+    
+    @Test
+    public void testInsertSingleton() {
+        BinaryMaxHeap<Integer> heap = new BinaryMaxHeap<>();
+        List<Integer> array = new ArrayList<>();
+        heap.insert(1);
+        array.add(1);
+        assertEquals(1, heap.size());
+        assertEquals(array, heap.getArray());
+        assertEquals("[1]", heap.toString());
+    }
+    
+    @Test
+    public void testInsertNonEmpty() {
+        BinaryMaxHeap<Integer> heap = new BinaryMaxHeap<>();
+        heap.insert(3);
+        heap.insert(1);
+        heap.insert(5);
+        heap.insert(2);
+        heap.insert(1);
+        heap.insert(7);
+        heap.insert(4);
+        heap.insert(5);
+        List<Integer> array = new ArrayList<>();
+        array.add(7);
+        array.add(5);
+        array.add(5);
+        array.add(2);
+        array.add(1);
+        array.add(3);
+        array.add(4);
+        array.add(1);
+        assertEquals(7, heap.size());
+        assertEquals(array, heap.getArray());
+        assertEquals("[7, 5, 5, 2, 1, 3, 4, 1]", heap.toString());
     }
 
     @Test(expected = NoSuchElementException.class)
@@ -276,32 +348,199 @@ public class BinaryMaxHeapTest {
 
         assertEquals(9, (int) largeHeap.peek());
         assertEquals(15, largeHeap.size());
+        assertEquals(largeArr, largeHeap.getArray());
     }
 
     @Test(expected = NoSuchElementException.class)
     public void testExtractEmpty() {
         empty.extract();
     }
+    
+    @Test
+    public void testExtractSingleton() {
+        BinaryMaxHeap<Integer> heap = new BinaryMaxHeap<>();
+        heap.insert(1);
+        assertEquals(1, (int) heap.extract());
+        assertEquals(0, heap.size());
+        assertEquals(emptyArr, heap.getArray());
+        assertEquals("[]", heap.toString());
+    }
+    
+    @Test
+    public void testExtractNonEmpty() {
+        BinaryMaxHeap<Integer> heap = new BinaryMaxHeap<>();
+        heap.insert(3);
+        heap.insert(1);
+        heap.insert(5);
+        heap.insert(2);
+        heap.insert(1);
+        heap.insert(7);
+        heap.insert(4);
+        heap.insert(5);
+        assertEquals(7, (int) heap.extract());
+        assertEquals(7, heap.size());
+        assertEquals("[5, 2, 5, 1, 1, 3, 4]", heap.toString());
+        assertEquals(5, (int) heap.extract());
+        assertEquals(6, heap.size());
+        assertEquals("[5, 2, 4, 1, 1, 3]", heap.toString());
+        assertEquals(5, (int) heap.extract());
+        assertEquals(5, heap.size());
+        assertEquals("[4, 2, 3, 1, 1]", heap.toString());
+    }
 
     @Test
-    public void testRemove() {
-
+    public void testRemoveSingleton() {
+        BinaryMaxHeap<Integer> heap = new BinaryMaxHeap<>();
+        heap.insert(1);
+        heap.remove(1);
+        assertEquals(0, heap.size());
+        assertEquals(emptyArr, heap.getArray());
+        assertEquals("[]", heap.toString());
+    }
+    
+    @Test
+    public void testRemoveElementPresent() {
+        BinaryMaxHeap<Integer> heap = new BinaryMaxHeap<>();
+        heap.insert(7);
+        heap.insert(2);
+        heap.insert(5);
+        heap.insert(1);
+        heap.insert(1);
+        heap.insert(3);
+        heap.insert(4);
+        assertTrue(heap.remove(1));
+        assertEquals(6, heap.size());
+        assertEquals("[7, 4, 5, 1, 2, 3]", heap.toString());
+        assertTrue(heap.remove(7));
+        assertEquals(5, heap.size());
+        assertEquals("[5, 4, 3, 1, 2]", heap.toString());
+        assertTrue(heap.remove(2));
+        assertEquals(4, heap.size());
+        assertEquals("[5, 4, 3, 1]", heap.toString());
+    }
+    
+    @Test
+    public void testRemoveElementNonPresent() {
+        BinaryMaxHeap<Integer> heap = new BinaryMaxHeap<>();
+        heap.insert(7);
+        heap.insert(2);
+        heap.insert(5);
+        heap.insert(1);
+        heap.insert(1);
+        heap.insert(3);
+        heap.insert(4);
+        assertFalse(heap.remove(6));
+        assertEquals(7, heap.size());
+        assertEquals("[7, 2, 5, 1, 1, 3, 4]", heap.toString());
+    }
+    
+    @Test
+    public void testRemoveNullElement() {
+        BinaryMaxHeap<Integer> heap = new BinaryMaxHeap<>();
+        heap.insert(7);
+        heap.insert(2);
+        heap.insert(5);
+        heap.insert(1);
+        heap.insert(1);
+        heap.insert(3);
+        heap.insert(4);
+        assertFalse(heap.remove(null));
+        assertEquals(7, heap.size());
+        assertEquals("[7, 2, 5, 1, 1, 3, 4]", heap.toString());
     }
 
     @Test
     public void testClear() {
-
+        BinaryMaxHeap<Integer> heap = new BinaryMaxHeap<>();
+        heap.insert(3);
+        heap.insert(4);
+        heap.insert(9);
+        heap.insert(7);
+        heap.insert(1);
+        heap.insert(5);
+        heap.remove(4);
+        heap.insert(10);
+        heap.clear();
+        assertEquals(0, heap.size());
+        assertEquals(emptyArr, heap.getArray());
+        assertEquals("[]", heap.toString());
     }
 
     @Test
-    public void testToArray() {
+    public void testToArrayEmpty() {
+        Object[] array = {};
+        assertArrayEquals(array, empty.toArray());
+        assertEquals(0, empty.size());
+        assertEquals(emptyArr, empty.getArray());
+    }
+    
+    @Test
+    public void testToArrayNonEmpty() {
+        Object[] multiArray = {8, 7, 6, 3, 2, 5};
+        assertArrayEquals(multiArray, multipleElements.toArray());
+        assertEquals(6, multipleElements.size());
+        assertEquals(multiArr, multipleElements.getArray());
+        
+        Object[] largeArray = {9, 8, 7, 6, 5, 1, 2, 2, 2, 3, 4, 0, 1 , 2, 1};
+        assertArrayEquals(largeArray, largeHeap.toArray());
+        assertEquals(15, largeHeap.size());
+        assertEquals(largeArr, largeHeap.getArray());
+    }
+    
+    @Test(expected = NoSuchElementException.class)
+    public void testEmptyIterator() {
+        Heap<Integer> heap = new BinaryMaxHeap<>();
+        Iterator<Integer> heapIter = heap.iterator();
+        heapIter.next();
+    }
 
+    @Test(expected = NoSuchElementException.class)
+    public void testIteratorCallNextTooManyTimes() {
+        Heap<Integer> heap = new BinaryMaxHeap<>();
+        heap.insert(1);
+        heap.insert(7);
+        heap.insert(10);
+        Iterator<Integer> heapIter = heap.iterator();
+        heapIter.next();
+        heapIter.next();
+        heapIter.next();
+        heapIter.next();
+    }
+
+    @Test(expected = ConcurrentModificationException.class)
+    public void testIteratorConcurrentModificationException() {
+        Heap<Integer> heap = new BinaryMaxHeap<>();
+        heap.insert(1);
+        heap.insert(7);
+        heap.insert(10);
+        Iterator<Integer> heapIter = heap.iterator();
+        heapIter.next();
+        heap.insert(3);
+        heapIter.next();
     }
 
     @Test
     public void testIterator() {
-        //Heap<Integer> heap = new BinaryMaxHeap<>();
-        //Iterator<Integer> heapIter = heap.iterator();
+        Iterator<Integer> heapIter = multipleElements.iterator();
+        assertTrue(heapIter.hasNext());
+        assertEquals(8, (int) heapIter.next());
+        assertTrue(heapIter.hasNext());
+        assertEquals(7, (int) heapIter.next());
+        assertTrue(heapIter.hasNext());
+        assertEquals(6, (int) heapIter.next());
+        assertTrue(heapIter.hasNext());
+        assertEquals(3, (int) heapIter.next());
+        assertTrue(heapIter.hasNext());
+        assertEquals(2, (int) heapIter.next());
+        assertTrue(heapIter.hasNext());
+        assertEquals(5, (int) heapIter.next());
+        assertFalse(heapIter.hasNext());
+    }
+
+    @Test(expected = UnsupportedOperationException.class)
+    public void testIteratorRemove() {
+        Iterator<Integer> heapIter = multipleElements.iterator();
+        heapIter.remove();
     }
 
     @Test

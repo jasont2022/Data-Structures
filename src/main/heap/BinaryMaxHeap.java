@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
+import java.util.TreeSet;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
@@ -23,7 +23,7 @@ public class BinaryMaxHeap<E extends Comparable<E>> implements Heap<E> {
     private List<E> arr; // an array list to store the collection of elements
     // a HashMap to map elements from the ArrayList to the set of indices in the
     // ArrayList
-    private Map<E, HashSet<Integer>> map = new HashMap<>();
+    private Map<E, TreeSet<Integer>> map = new HashMap<>();
 
     /** Constructor: Creates an empty BinaryMaxHeap */
     public BinaryMaxHeap() {
@@ -74,7 +74,7 @@ public class BinaryMaxHeap<E extends Comparable<E>> implements Heap<E> {
         arr.addAll(collection);
 
         // perform the build heap algorithm
-        for (int i = Math.max(0, collection.size() / 2) - 1; i >= 0; i--) {
+        for (int i = Math.max(0, (arr.size() / 2) - 1); i >= 0; i--) {
             shiftDown(i);
         }
     }
@@ -175,9 +175,9 @@ public class BinaryMaxHeap<E extends Comparable<E>> implements Heap<E> {
      * @param i the index to be added to the set of indices
      */
     private void mapAdd(E e, int i) {
-        HashSet<Integer> set = map.get(e);
+        TreeSet<Integer> set = map.get(e);
         if (set == null) {
-            set = new HashSet<>();
+            set = new TreeSet<>();
             set.add(i);
             map.put(e, set);
         } else {
