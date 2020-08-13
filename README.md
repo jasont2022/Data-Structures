@@ -7,6 +7,9 @@
 ![README Checker](https://github.com/jasont2022/Data-Structures/workflows/README%20URL%20Checker/badge.svg)
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
+# Project Status
+**Currently under development, still adding and modifying in files for priority queue and binary heap files**
+
 # Data Structures
 A project for myself to somewhat mimic the Java Collections Library. I will be implementing common data structures in the Java programming language from scratch.
 
@@ -19,9 +22,6 @@ A project for myself to somewhat mimic the Java Collections Library. I will be i
 * [Contribute](#contribute)
 * [Credits](#credits)
 * [License](#license)
-
-## Project Status
-**Currently under development, still adding in files for priority queue and binary heap files**
 
 ## Motivation
 
