@@ -20,6 +20,9 @@ A project for myself to somewhat mimic the Java Collections Library. I will be i
 * [Credits](#credits)
 * [License](#license)
 
+## Project Status
+**Currently under development, still adding in files for priority queue and binary heap files**
+
 ## Motivation
 
 ## Technologies
