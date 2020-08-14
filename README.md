@@ -20,21 +20,18 @@
 A project for myself to somewhat mimic the Java Collections Library. I will be implementing common data structures in the Java programming language from scratch.
 
 ## Table of Contents
-* [Motivation](#motivation)
 * [Technologies](#technologies)
 * [Getting Started](#getting-started)
   * [Prerequisites](#prerequisites)
   * [Installation](#installation)
-* [Developing](#developing)
+  * [Developing](#developing)
 * [Data Structures Links](#data-structures-links)
 * [Contribute](#contribute)
 * [Credits](#credits)
 * [License](#license)
 
-## Motivation
-
 ## Technologies
-This project is created with:
+This project is created with the following below:
 * Java
 * [Java Collections Library](https://docs.oracle.com/javase/7/docs/api/java/util/Collections.html)
 * JUnit4 \(for testing\)
@@ -43,14 +40,12 @@ This project is created with:
 Here are the following steps below to get started with the code:
 ### Prerequisites
 Have Java and an IDE that supports Java installed in your local computer
-
 ### Installation
 1. Clone the repo
 ```bash
 $ git clone https://github.com/jasont2022/Data-Structures
 ```
-
-## Developing
+### Developing
 Here's a brief intro about what a developer must do in order to start developing the project further:
 ```bash
 $ git clone https://github.com/jasont2022/Data-Structures.git
@@ -91,6 +86,7 @@ The links down below are shortcuts to access the source code in this repo:
   * [BinaryMaxHeap](https://github.com/jasont2022/Data-Structures/tree/master/src/main/heap/BinaryMaxHeap.java)
   * [BinaryMinHeap](https://github.com/jasont2022/Data-Structures/tree/master/src/main/heap/BinaryMinHeap.java)
   * [Fibonacci Heap]
+  * [Binomial Heap]
 * [Priority Queue](https://github.com/jasont2022/Data-Structures/tree/master/src/main/priorityqueue)
   * [Priority Queue Interface](https://github.com/jasont2022/Data-Structures/tree/master/src/main/priorityqueue/PriorityQueue.java)
   * [PriorityQueueImpl]
@@ -105,10 +101,13 @@ The links down below are shortcuts to access the source code in this repo:
 ## Contribute 
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)][issues-url]
 
+Contributions are what make the open source community such an amazing place to learn, inspire, create, and promote intellectual discussions. This repository is contribution friendly! Any contributions you make are greatly appreciated. Please check out the repository Wiki on guidelines and instructions before contributing to this repository.
+
 ## Credits
+This project would not be possible without additional resources.
 
 ## License
-This repository is released under the [MIT license][license-url]. In short, this means you are free to use this software in any personal, open-source or commercial projects. Attribution is optional but appreciated.
+This repository is released under the [MIT license][license-url]. In short, you are free to use this software in any personal, open-source or commercial projects. See `LICENSE.md` or the [opensource MIT license](https://opensource.org/licenses/MIT) for more information.
 
 <!-- Links -->
 [contributors-shield]: https://img.shields.io/github/contributors/jasont2022/Data-Structures.svg?color=brightgreen&style=flat-square
