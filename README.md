@@ -101,7 +101,7 @@ The links down below are shortcuts to access the source code in this repo:
 ## Contribute 
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)][issues-url]
 
-Contributions are what make the open source community such an amazing place to learn, inspire, create, and promote intellectual discussions. This repository is contribution friendly! Any contributions you make are greatly appreciated. Please check out the repository Wiki on guidelines and instructions before contributing to this repository.
+Contributions are what make the open source community such an amazing place to learn, inspire, develop, and promote intellectual discussions. This repository aims to be contribution friendly and any contributions you make are greatly appreciated. Please be sure to check out the wiki on guidelines and instructions before contributing to this repository.
 
 ## Credits
 This project would not be possible without additional resources.
