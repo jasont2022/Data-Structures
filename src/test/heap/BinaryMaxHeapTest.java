@@ -95,7 +95,7 @@ public class BinaryMaxHeapTest {
     @Test
     public void testSecondConstructorNonNegativeSize() {
         BinaryMaxHeap<Integer> heap = new BinaryMaxHeap<>(4);
-        assertEquals(4, heap.size());
+        assertEquals(0, heap.size());
         assertEquals(emptyArr, heap.getArray());
         assertEquals("[]", empty.toString());
     }
@@ -330,7 +330,7 @@ public class BinaryMaxHeapTest {
         array.add(3);
         array.add(4);
         array.add(1);
-        assertEquals(7, heap.size());
+        assertEquals(8, heap.size());
         assertEquals(array, heap.getArray());
         assertEquals("[7, 5, 5, 2, 1, 3, 4, 1]", heap.toString());
     }

@@ -63,7 +63,7 @@ public interface Heap<E extends Comparable<E>> extends Iterable<E> {
      * @return true if removal of o is successful otherwise false
      * @throws NoSuchElementExpection if the heap is empty
      */
-    public boolean remove(Object o);
+    public boolean remove(E e);
 
     /**
      * Deletes all the elements in the heap, the heap will be empty after this call

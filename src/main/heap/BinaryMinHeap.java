@@ -85,7 +85,7 @@ public class BinaryMinHeap<E extends Comparable<E>> implements Heap<E> {
 
     /** {@inheritDoc} Runtime: O(lg n) */
     @Override
-    public boolean remove(Object o) {
+    public boolean remove(E e) {
         return false;
     }
 
