@@ -9,12 +9,12 @@ import static org.junit.Assert.*;
 
 import java.util.List;
 import java.util.ArrayList;
-import java.util.ConcurrentModificationException;
 import java.util.LinkedList;
 import java.util.HashSet;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.ConcurrentModificationException;
 
 public class BinaryMaxHeapTest {
     private BinaryMaxHeap<Integer> empty; // an empty BinaryMaxHeap
@@ -111,8 +111,9 @@ public class BinaryMaxHeapTest {
 
     @Test
     public void testThirdConstructorNonEmptyArray() {
-        Integer[] array = { 3, 7, 4, 1, 5, 8, 9 };
+        Integer[] array = {3, 7, 4, 1, 5, 8, 9};
         BinaryMaxHeap<Integer> heap = new BinaryMaxHeap<>(array);
+        
         List<Integer> arr = new ArrayList<>();
         arr.add(9);
         arr.add(7);
@@ -126,11 +127,8 @@ public class BinaryMaxHeapTest {
         assertEquals("[9, 7, 8, 1, 5, 3, 4]", heap.toString());
     }
 
-    /*
     @Test
     public void testFourthConstructorArrayList() {
-        //Integer[] array = { 3, 4, 10, 2, 5, 0, 3, 1};
-        
         ArrayList<Integer> arrayList = new ArrayList<>();
         arrayList.add(3);
         arrayList.add(4);
@@ -145,21 +143,19 @@ public class BinaryMaxHeapTest {
         List<Integer> arr = new ArrayList<>();
         arr.add(10);
         arr.add(5);
-        arr.add(3);
-        arr.add(2);
         arr.add(4);
+        arr.add(2);
+        arr.add(3);
         arr.add(0);
         arr.add(3);
         arr.add(1);
         assertEquals(8, heap.size());
         assertEquals(arr, heap.getArray());
-        assertEquals("[10, 5, 3, 2, 4, 0, 3, 1]", heap.toString());
+        assertEquals("[10, 5, 4, 2, 3, 0, 3, 1]", heap.toString());
     }
 
     @Test
     public void testFourthConstructorHashSet() {
-        //Integer[] array = { 4, 1, 5, 2, 9, 7, 3, 6, 8};
-        
         HashSet<Integer> set = new HashSet<>();
         set.add(4);
         set.add(1);
@@ -175,22 +171,20 @@ public class BinaryMaxHeapTest {
         List<Integer> arr = new ArrayList<>();
         arr.add(9);
         arr.add(8);
-        arr.add(7);
         arr.add(6);
-        arr.add(1);
-        arr.add(5);
+        arr.add(7);
         arr.add(3);
-        arr.add(4);
         arr.add(2);
+        arr.add(5);
+        arr.add(1);
+        arr.add(4);
         assertEquals(9, heap.size());
         assertEquals(arr, heap.getArray());
-        assertEquals("[9, 8, 7, 6, 1, 5, 3, 4, 2]", heap.toString());
+        assertEquals("[9, 8, 6, 7, 3, 2, 5, 1, 4]", heap.toString());
     }
     
     @Test
     public void testFourthConstructorLinkedList() {
-        //Integer[] array = { 3, 3, 2, 5, 5, 4, 0, 1, 1, 3, 2};
-        
         LinkedList<Integer> list = new LinkedList<>();
         list.add(3);
         list.add(3);
@@ -221,7 +215,6 @@ public class BinaryMaxHeapTest {
         assertEquals(arr, heap.getArray());
         assertEquals("[5, 5, 4, 3, 3, 2, 0, 1, 1, 3, 2]", heap.toString());
     }
-    */
     
     @Test
     public void testGetArrayEmpty() {

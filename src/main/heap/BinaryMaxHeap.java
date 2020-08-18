@@ -21,8 +21,7 @@ import java.util.ConcurrentModificationException;
  */
 public class BinaryMaxHeap<E extends Comparable<E>> implements Heap<E> {
     private List<E> arr; // an array list to store the collection of elements
-    // a HashMap to map elements from the ArrayList to the set of indices in the
-    // ArrayList
+    // a HashMap to map elements from the ArrayList to the set of indices in the ArrayList
     private Map<E, TreeSet<Integer>> map = new HashMap<>();
 
     /** Constructor: Creates an empty BinaryMaxHeap */
@@ -50,9 +49,9 @@ public class BinaryMaxHeap<E extends Comparable<E>> implements Heap<E> {
      * @param array an array to be constructed into a heap
      */
     public BinaryMaxHeap(E[] array) {
-        arr = new ArrayList<>(array.length);
+        this(array.length);
 
-        // first add the elements into the array list and hash map
+        // first add the elements into the array and hash map
         for (int i = 0; i < array.length; i++) {
             mapAdd(array[i], i);
             arr.add(array[i]);
@@ -64,22 +63,21 @@ public class BinaryMaxHeap<E extends Comparable<E>> implements Heap<E> {
         }
     }
     
-    /*
-    **
-     * Constructor: Creates a BinaryMaxHeap with the collection, Runtime: O(nlgn)
+    /**
+     * Constructor: Creates a BinaryMaxHeap with the collection, Runtime: O(nlg(n))
+     * Do not get this confused with the O(n) Build Heap Algorithm
      *
      * @param collection a collection of elements
-     *
+     */
     public BinaryMaxHeap(Collection<E> collection) {
         this(collection.size());
         for (E e : collection) {
             insert(e);
         }
     }
-    */
 
     /**
-     * This returns the underlying array that stores the collection of elements,
+     * Returns the underlying array that stores the collection of elements,
      * Runtime: O(1)
      *
      * @return the underlying array
@@ -376,6 +374,7 @@ public class BinaryMaxHeap<E extends Comparable<E>> implements Heap<E> {
     /** {@inheritDoc} Runtime: O(1) */
     @Override
     public Iterator<E> iterator() {
+        // custom iterator 
         return new Iterator<E>() {
             private int count; // the counter of elements traveled so far
             private final int expectedSize = arr.size(); // check for concurrent modification
@@ -412,6 +411,7 @@ public class BinaryMaxHeap<E extends Comparable<E>> implements Heap<E> {
                         "ERROR: Remove not Supported by this Iterator");
             }
         };
+        // could also write this line below
         // return arr.iterator();
     }
 
