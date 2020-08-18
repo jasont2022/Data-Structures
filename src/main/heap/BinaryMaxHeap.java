@@ -63,21 +63,20 @@ public class BinaryMaxHeap<E extends Comparable<E>> implements Heap<E> {
             shiftDown(i);
         }
     }
-
-    /**
-     * Constructor: Creates a BinaryMaxHeap with the collection, Runtime: O(n)
+    
+    /*
+    **
+     * Constructor: Creates a BinaryMaxHeap with the collection, Runtime: O(nlgn)
      *
      * @param collection a collection of elements
-     */
+     *
     public BinaryMaxHeap(Collection<E> collection) {
-        arr = new ArrayList<>(collection.size());
-        arr.addAll(collection);
-
-        // perform the build heap algorithm
-        for (int i = Math.max(0, (arr.size() / 2) - 1); i >= 0; i--) {
-            shiftDown(i);
+        this(collection.size());
+        for (E e : collection) {
+            insert(e);
         }
     }
+    */
 
     /**
      * This returns the underlying array that stores the collection of elements,
@@ -121,7 +120,7 @@ public class BinaryMaxHeap<E extends Comparable<E>> implements Heap<E> {
         int index = size() - 1;
         // update the hash map
         mapAdd(e, index);
-        
+
         // shift the element up to the correct position
         shiftUp(index);
         return true;
@@ -137,23 +136,20 @@ public class BinaryMaxHeap<E extends Comparable<E>> implements Heap<E> {
         }
         return arr.get(0);
     }
-    
+
     /**
-     * {@inheritDoc}
-     * Runtime: O(lg n)
+     * {@inheritDoc} Runtime: O(lg n)
      */
     @Override
     public E extract() {
         if (isEmpty()) {
             throw new NoSuchElementException("ERROR: Cannot extract an empty heap");
         }
-        
         return removeAt(0);
     }
 
     /**
-     * {@inheritDoc}
-     * Runtime: O(lg n)
+     * {@inheritDoc} Runtime: O(lg n)
      */
     @Override
     public boolean remove(E e) {
@@ -161,7 +157,7 @@ public class BinaryMaxHeap<E extends Comparable<E>> implements Heap<E> {
         if (e == null) {
             return false;
         }
-        // get the index
+        // get the largest index of e
         Integer index = mapGet(e);
         // if the index is not null remove the element
         if (index != null) {
@@ -169,9 +165,11 @@ public class BinaryMaxHeap<E extends Comparable<E>> implements Heap<E> {
         }
         return index != null;
     }
-    
+
     /**
-     * Helper method to remove the node at the index
+     * Helper method to remove the node at the index, 
+     * Runtime: O(lg n)
+     * 
      * @param index the index of the node
      * @return the prev value of the node
      */
@@ -183,30 +181,30 @@ public class BinaryMaxHeap<E extends Comparable<E>> implements Heap<E> {
         E prev = arr.get(index);
         // swap the elements
         swap(index, last);
-        
-        //delete node from the heap
+
+        // delete node from the heap
         arr.remove(last);
         mapRemove(prev, last);
-        
+
         // removed last element
         if (index == last) {
             return prev;
         }
-        
+
         E elem = arr.get(index);
         // attempt to shift down the element
         shiftDown(index);
-        
+
         // if shifting down does not work try to shift up
         if (arr.get(index).equals(elem)) {
             shiftUp(index);
         }
         return prev;
     }
-    
+
     /**
-     * Helper method that tests if the value of node i >= node j, 
-     * assumes that i and j are valid indices, Runtime: O(1)
+     * Helper method that tests if the value of node i >= node j, assumes that i and
+     * j are valid indices, Runtime: O(1)
      * 
      * @param i an index in the heap
      * @param j another index in the heap
@@ -217,18 +215,17 @@ public class BinaryMaxHeap<E extends Comparable<E>> implements Heap<E> {
         E value2 = arr.get(j);
         return value1.compareTo(value2) >= 0;
     }
-    
+
     /**
-     * Helper method that pushes the node up to the correct position in the heap
-     * to satisfy the max heap property, assume i is a valid index,
-     * Runtime: O(lg n)
+     * Helper method that pushes the node up to the correct position in the heap to
+     * satisfy the max heap property, assume i is a valid index, Runtime: O(lg n)
      * 
      * @param i an index in the heap
      */
     private void shiftUp(int i) {
         // get the parent index of the current index i
         int parent = (int) (Math.ceil(i / 2.0) - 1);
-        
+
         // base case: parent < 0 || max(parent, i)
         if (parent >= 0 && !max(parent, i)) {
             // update the array and hashmap
@@ -239,9 +236,9 @@ public class BinaryMaxHeap<E extends Comparable<E>> implements Heap<E> {
     }
 
     /**
-     * Helper method that performs MaxHeapfiy operation, pushes the node down
-     * to the correct position in the heap to satisfy the max heap property,
-     * assume i is a valid index, Runtime: O(lg n)
+     * Helper method that performs MaxHeapfiy operation, pushes the node down to the
+     * correct position in the heap to satisfy the max heap property, assume i is a
+     * valid index, Runtime: O(lg n)
      * 
      * @param i an index in the heap
      */
@@ -249,7 +246,7 @@ public class BinaryMaxHeap<E extends Comparable<E>> implements Heap<E> {
         int left = 2 * i + 1; // left child index
         int right = 2 * i + 2;
         int max = 0;
-        if (left < arr.size() && arr.get(left).compareTo(arr.get(i)) > 0)  {
+        if (left < arr.size() && arr.get(left).compareTo(arr.get(i)) > 0) {
             max = left;
         } else {
             max = i;
@@ -261,13 +258,13 @@ public class BinaryMaxHeap<E extends Comparable<E>> implements Heap<E> {
             // update the array and hashmap
             swap(i, max);
             // continue to fix the heap
-            shiftDown(i);
+            shiftDown(max);
         }
     }
 
     /**
-     * Helper method that puts a key-value pair into the HashMap, 
-     * Runtime: Expected O(1)
+     * Helper method that puts a key-value pair into the HashMap, Runtime: Expected
+     * O(1)
      *
      * @param e an element to be added to the map
      * @param i the index to be added to the set of indices
@@ -284,8 +281,8 @@ public class BinaryMaxHeap<E extends Comparable<E>> implements Heap<E> {
     }
 
     /**
-     * Helper method to remove the index corresponding to e in
-     * the hashmap, Runtime: O(lg n)
+     * Helper method to remove the index corresponding to e in the hashmap, Runtime:
+     * O(lg n)
      * 
      * @param e an element to be remove
      * @param i an index of e
@@ -302,8 +299,8 @@ public class BinaryMaxHeap<E extends Comparable<E>> implements Heap<E> {
     }
 
     /**
-     * Helper method to get the index corresponding to e, by 
-     * convention grab the largest index corresponding to e
+     * Helper method to get the index corresponding to e, by convention grab the
+     * largest index corresponding to e
      * 
      * @param e an element in the heap
      * @return largest index of e
@@ -317,31 +314,31 @@ public class BinaryMaxHeap<E extends Comparable<E>> implements Heap<E> {
     }
 
     /**
-     * Helper method to swap the indices in the hashmap, 
-     * assume i and j are valid indices, Runtime O(1)
+     * Helper method to swap the indices in the hashmap, assume i and j are valid
+     * indices, Runtime O(1)
      * 
      * @param val1 a value in the heap
      * @param val2 another value in the heap
-     * @param i an index in the heap
-     * @param j another index in the heap
+     * @param i    an index in the heap
+     * @param j    another index in the heap
      */
     private void mapSwap(E val1, E val2, int i, int j) {
         // get the sets of the indices
         Set<Integer> set1 = map.get(val1);
         Set<Integer> set2 = map.get(val2);
-        
+
         // remove the old indices
         set1.remove(i);
         set2.remove(j);
-        
+
         // add the new indices
         set1.add(j);
         set2.add(i);
     }
 
     /**
-     * Helper method to swap the indices in the array and hash map,
-     * assume i and j are valid indices, Runtime O(1)
+     * Helper method to swap the indices in the array and hash map, assume i and j
+     * are valid indices, Runtime O(1)
      * 
      * @param i an index in the heap
      * @param j another index in the heap
@@ -350,12 +347,12 @@ public class BinaryMaxHeap<E extends Comparable<E>> implements Heap<E> {
         // get the nodes of the positions
         E node1 = arr.get(i);
         E node2 = arr.get(j);
-        
-        //swap them in the array
+
+        // swap them in the array
         arr.set(i, node2);
         arr.set(j, node1);
-        
-        //swap them in the map
+
+        // swap them in the map
         mapSwap(node1, node2, i, j);
     }
 

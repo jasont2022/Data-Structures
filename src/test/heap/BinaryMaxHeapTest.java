@@ -126,8 +126,11 @@ public class BinaryMaxHeapTest {
         assertEquals("[9, 7, 8, 1, 5, 3, 4]", heap.toString());
     }
 
+    /*
     @Test
     public void testFourthConstructorArrayList() {
+        //Integer[] array = { 3, 4, 10, 2, 5, 0, 3, 1};
+        
         ArrayList<Integer> arrayList = new ArrayList<>();
         arrayList.add(3);
         arrayList.add(4);
@@ -137,6 +140,7 @@ public class BinaryMaxHeapTest {
         arrayList.add(0);
         arrayList.add(3);
         arrayList.add(1);
+        
         BinaryMaxHeap<Integer> heap = new BinaryMaxHeap<>(arrayList);
         List<Integer> arr = new ArrayList<>();
         arr.add(10);
@@ -154,6 +158,8 @@ public class BinaryMaxHeapTest {
 
     @Test
     public void testFourthConstructorHashSet() {
+        //Integer[] array = { 4, 1, 5, 2, 9, 7, 3, 6, 8};
+        
         HashSet<Integer> set = new HashSet<>();
         set.add(4);
         set.add(1);
@@ -164,6 +170,7 @@ public class BinaryMaxHeapTest {
         set.add(3);
         set.add(6);
         set.add(8);
+       
         BinaryMaxHeap<Integer> heap = new BinaryMaxHeap<>(set);
         List<Integer> arr = new ArrayList<>();
         arr.add(9);
@@ -179,9 +186,11 @@ public class BinaryMaxHeapTest {
         assertEquals(arr, heap.getArray());
         assertEquals("[9, 8, 7, 6, 1, 5, 3, 4, 2]", heap.toString());
     }
-
+    
     @Test
     public void testFourthConstructorLinkedList() {
+        //Integer[] array = { 3, 3, 2, 5, 5, 4, 0, 1, 1, 3, 2};
+        
         LinkedList<Integer> list = new LinkedList<>();
         list.add(3);
         list.add(3);
@@ -194,12 +203,12 @@ public class BinaryMaxHeapTest {
         list.add(1);
         list.add(3);
         list.add(2);
+        
         BinaryMaxHeap<Integer> heap = new BinaryMaxHeap<>(list);
         List<Integer> arr = new ArrayList<>();
         arr.add(5);
         arr.add(5);
         arr.add(4);
-        arr.add(3);
         arr.add(3);
         arr.add(3);
         arr.add(2);
@@ -210,9 +219,10 @@ public class BinaryMaxHeapTest {
         arr.add(2);
         assertEquals(11, heap.size());
         assertEquals(arr, heap.getArray());
-        assertEquals("[3, 3, 2, 5, 5, 4, 0, 1, 1, 3, 2]", heap.toString());
+        assertEquals("[5, 5, 4, 3, 3, 2, 0, 1, 1, 3, 2]", heap.toString());
     }
-
+    */
+    
     @Test
     public void testGetArrayEmpty() {
         assertEquals(emptyArr, empty.getArray());
@@ -377,6 +387,7 @@ public class BinaryMaxHeapTest {
         heap.insert(7);
         heap.insert(4);
         heap.insert(5);
+        assertEquals("[7, 5, 5, 2, 1, 3, 4, 1]", heap.toString());
         assertEquals(7, (int) heap.extract());
         assertEquals(7, heap.size());
         assertEquals("[5, 2, 5, 1, 1, 3, 4]", heap.toString());
