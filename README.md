@@ -89,7 +89,8 @@ The links down below are shortcuts to access the source code in this repo:
   * [Binomial Heap]
 * [Priority Queue](https://github.com/jasont2022/Data-Structures/tree/master/src/main/priorityqueue)
   * [Priority Queue Interface](https://github.com/jasont2022/Data-Structures/tree/master/src/main/priorityqueue/PriorityQueue.java)
-  * [PriorityQueueImpl]
+  * [MaxPriorityQueue](https://github.com/jasont2022/Data-Structures/blob/master/src/main/priorityqueue/MaxPriorityQueue.java)
+  * [MinPriorityQueue]
 * [Tree](https://github.com/jasont2022/Data-Structures/tree/master/src/main/tree)
   * [Tree Interface](https://github.com/jasont2022/Data-Structures/tree/master/src/main/tree/Tree.java)
   * [BinarySearchTree](https://github.com/jasont2022/Data-Structures/tree/master/src/main/tree/BinarySearchTree.java)
