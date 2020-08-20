@@ -24,9 +24,9 @@ public interface PriorityQueue<K extends Comparable<K>, V> {
     public boolean isEmpty();
 
     /**
-     * Returns true if the specified value is present in the map
+     * Returns true if the specified value is present in the priority queue
      *
-     * @param value the value to look up in the map
+     * @param value the value to look up in the priority queue
      * @return true if the map contains the specified value
      */
     public boolean containsValue(Object value);
@@ -42,6 +42,16 @@ public interface PriorityQueue<K extends Comparable<K>, V> {
      * @throws IllegalArgumentException if value is already in the priority queue
      */
     public boolean add(K key, V value);
+    
+    /**
+     * Replaces the old key with a new key of a particular value in the queue
+     * 
+     * @param key a new key to replace the old key 
+     * @param value a value associated with the key to update
+     * @throws NoSuchElementException if value is not present in the queue
+     * @throws IllegalArgumentException if key is null or the new key violates a specific property
+     */
+    public void pushKey(K key, V value);
 
     /**
      * Retrieves, but does not remove, the first entry of this priority queue
@@ -75,8 +85,8 @@ public interface PriorityQueue<K extends Comparable<K>, V> {
     public Iterator<PriorityQueue.Entry<K, V>> iterator();
 
     /**
-     * Returns a string representation of the whole priority queue in the format [q_1, q_2,
-     * ...., q_n] or [] if the queue is empty
+     * Returns a string representation of the whole priority queue in the format [(k_1,v_1), 
+     * (k_2,v_2), ..., (k_n, v_n)] or [] if the queue is empty
      * 
      * @return the string format of the priority queue
      */
