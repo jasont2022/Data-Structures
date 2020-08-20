@@ -398,9 +398,7 @@ public class BinaryMaxHeap<E extends Comparable<E>> implements Heap<E> {
                 if (!hasNext()) {
                     throw new NoSuchElementException("ERROR: No more elements to iterate");
                 } else {
-                    E prev = arr.get(count);
-                    count++;
-                    return prev;
+                    return arr.get(count++);
                 }
             }
 
