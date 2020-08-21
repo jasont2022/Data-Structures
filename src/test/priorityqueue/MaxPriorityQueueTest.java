@@ -1,13 +1,14 @@
 package test.priorityqueue;
 
 import main.priorityqueue.*;
-import main.heap.Heap;
-import main.heap.BinaryMaxHeap;
+import main.heap.*;
 
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
+import java.util.Collection;
+import java.util.Set;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.LinkedList;

@@ -1,9 +1,9 @@
 package main.priorityqueue;
-import main.heap.Heap;
+
+import main.heap.*;
 
 import java.util.Collection;
 import java.util.Set;
-
 import java.util.List;
 import java.util.Map;
 import java.util.ArrayList;
@@ -26,7 +26,7 @@ public class MaxPriorityQueue<K extends Comparable<K>, V> implements PriorityQue
     private Map<V, Integer> map = new HashMap<>();
     
     /**
-     * This inner class implements the Entry Interface
+     * This Inner Class implements the Entry Interface
      *
      * @author Jason Tran
      */
@@ -68,7 +68,7 @@ public class MaxPriorityQueue<K extends Comparable<K>, V> implements PriorityQue
      * Constructor: Creates an empty priority queue
      */
     public MaxPriorityQueue() {
-        this(0);
+        checkSize(0);
     }
     
     /**
@@ -78,54 +78,45 @@ public class MaxPriorityQueue<K extends Comparable<K>, V> implements PriorityQue
      * @throws IllegalArgumentException if size is negative
      */
     public MaxPriorityQueue(int size) {
-        if (size < 0) {
-            throw new IllegalArgumentException("ERROR: Illegal length to create heap: " + size);
-        }
-        arr = new ArrayList<>(size);
-    }
-    
-    /**
-     * Constructor:  Creates a Priority Queue with an existing heap, 
-     * Runtime: O()
-     * 
-     * @param heap a key type heap to construct a priority queue
-     */
-    public MaxPriorityQueue(Heap<K> heap) {
-        this(heap.size());
+        // check if the length is not negative and create an arraylist
+        checkSize(size);
     }
     
     /**
      * Constructor: Creates a Priority Queue with the key array, similar to the Build
      * Heap Algorithm, Runtime: O(n)
      * 
-     * @param array a key array to be constructed in a queue
+     * @param keys a key array to be constructed in a queue
+     * @param values a value array to be paired with the key array
+     * @throws IllegalArgumentException if two array lengths are not equal
+     * @throws IllegalArgumentException if size is negative
      */
-    public MaxPriorityQueue(K[] array) {
-        this(array.length);
-        
-        // generate a bunch of random values
-        V[] values = generateRandomValues(array.length);
+    public MaxPriorityQueue(K[] keys, V[] values) {
+        // check if the lengths of both are valid, if so create an empty array list
+        checkInputLengths(keys.length, values.length);
         
         // first add the elements into the array and hashmap
-        for (int i = 0; i < array.length; i++) {
-            Entry<K, V> entry = new Entry<>(array[i], values[i]);
+        for (int i = 0; i < keys.length; i++) {
+            Entry<K, V> entry = new Entry<>(keys[i], values[i]);
             map.put(values[i], i);
             arr.add(entry);
         }
         
         // perform the build algorithm
-        buildHeap(array.length);
+        buildHeap(keys.length);
     }
     
     /**
      * Constructor: Creates a Priority Queue with the entry array, similar to the Build
      * Heap Algorithm, Runtime: O(n)
      *
-     * @param array an array to be constructed into a priority queue
+     * @param array an entry array to be constructed into a priority queue
+     * @throws IllegalArgumentException if size is negative
      */
     @SuppressWarnings({ "rawtypes", "unchecked" })
     public MaxPriorityQueue(Entry[] array) {
-        this(array.length);
+        // check if the length is not negative and create an arraylist
+        checkSize(array.length);
         
         // first add the elements into the array and hashmap
         for (int i = 0; i < array.length; i++)  {
@@ -138,27 +129,166 @@ public class MaxPriorityQueue<K extends Comparable<K>, V> implements PriorityQue
     }
     
     /**
+     * Constructor: Creates a Priority Queue with an existing heap, similar to the Build
+     * Heap Algorithm, Runtime: O(n)
+     * 
+     * @param heap a key type heap to construct a priority queue
+     * @param values a value type array to be paired with the keys
+     * @throws IllegalArgumentException if two collection lengths are not equal
+     * @throws IllegalArgumentException if heap size is negative
+     */
+    public MaxPriorityQueue(Heap<K> heap, V[] values) {
+        // check if the lengths of both are valid, if so create an empty array list
+        checkInputLengths(heap.size(), values.length);
+        
+        // create an iterator for the heap
+        Iterator<K> heapIter = heap.iterator();
+        
+        // first add the elements into the ArrayList and HashMap
+        int index = 0;
+        while (heapIter.hasNext()) {
+            Entry<K, V> entry = new Entry<>(heapIter.next(), values[index]);
+            map.put(values[index], index);
+            arr.add(entry);
+            index++;
+        }
+        
+        // perform the build heap algorithm
+        buildHeap(heap.size());
+    }
+    
+    /**
+     * Constructor: Creates a Priority Queue with an existing heap, Runtime: O()
+     * 
+     * @param heap a key type heap to construct a priority queue
+     * @param values a value type collection to be paired with the keys
+     * @throws IllegalArgumentException if two collection lengths are not equal
+     * @throws IllegalArgumentException if heap size is negative
+     */
+    public MaxPriorityQueue(Heap<K> heap, Collection<V> values) {
+        // check if the lengths of both are valid, if so create an empty array list
+        checkInputLengths(heap.size(), values.size());
+        
+        // create an iterator for the heap and collection
+        Iterator<K> heapIter = heap.iterator();
+        Iterator<V> valuesIter = values.iterator();
+        
+        // add the elements into the queue
+        while (heapIter.hasNext()) {
+            add(heapIter.next(), valuesIter.next());
+        }
+    }
+    
+    /**
+     * Constructor: Creates a Priority Queue with the collections, Runtime: O(nlg(n))
+     * Do not get this confused with the O(n) Build Heap Algorithm
+     *
+     * @param keys a collection of key elements
+     * @param values a collection of value elements
+     * @throws IllegalArgumentException if two collection lengths are not equal
+     * @throws IllegalArgumentException if size is negative
+     */
+    public MaxPriorityQueue(Collection<K> keys, Collection<V> values) {
+        // check if the lengths of both are valid, if so create an empty array list
+        checkInputLengths(keys.size(), values.size());
+        
+        /*
+         * O(n^2) construction
+         * for (K e : keys) {
+         *   for (V v: values) {
+         *       add(e, v);
+         *   }
+         * }
+         */
+        
+        // this step below is O(nlg(n))
+        // create iterators for the two collection
+        Iterator<K> keysIter = keys.iterator();
+        Iterator<V> valuesIter = values.iterator();
+        
+        // add the elements into the queue
+        while (keysIter.hasNext()) {
+            add(keysIter.next(), valuesIter.next());
+        }
+    }
+    
+    /**
      * Constructor: Creates a Priority Queue with the collection, Runtime: O(nlg(n))
      * Do not get this confused with the O(n) Build Heap Algorithm
      *
-     * @param collection a collection of elements
+     * @param collection a collection of type entry elements
+     * @throws IllegalArgumentException if size is negative
      */
     @SuppressWarnings({ "rawtypes", "unchecked" })
     public MaxPriorityQueue(Collection<Entry> collection) {
-        this(collection.size());
+        // check if the length is not negative and create an arraylist
+        checkSize(collection.size());
+        
+        // add the elements into the queue
         for (Entry e : collection) {
             add((K) e.key, (V) e.value);
         } 
     }
     
-    /*
-     * Helper method to generate random values for the queue, assume the length is valid, 
-     * Runtime O(n)
+    /**
+     * Constructor: Creates a Priority Queue with the map, similar to the Build
+     * Heap Algorithm, Runtime: O(n)
+     * 
+     * @param  entryMap a map of key-value pair elements
+     * @throws IllegalArgumentException if size is negative
      */
     @SuppressWarnings("unchecked")
-    private V[] generateRandomValues(int length) {
-        V[] values = (V[]) new Object[length];
-        return null;
+    public MaxPriorityQueue(Map<K, V> entryMap) {
+        // check if the length is not negative and create an ArrayList
+        checkSize(map.size());
+        
+        // create an iterator for the map
+        Iterator<Map.Entry<K, V>> mapIter = entryMap.entrySet().iterator();
+        
+        // first add the elements into the array and HashMap
+        int index = 0;
+        while (mapIter.hasNext()) {
+            map.put(mapIter.next().getValue(), index);
+            arr.add((Entry<K, V>) mapIter.next());
+            index++;
+        }
+        
+        // perform the build heap algorithm
+        buildHeap(map.size());
+    }
+    
+    /**
+     * Helper method to check if the lengths of both data structures
+     * are valid and create an empty ArrayList if they are, Runtime O(1)
+     * 
+     * @param size1 the size of the first data structure
+     * @param size2 the size of the second data structure
+     * @throws IllegalArgumentException if two array lengths are not equal
+     * @throws IllegalArgumentException if size is negative
+     */
+    private void checkInputLengths(int size1, int size2) {
+        // check if the sizes are equal
+        if (size1 != size2) {
+            throw new IllegalArgumentException("ERROR: Two sizes are not equal");
+        }
+        
+        // check if the size is not negative
+        checkSize(size1);
+    }
+    
+    /**
+     * Helper method to check if the size is valid and create a new 
+     * array list if the size is valid, Runtime O(1)
+     * 
+     * @param size the number of elements in the data structure
+     * @throws IllegalArgumentException if size is negative
+     */
+    private void checkSize(int size) {
+        // check if the length is valid
+        if (size < 0) {
+            throw new IllegalArgumentException("ERROR: Illegal length to create queue: " + size);
+        }
+        arr = new ArrayList<>(size);
     }
     
     /**
