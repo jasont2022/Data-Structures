@@ -75,6 +75,12 @@ public interface PriorityQueue<K extends Comparable<K>, V> {
      * @return an unordered set of the values in this priority queue
      */
     public Set<V> values();
+    
+    /**
+     * Deletes all the elements in the queue, the queue will be empty after this call
+     * returns
+     */
+    public void clear();
 
     /**
      * Returns an iterator over the elements in this priority queue, ordered from head to

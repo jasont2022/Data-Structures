@@ -141,7 +141,19 @@ public class MaxPriorityQueue<K extends Comparable<K>, V> implements PriorityQue
      */
     @Override
     public boolean add(K key, V value) {
-        return false;
+        if (key == null || containsValue(value)) {
+            throw new IllegalArgumentException();
+        }
+        // add the element to the end of the array
+        Entry<K, V> entry = new Entry<>(key, value);
+        arr.add(entry);
+        int index =  size() - 1;
+        // update the hashmap
+        map.put(value, index);
+        
+        //shift the element up to the correct position
+        shiftUp(index);
+        return true;
     }
 
     /**
@@ -149,7 +161,20 @@ public class MaxPriorityQueue<K extends Comparable<K>, V> implements PriorityQue
      */
     @Override
     public void pushKey(K key, V value) {
-        
+        if (!containsValue(value)) {
+            throw new NoSuchElementException("ERROR: Queue does not contain that value: " + value);
+        }
+        int index = map.get(value);
+        K oldKey = arr.get(index).key;
+        if (key == null || key.compareTo(oldKey) < 0) {
+            throw new IllegalArgumentException("ERROR: Invalid key input: " + key);
+        }
+        Entry<K, V> entry = new Entry<>(key, value);
+        // update both arraylist and hashmap
+        arr.set(index, entry);
+        map.put(value, index);
+        // fix the max heap property
+        shiftUp(index);
     }
 
     /**
@@ -171,15 +196,115 @@ public class MaxPriorityQueue<K extends Comparable<K>, V> implements PriorityQue
         if (isEmpty()) {
             throw new NoSuchElementException("ERROR: Cannot extract an empty queue");
         }
-        return null;
+        int last = size() - 1;
+        Entry<K, V> prev = arr.get(0);
+        // swap the elements
+        swap(0, last);
+        
+        // delete node from queue
+        arr.remove(0);
+        map.remove(prev.value);
+        
+        // fix the max heap property
+        shiftDown(0);
+        return prev;
     }
 
     /**
-     * {@inheritDoc}, Runtime: O(n)
+     * {@inheritDoc}, Runtime: O(1)
      */
     @Override
     public Set<V> values() {
-        return null;
+        return map.keySet();
+    }
+    
+    /**
+     * Helper method that tests if the key of node i >= node j, assumes that i and
+     * j are valid indices, Runtime: O(1)
+     * 
+     * @param i an index in the heap
+     * @param j another index in the heap
+     * @return true if node.key i >= node.key j, otherwise false
+     */
+    private boolean max(int i, int j) {
+        K value1 = arr.get(i).getKey();
+        K value2 = arr.get(j).getKey();
+        return value1.compareTo(value2) >= 0;
+    }
+    /**
+     * Helper method that pushes the node up to the correct position in the heap to
+     * satisfy the max heap property, assume i is a valid index, Runtime: O(lg n)
+     * 
+     * @param i an index in the heap
+     */
+    private void shiftUp(int i) {
+        // get the parent index of the current index i
+        int parent = (int) (Math.ceil(i / 2.0) - 1);
+
+        // base case: parent < 0 || max(parent, i)
+        if (parent >= 0 && !max(parent, i)) {
+            // update the array and hashmap
+            swap(parent, i);
+            // continue to fix the heap
+            shiftUp(parent);
+        }
+    }
+    
+    /**
+     * Helper method that performs MaxHeapfiy operation, pushes the node down to the
+     * correct position in the heap to satisfy the max heap property, assume i is a
+     * valid index, Runtime: O(lg n)
+     * 
+     * @param i an index in the heap
+     */
+    private void shiftDown(int i) {
+        int left = 2 * i + 1; // left child index
+        int right = 2 * i + 2;
+        int max = 0;
+        if (left < arr.size() && arr.get(left).key.compareTo(arr.get(i).key) > 0) {
+            max = left;
+        } else {
+            max = i;
+        }
+        if (right < arr.size() && arr.get(right).key.compareTo(arr.get(max).key) > 0) {
+            max = right;
+        }
+        if (max != i) {
+            // update the array and hashmap
+            swap(i, max);
+            // continue to fix the heap
+            shiftDown(max);
+        }
+    }
+    
+    /**
+     * Helper method to swap the indices in the array and hash map, assume i and j
+     * are valid indices, Runtime O(1)
+     * 
+     * @param i an index in the heap
+     * @param j another index in the heap
+     */
+    private void swap(int i, int j) {
+        // get the nodes of the positions
+        Entry<K, V> node1 = arr.get(i);
+        Entry<K, V> node2 = arr.get(j);
+        
+        // swap them in the array
+        arr.set(i, node2);
+        arr.set(j, node1);
+        
+        // swap them in the map
+        map.put(node2.value, i);
+        map.put(node1.value, j);
+    }
+    
+    /**
+     * {@inheritDoc}, Runtime: O(1)
+     */
+    @Override
+    public void clear() {
+        arr = new ArrayList<>();
+        map = new HashMap<>();
     }
 
     /**
@@ -211,9 +336,7 @@ public class MaxPriorityQueue<K extends Comparable<K>, V> implements PriorityQue
                 if (!hasNext()) {
                     throw new NoSuchElementException("ERROR: No more elements to iterate");
                 } else {
-                    PriorityQueue.Entry<K, V> prev = arr.get(count);
-                    count++;
-                    return prev;
+                    return arr.get(count++);
                 }
             }
 
