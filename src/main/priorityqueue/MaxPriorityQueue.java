@@ -1,7 +1,9 @@
 package main.priorityqueue;
+import main.heap.Heap;
 
 import java.util.Collection;
 import java.util.Set;
+
 import java.util.List;
 import java.util.Map;
 import java.util.ArrayList;
@@ -83,13 +85,56 @@ public class MaxPriorityQueue<K extends Comparable<K>, V> implements PriorityQue
     }
     
     /**
-     * Constructor: Creates a Priority Queue with the array, similar to the Build
+     * Constructor:  Creates a Priority Queue with an existing heap, 
+     * Runtime: O()
+     * 
+     * @param heap a key type heap to construct a priority queue
+     */
+    public MaxPriorityQueue(Heap<K> heap) {
+        this(heap.size());
+    }
+    
+    /**
+     * Constructor: Creates a Priority Queue with the key array, similar to the Build
+     * Heap Algorithm, Runtime: O(n)
+     * 
+     * @param array a key array to be constructed in a queue
+     */
+    public MaxPriorityQueue(K[] array) {
+        this(array.length);
+        
+        // generate a bunch of random values
+        V[] values = generateRandomValues(array.length);
+        
+        // first add the elements into the array and hashmap
+        for (int i = 0; i < array.length; i++) {
+            Entry<K, V> entry = new Entry<>(array[i], values[i]);
+            map.put(values[i], i);
+            arr.add(entry);
+        }
+        
+        // perform the build algorithm
+        buildHeap(array.length);
+    }
+    
+    /**
+     * Constructor: Creates a Priority Queue with the entry array, similar to the Build
      * Heap Algorithm, Runtime: O(n)
      *
      * @param array an array to be constructed into a priority queue
      */
-    public MaxPriorityQueue(K[] array) {
+    @SuppressWarnings({ "rawtypes", "unchecked" })
+    public MaxPriorityQueue(Entry[] array) {
         this(array.length);
+        
+        // first add the elements into the array and hashmap
+        for (int i = 0; i < array.length; i++)  {
+            map.put((V) array[i].value, i);
+            arr.add(array[i]);
+        }
+        
+        // perform the build heap algorithm
+        buildHeap(array.length);
     }
     
     /**
@@ -98,8 +143,33 @@ public class MaxPriorityQueue<K extends Comparable<K>, V> implements PriorityQue
      *
      * @param collection a collection of elements
      */
-    public MaxPriorityQueue(Collection<K> collection) {
+    @SuppressWarnings({ "rawtypes", "unchecked" })
+    public MaxPriorityQueue(Collection<Entry> collection) {
         this(collection.size());
+        for (Entry e : collection) {
+            add((K) e.key, (V) e.value);
+        } 
+    }
+    
+    /*
+     * Helper method to generate random values for the queue, assume the length is valid, 
+     * Runtime O(n)
+     */
+    @SuppressWarnings("unchecked")
+    private V[] generateRandomValues(int length) {
+        V[] values = (V[]) new Object[length];
+        return null;
+    }
+    
+    /**
+     * Helper method that performs the Build Heap Algorithm, Runtime O(n)
+     * 
+     * @param length the number of elements in the collection
+     */
+    private void buildHeap(int length) {
+        for (int i = Math.max(0, (length / 2) - 1); i >= 0; i--) {
+            shiftDown(i);
+        }
     }
     
     /**
