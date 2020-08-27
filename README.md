@@ -100,8 +100,6 @@ The links down below are shortcuts to access the source code in this repo:
   * [Adjaceny Maxtrix]
 
 ## Contribute 
-[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)][issues-url]
-
 Contributions are what make the open source community such an amazing place to learn, inspire, develop, and promote intellectual discussions. This repository aims to be contribution friendly and any contributions you make are greatly appreciated. Please be sure to check out the wiki on guidelines and instructions before contributing to this repository.
 
 ## Credits
