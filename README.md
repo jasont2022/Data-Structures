@@ -106,7 +106,7 @@ Contributions are what make the open source community such an amazing place to l
 This project would not be possible without additional resources.
 
 ## License
-This repository is released under the [MIT license][license-url]. In short, you are free to use this software in any personal, open-source or commercial projects. See `LICENSE.md` or the [opensource MIT license](https://opensource.org/licenses/MIT) for more information.
+This repository is released under the [MIT license][license-url]. In short, you are free to use this software in any personal, open-source or commercial projects. See `LICENSE.md` or the [opensource website](https://opensource.org/licenses/MIT) for more information.
 
 <!-- Links -->
 [contributors-shield]: https://img.shields.io/github/contributors/jasont2022/Data-Structures.svg?color=brightgreen&style=flat-square
