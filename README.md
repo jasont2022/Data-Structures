@@ -13,11 +13,13 @@
 ![README Checker](https://github.com/jasont2022/Data-Structures/workflows/README%20URL%20Checker/badge.svg)
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
-# Project Status
-**Currently under development, still adding and modifying in files for priority queue and binary heap files**
-
 # Data Structures
-A project for myself to somewhat mimic the Java Collections Library. I will be implementing common data structures in the Java programming language from scratch.
+This library aims to show how to implement common data structures in the simplest and most creative ways in Java. Data structures are fundamental in software engineering as it provides efficient and clean code. There are several ways to design these interfaces and data structures and by no means is my way absolute. Feel free to provide feedback and enchanements!
+
+# Project Status
+**Currently under development, still adding and modifying in files for priority queue and binary heap files** 
+</br>
+Must add contribution guidelines, graph, hash, heaps, balanced BST, and trie data structures for next time
 
 ## Table of Contents
 * [Technologies](#technologies)
@@ -38,8 +40,10 @@ This project is created with the following below:
 
 ## Getting Started
 Here are the following steps below to get started with the code:
+
 ### Prerequisites
 Have Java and an IDE that supports Java installed in your local computer
+
 ### Installation
 1. Clone the repo
 ```bash
@@ -47,13 +51,17 @@ $ git clone https://github.com/jasont2022/Data-Structures
 ```
 ### Developing
 Here's a brief intro about what a developer must do in order to start developing the project further:
+
+1. Change directory
 ```bash
-$ git clone https://github.com/jasont2022/Data-Structures.git
 $ cd Data-Structures
 ```
+2. Create a new package / folder with a new data structure `my new data structure`
+3. cd `my new data structure` and start developing new code!
 
 ## Data Structures Links
 The links down below are shortcuts to access the source code in this repo:
+
 * [Array](https://github.com/jasont2022/Data-Structures/tree/master/src/main/array)
   * [Array Interface](https://github.com/jasont2022/Data-Structures/tree/master/src/main/array/Array.java)
   * [ArrayImpl](https://github.com/jasont2022/Data-Structures/tree/master/src/main/array/ArrayImpl.java)
@@ -100,10 +108,15 @@ The links down below are shortcuts to access the source code in this repo:
   * [Adjaceny Maxtrix]
 
 ## Contribute 
-Contributions are what make the open source community such an amazing place to learn, inspire, develop, and promote intellectual discussions. This repository aims to be contribution friendly and any contributions you make are **greatly appreciated**. Please be sure to check out the wiki or `CONTRIBUTING.md` on guidelines and instructions before contributing to this repository.
+Contributions are what make the open source community such an amazing place to learn, inspire, develop, and promote intellectual discussions. This repository aims to be contribution friendly and open to the community. Any contributions you make are **greatly appreciated**. Please be sure to check out the wiki or `CONTRIBUTING.md` on guidelines and instructions before contributing to this repository.
 
 ## Credits
-This project would not be possible without additional resources.
+This section is to give attribution and many thanks to the following resources listed below:
+
+* William Fiset's Data Structures Course: https://www.youtube.com/channel/UCD8yeTczadqdARzQUp29PJw
+* William Fiset's Repos: https://github.com/williamfiset
+* Cracking the Coding Interview
+* Introduction to Algorithms by CLRS
 
 ## License
 This repository is released under the [MIT license][license-url]. In short, you are free to use this software in any personal, open-source or commercial projects. See `LICENSE.md` or the [opensource website](https://opensource.org/licenses/MIT) for more information.
